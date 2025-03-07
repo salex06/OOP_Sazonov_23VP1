@@ -88,6 +88,7 @@
             addBookNewGenreButton.TabIndex = 0;
             addBookNewGenreButton.Text = "Новый жанр...";
             addBookNewGenreButton.UseVisualStyleBackColor = false;
+            addBookNewGenreButton.Click += addBookNewGenreButton_Click;
             // 
             // addGenresListView
             // 
@@ -134,6 +135,7 @@
             addBookNewAuthorButton.TabIndex = 0;
             addBookNewAuthorButton.Text = "Новый автор...";
             addBookNewAuthorButton.UseVisualStyleBackColor = false;
+            addBookNewAuthorButton.Click += addBookNewAuthorButton_Click;
             // 
             // addAuthorsListView
             // 

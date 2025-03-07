@@ -32,8 +32,8 @@
             discardBookChangesButton = new Button();
             saveBookChangesButton = new Button();
             editBookPanel = new Panel();
-            editBookIdLabel = new Label();
             editBookIdNumericUpDown = new NumericUpDown();
+            editBookIdLabel = new Label();
             editGenresPanel = new Panel();
             newGenreButton = new Button();
             editGenresListView = new ListView();
@@ -115,6 +115,14 @@
             editBookPanel.Size = new Size(428, 83);
             editBookPanel.TabIndex = 4;
             // 
+            // editBookIdNumericUpDown
+            // 
+            editBookIdNumericUpDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            editBookIdNumericUpDown.Location = new Point(176, 27);
+            editBookIdNumericUpDown.Name = "editBookIdNumericUpDown";
+            editBookIdNumericUpDown.Size = new Size(239, 31);
+            editBookIdNumericUpDown.TabIndex = 1;
+            // 
             // editBookIdLabel
             // 
             editBookIdLabel.Dock = DockStyle.Left;
@@ -124,14 +132,6 @@
             editBookIdLabel.TabIndex = 0;
             editBookIdLabel.Text = "ID книги:";
             editBookIdLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // editBookIdNumericUpDown
-            // 
-            editBookIdNumericUpDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            editBookIdNumericUpDown.Location = new Point(176, 27);
-            editBookIdNumericUpDown.Name = "editBookIdNumericUpDown";
-            editBookIdNumericUpDown.Size = new Size(239, 31);
-            editBookIdNumericUpDown.TabIndex = 1;
             // 
             // editGenresPanel
             // 
@@ -157,6 +157,7 @@
             newGenreButton.TabIndex = 0;
             newGenreButton.Text = "Новый жанр...";
             newGenreButton.UseVisualStyleBackColor = false;
+            newGenreButton.Click += newGenreButton_Click;
             // 
             // editGenresListView
             // 
@@ -203,6 +204,7 @@
             addNewAuthorButton.TabIndex = 0;
             addNewAuthorButton.Text = "Новый автор...";
             addNewAuthorButton.UseVisualStyleBackColor = false;
+            addNewAuthorButton.Click += addNewAuthorButton_Click;
             // 
             // editAuthorsListView
             // 

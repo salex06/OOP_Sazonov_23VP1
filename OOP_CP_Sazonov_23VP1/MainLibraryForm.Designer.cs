@@ -38,13 +38,22 @@
             clientsToolStripDropDownButton = new ToolStripDropDownButton();
             addReadersToolStripMenuItem = new ToolStripMenuItem();
             removeReaderToolStripMenuItem = new ToolStripMenuItem();
-            editReaderDataToolStripMenuItem = new ToolStripMenuItem();
             вернутьКнигуToolStripMenuItem = new ToolStripMenuItem();
+            editReaderDataToolStripMenuItem = new ToolStripMenuItem();
             reportToolStripDropDownButton = new ToolStripDropDownButton();
             debtorReportToolStripMenuItem = new ToolStripMenuItem();
             readerReportToolStripMenuItem = new ToolStripMenuItem();
             bookReportToolStripMenuItem = new ToolStripMenuItem();
             booksReviewDataGridView = new DataGridView();
+            bookId = new DataGridViewTextBoxColumn();
+            bookName = new DataGridViewTextBoxColumn();
+            yearOfPublishing = new DataGridViewTextBoxColumn();
+            bookAuthors = new DataGridViewTextBoxColumn();
+            bookGenres = new DataGridViewTextBoxColumn();
+            publisherName = new DataGridViewTextBoxColumn();
+            bookISBN = new DataGridViewTextBoxColumn();
+            readerID = new DataGridViewTextBoxColumn();
+            returnDate = new DataGridViewTextBoxColumn();
             booksReviewPanel = new Panel();
             doSelectQueryPanel = new Panel();
             resetQuery = new Button();
@@ -113,15 +122,6 @@
             phoneNumber = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
             isDebtor = new DataGridViewTextBoxColumn();
-            bookId = new DataGridViewTextBoxColumn();
-            bookName = new DataGridViewTextBoxColumn();
-            yearOfPublishing = new DataGridViewTextBoxColumn();
-            bookAuthors = new DataGridViewTextBoxColumn();
-            bookGenres = new DataGridViewTextBoxColumn();
-            publisherName = new DataGridViewTextBoxColumn();
-            bookISBN = new DataGridViewTextBoxColumn();
-            readerID = new DataGridViewTextBoxColumn();
-            returnDate = new DataGridViewTextBoxColumn();
             addBookToDataBaseToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)booksReviewDataGridView).BeginInit();
             booksReviewPanel.SuspendLayout();
@@ -176,24 +176,28 @@
             addBookToolStripMenuItem.Name = "addBookToolStripMenuItem";
             addBookToolStripMenuItem.Size = new Size(379, 34);
             addBookToolStripMenuItem.Text = "Добавить книгу...";
+            addBookToolStripMenuItem.Click += addBookToolStripMenuItem_Click;
             // 
             // removeBookToolStripMenuItem
             // 
             removeBookToolStripMenuItem.Name = "removeBookToolStripMenuItem";
             removeBookToolStripMenuItem.Size = new Size(379, 34);
             removeBookToolStripMenuItem.Text = "Удалить книгу...";
+            removeBookToolStripMenuItem.Click += removeBookToolStripMenuItem_Click;
             // 
             // giveOutBookToolStripMenuItem
             // 
             giveOutBookToolStripMenuItem.Name = "giveOutBookToolStripMenuItem";
             giveOutBookToolStripMenuItem.Size = new Size(379, 34);
             giveOutBookToolStripMenuItem.Text = "Выдать книгу...";
+            giveOutBookToolStripMenuItem.Click += giveOutBookToolStripMenuItem_Click;
             // 
             // editBookInfoToolStripMenuItem
             // 
             editBookInfoToolStripMenuItem.Name = "editBookInfoToolStripMenuItem";
             editBookInfoToolStripMenuItem.Size = new Size(379, 34);
             editBookInfoToolStripMenuItem.Text = "Редактировать данные о книге...";
+            editBookInfoToolStripMenuItem.Click += editBookInfoToolStripMenuItem_Click;
             // 
             // clientsToolStripDropDownButton
             // 
@@ -211,24 +215,28 @@
             addReadersToolStripMenuItem.Name = "addReadersToolStripMenuItem";
             addReadersToolStripMenuItem.Size = new Size(404, 34);
             addReadersToolStripMenuItem.Text = "Добавить читателя...";
+            addReadersToolStripMenuItem.Click += addReadersToolStripMenuItem_Click;
             // 
             // removeReaderToolStripMenuItem
             // 
             removeReaderToolStripMenuItem.Name = "removeReaderToolStripMenuItem";
             removeReaderToolStripMenuItem.Size = new Size(404, 34);
             removeReaderToolStripMenuItem.Text = "Удалить читателя...";
-            // 
-            // editReaderDataToolStripMenuItem
-            // 
-            editReaderDataToolStripMenuItem.Name = "editReaderDataToolStripMenuItem";
-            editReaderDataToolStripMenuItem.Size = new Size(404, 34);
-            editReaderDataToolStripMenuItem.Text = "Редактировать данные о читателе...";
+            removeReaderToolStripMenuItem.Click += removeReaderToolStripMenuItem_Click;
             // 
             // вернутьКнигуToolStripMenuItem
             // 
             вернутьКнигуToolStripMenuItem.Name = "вернутьКнигуToolStripMenuItem";
             вернутьКнигуToolStripMenuItem.Size = new Size(404, 34);
             вернутьКнигуToolStripMenuItem.Text = "Вернуть книгу...";
+            вернутьКнигуToolStripMenuItem.Click += returnBookToolStripMenuItem_Click;
+            // 
+            // editReaderDataToolStripMenuItem
+            // 
+            editReaderDataToolStripMenuItem.Name = "editReaderDataToolStripMenuItem";
+            editReaderDataToolStripMenuItem.Size = new Size(404, 34);
+            editReaderDataToolStripMenuItem.Text = "Редактировать данные о читателе...";
+            editReaderDataToolStripMenuItem.Click += editReaderDataToolStripMenuItem_Click;
             // 
             // reportToolStripDropDownButton
             // 
@@ -273,6 +281,78 @@
             booksReviewDataGridView.RowHeadersWidth = 62;
             booksReviewDataGridView.Size = new Size(926, 685);
             booksReviewDataGridView.TabIndex = 1;
+            // 
+            // bookId
+            // 
+            bookId.FillWeight = 15.794117F;
+            bookId.HeaderText = "ID";
+            bookId.MinimumWidth = 8;
+            bookId.Name = "bookId";
+            bookId.ReadOnly = true;
+            // 
+            // bookName
+            // 
+            bookName.FillWeight = 30.3281269F;
+            bookName.HeaderText = "Название";
+            bookName.MinimumWidth = 8;
+            bookName.Name = "bookName";
+            bookName.ReadOnly = true;
+            // 
+            // yearOfPublishing
+            // 
+            yearOfPublishing.FillWeight = 24.1615372F;
+            yearOfPublishing.HeaderText = "Дата выхода";
+            yearOfPublishing.MinimumWidth = 8;
+            yearOfPublishing.Name = "yearOfPublishing";
+            yearOfPublishing.ReadOnly = true;
+            // 
+            // bookAuthors
+            // 
+            bookAuthors.FillWeight = 25F;
+            bookAuthors.HeaderText = "Авторы";
+            bookAuthors.MinimumWidth = 8;
+            bookAuthors.Name = "bookAuthors";
+            bookAuthors.ReadOnly = true;
+            // 
+            // bookGenres
+            // 
+            bookGenres.FillWeight = 25F;
+            bookGenres.HeaderText = "Жанры";
+            bookGenres.MinimumWidth = 8;
+            bookGenres.Name = "bookGenres";
+            bookGenres.ReadOnly = true;
+            // 
+            // publisherName
+            // 
+            publisherName.FillWeight = 35.4135742F;
+            publisherName.HeaderText = "Издательство";
+            publisherName.MinimumWidth = 8;
+            publisherName.Name = "publisherName";
+            publisherName.ReadOnly = true;
+            // 
+            // bookISBN
+            // 
+            bookISBN.FillWeight = 19.5845146F;
+            bookISBN.HeaderText = "ISBN";
+            bookISBN.MinimumWidth = 8;
+            bookISBN.Name = "bookISBN";
+            bookISBN.ReadOnly = true;
+            // 
+            // readerID
+            // 
+            readerID.FillWeight = 20F;
+            readerID.HeaderText = "ID читателя";
+            readerID.MinimumWidth = 8;
+            readerID.Name = "readerID";
+            readerID.ReadOnly = true;
+            // 
+            // returnDate
+            // 
+            returnDate.FillWeight = 30F;
+            returnDate.HeaderText = "Возврат до";
+            returnDate.MinimumWidth = 8;
+            returnDate.Name = "returnDate";
+            returnDate.ReadOnly = true;
             // 
             // booksReviewPanel
             // 
@@ -985,78 +1065,6 @@
             isDebtor.MinimumWidth = 8;
             isDebtor.Name = "isDebtor";
             isDebtor.ReadOnly = true;
-            // 
-            // bookId
-            // 
-            bookId.FillWeight = 15.794117F;
-            bookId.HeaderText = "ID";
-            bookId.MinimumWidth = 8;
-            bookId.Name = "bookId";
-            bookId.ReadOnly = true;
-            // 
-            // bookName
-            // 
-            bookName.FillWeight = 30.3281269F;
-            bookName.HeaderText = "Название";
-            bookName.MinimumWidth = 8;
-            bookName.Name = "bookName";
-            bookName.ReadOnly = true;
-            // 
-            // yearOfPublishing
-            // 
-            yearOfPublishing.FillWeight = 24.1615372F;
-            yearOfPublishing.HeaderText = "Дата выхода";
-            yearOfPublishing.MinimumWidth = 8;
-            yearOfPublishing.Name = "yearOfPublishing";
-            yearOfPublishing.ReadOnly = true;
-            // 
-            // bookAuthors
-            // 
-            bookAuthors.FillWeight = 25F;
-            bookAuthors.HeaderText = "Авторы";
-            bookAuthors.MinimumWidth = 8;
-            bookAuthors.Name = "bookAuthors";
-            bookAuthors.ReadOnly = true;
-            // 
-            // bookGenres
-            // 
-            bookGenres.FillWeight = 25F;
-            bookGenres.HeaderText = "Жанры";
-            bookGenres.MinimumWidth = 8;
-            bookGenres.Name = "bookGenres";
-            bookGenres.ReadOnly = true;
-            // 
-            // publisherName
-            // 
-            publisherName.FillWeight = 35.4135742F;
-            publisherName.HeaderText = "Издательство";
-            publisherName.MinimumWidth = 8;
-            publisherName.Name = "publisherName";
-            publisherName.ReadOnly = true;
-            // 
-            // bookISBN
-            // 
-            bookISBN.FillWeight = 19.5845146F;
-            bookISBN.HeaderText = "ISBN";
-            bookISBN.MinimumWidth = 8;
-            bookISBN.Name = "bookISBN";
-            bookISBN.ReadOnly = true;
-            // 
-            // readerID
-            // 
-            readerID.FillWeight = 20F;
-            readerID.HeaderText = "ID читателя";
-            readerID.MinimumWidth = 8;
-            readerID.Name = "readerID";
-            readerID.ReadOnly = true;
-            // 
-            // returnDate
-            // 
-            returnDate.FillWeight = 30F;
-            returnDate.HeaderText = "Возврат до";
-            returnDate.MinimumWidth = 8;
-            returnDate.Name = "returnDate";
-            returnDate.ReadOnly = true;
             // 
             // MainLibraryForm
             // 
