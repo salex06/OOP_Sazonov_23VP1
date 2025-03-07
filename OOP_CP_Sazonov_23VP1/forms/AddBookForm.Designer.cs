@@ -314,7 +314,7 @@
             discardAddBookButton.Name = "discardAddBookButton";
             discardAddBookButton.Size = new Size(145, 75);
             discardAddBookButton.TabIndex = 1;
-            discardAddBookButton.Text = "Отменить изменения";
+            discardAddBookButton.Text = "Отмена";
             discardAddBookButton.UseVisualStyleBackColor = false;
             // 
             // saveNewBookButton
@@ -327,7 +327,7 @@
             saveNewBookButton.Name = "saveNewBookButton";
             saveNewBookButton.Size = new Size(162, 75);
             saveNewBookButton.TabIndex = 0;
-            saveNewBookButton.Text = "Сохранить изменения";
+            saveNewBookButton.Text = "Добавить";
             saveNewBookButton.UseVisualStyleBackColor = false;
             // 
             // AddBookForm

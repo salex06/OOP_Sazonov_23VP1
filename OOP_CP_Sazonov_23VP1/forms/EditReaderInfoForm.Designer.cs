@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             editReaderSettingsPanel = new Panel();
-            editReaderNamePanel = new Panel();
-            textBox1 = new TextBox();
-            editReaderNameLabel = new Label();
-            editReaderPhonePanel = new Panel();
-            editPhoneNumberTextBox = new TextBox();
-            editReaderPhoneLabel = new Label();
             editReaderAddressPanel = new Panel();
             editReaderAddressTextBox = new TextBox();
             editReaderAddressLabel = new Label();
+            editReaderPhonePanel = new Panel();
+            editPhoneNumberTextBox = new TextBox();
+            editReaderPhoneLabel = new Label();
+            editReaderNamePanel = new Panel();
+            textBox1 = new TextBox();
+            editReaderNameLabel = new Label();
             editReaderInfoButtonsPanel = new Panel();
-            discardAddBookButton = new Button();
-            saveNewBookButton = new Button();
+            saveReaderChangesButton = new Button();
+            discardEditReaderInfoButton = new Button();
             editReaderSettingsPanel.SuspendLayout();
-            editReaderNamePanel.SuspendLayout();
-            editReaderPhonePanel.SuspendLayout();
             editReaderAddressPanel.SuspendLayout();
+            editReaderPhonePanel.SuspendLayout();
+            editReaderNamePanel.SuspendLayout();
             editReaderInfoButtonsPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,62 +59,6 @@
             editReaderSettingsPanel.Padding = new Padding(10);
             editReaderSettingsPanel.Size = new Size(442, 181);
             editReaderSettingsPanel.TabIndex = 0;
-            // 
-            // editReaderNamePanel
-            // 
-            editReaderNamePanel.Controls.Add(textBox1);
-            editReaderNamePanel.Controls.Add(editReaderNameLabel);
-            editReaderNamePanel.Dock = DockStyle.Top;
-            editReaderNamePanel.Location = new Point(10, 10);
-            editReaderNamePanel.Name = "editReaderNamePanel";
-            editReaderNamePanel.Size = new Size(422, 49);
-            editReaderNamePanel.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(209, 9);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(210, 31);
-            textBox1.TabIndex = 1;
-            // 
-            // editReaderNameLabel
-            // 
-            editReaderNameLabel.Dock = DockStyle.Left;
-            editReaderNameLabel.Location = new Point(0, 0);
-            editReaderNameLabel.Name = "editReaderNameLabel";
-            editReaderNameLabel.Size = new Size(203, 49);
-            editReaderNameLabel.TabIndex = 0;
-            editReaderNameLabel.Text = "ФИО читателя";
-            editReaderNameLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // editReaderPhonePanel
-            // 
-            editReaderPhonePanel.Controls.Add(editPhoneNumberTextBox);
-            editReaderPhonePanel.Controls.Add(editReaderPhoneLabel);
-            editReaderPhonePanel.Dock = DockStyle.Top;
-            editReaderPhonePanel.Location = new Point(10, 59);
-            editReaderPhonePanel.Name = "editReaderPhonePanel";
-            editReaderPhonePanel.Size = new Size(422, 49);
-            editReaderPhonePanel.TabIndex = 1;
-            // 
-            // editPhoneNumberTextBox
-            // 
-            editPhoneNumberTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            editPhoneNumberTextBox.Location = new Point(209, 9);
-            editPhoneNumberTextBox.Name = "editPhoneNumberTextBox";
-            editPhoneNumberTextBox.Size = new Size(210, 31);
-            editPhoneNumberTextBox.TabIndex = 1;
-            // 
-            // editReaderPhoneLabel
-            // 
-            editReaderPhoneLabel.Dock = DockStyle.Left;
-            editReaderPhoneLabel.Location = new Point(0, 0);
-            editReaderPhoneLabel.Name = "editReaderPhoneLabel";
-            editReaderPhoneLabel.Size = new Size(203, 49);
-            editReaderPhoneLabel.TabIndex = 0;
-            editReaderPhoneLabel.Text = "Номер телефона";
-            editReaderPhoneLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // editReaderAddressPanel
             // 
@@ -144,41 +88,97 @@
             editReaderAddressLabel.Text = "Адрес";
             editReaderAddressLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // editReaderPhonePanel
+            // 
+            editReaderPhonePanel.Controls.Add(editPhoneNumberTextBox);
+            editReaderPhonePanel.Controls.Add(editReaderPhoneLabel);
+            editReaderPhonePanel.Dock = DockStyle.Top;
+            editReaderPhonePanel.Location = new Point(10, 59);
+            editReaderPhonePanel.Name = "editReaderPhonePanel";
+            editReaderPhonePanel.Size = new Size(422, 49);
+            editReaderPhonePanel.TabIndex = 1;
+            // 
+            // editPhoneNumberTextBox
+            // 
+            editPhoneNumberTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            editPhoneNumberTextBox.Location = new Point(209, 9);
+            editPhoneNumberTextBox.Name = "editPhoneNumberTextBox";
+            editPhoneNumberTextBox.Size = new Size(210, 31);
+            editPhoneNumberTextBox.TabIndex = 1;
+            // 
+            // editReaderPhoneLabel
+            // 
+            editReaderPhoneLabel.Dock = DockStyle.Left;
+            editReaderPhoneLabel.Location = new Point(0, 0);
+            editReaderPhoneLabel.Name = "editReaderPhoneLabel";
+            editReaderPhoneLabel.Size = new Size(203, 49);
+            editReaderPhoneLabel.TabIndex = 0;
+            editReaderPhoneLabel.Text = "Номер телефона";
+            editReaderPhoneLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // editReaderNamePanel
+            // 
+            editReaderNamePanel.Controls.Add(textBox1);
+            editReaderNamePanel.Controls.Add(editReaderNameLabel);
+            editReaderNamePanel.Dock = DockStyle.Top;
+            editReaderNamePanel.Location = new Point(10, 10);
+            editReaderNamePanel.Name = "editReaderNamePanel";
+            editReaderNamePanel.Size = new Size(422, 49);
+            editReaderNamePanel.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            textBox1.Location = new Point(209, 9);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(210, 31);
+            textBox1.TabIndex = 1;
+            // 
+            // editReaderNameLabel
+            // 
+            editReaderNameLabel.Dock = DockStyle.Left;
+            editReaderNameLabel.Location = new Point(0, 0);
+            editReaderNameLabel.Name = "editReaderNameLabel";
+            editReaderNameLabel.Size = new Size(203, 49);
+            editReaderNameLabel.TabIndex = 0;
+            editReaderNameLabel.Text = "ФИО читателя";
+            editReaderNameLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // editReaderInfoButtonsPanel
             // 
-            editReaderInfoButtonsPanel.Controls.Add(saveNewBookButton);
-            editReaderInfoButtonsPanel.Controls.Add(discardAddBookButton);
+            editReaderInfoButtonsPanel.Controls.Add(saveReaderChangesButton);
+            editReaderInfoButtonsPanel.Controls.Add(discardEditReaderInfoButton);
             editReaderInfoButtonsPanel.Dock = DockStyle.Bottom;
             editReaderInfoButtonsPanel.Location = new Point(0, 225);
             editReaderInfoButtonsPanel.Name = "editReaderInfoButtonsPanel";
             editReaderInfoButtonsPanel.Size = new Size(442, 66);
             editReaderInfoButtonsPanel.TabIndex = 1;
             // 
-            // discardAddBookButton
+            // saveReaderChangesButton
             // 
-            discardAddBookButton.BackColor = Color.Coral;
-            discardAddBookButton.Cursor = Cursors.Hand;
-            discardAddBookButton.Dock = DockStyle.Left;
-            discardAddBookButton.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            discardAddBookButton.Location = new Point(0, 0);
-            discardAddBookButton.Name = "discardAddBookButton";
-            discardAddBookButton.Size = new Size(142, 66);
-            discardAddBookButton.TabIndex = 2;
-            discardAddBookButton.Text = "Отменить изменения";
-            discardAddBookButton.UseVisualStyleBackColor = false;
+            saveReaderChangesButton.BackColor = Color.Coral;
+            saveReaderChangesButton.Cursor = Cursors.Hand;
+            saveReaderChangesButton.Dock = DockStyle.Right;
+            saveReaderChangesButton.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            saveReaderChangesButton.Location = new Point(280, 0);
+            saveReaderChangesButton.Name = "saveReaderChangesButton";
+            saveReaderChangesButton.Size = new Size(162, 66);
+            saveReaderChangesButton.TabIndex = 3;
+            saveReaderChangesButton.Text = "Сохранить изменения";
+            saveReaderChangesButton.UseVisualStyleBackColor = false;
             // 
-            // saveNewBookButton
+            // discardEditReaderInfoButton
             // 
-            saveNewBookButton.BackColor = Color.Coral;
-            saveNewBookButton.Cursor = Cursors.Hand;
-            saveNewBookButton.Dock = DockStyle.Right;
-            saveNewBookButton.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            saveNewBookButton.Location = new Point(280, 0);
-            saveNewBookButton.Name = "saveNewBookButton";
-            saveNewBookButton.Size = new Size(162, 66);
-            saveNewBookButton.TabIndex = 3;
-            saveNewBookButton.Text = "Сохранить изменения";
-            saveNewBookButton.UseVisualStyleBackColor = false;
+            discardEditReaderInfoButton.BackColor = Color.Coral;
+            discardEditReaderInfoButton.Cursor = Cursors.Hand;
+            discardEditReaderInfoButton.Dock = DockStyle.Left;
+            discardEditReaderInfoButton.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            discardEditReaderInfoButton.Location = new Point(0, 0);
+            discardEditReaderInfoButton.Name = "discardEditReaderInfoButton";
+            discardEditReaderInfoButton.Size = new Size(142, 66);
+            discardEditReaderInfoButton.TabIndex = 2;
+            discardEditReaderInfoButton.Text = "Отменить изменения";
+            discardEditReaderInfoButton.UseVisualStyleBackColor = false;
             // 
             // EditReaderInfoForm
             // 
@@ -191,12 +191,12 @@
             Name = "EditReaderInfoForm";
             Text = "Редактирование информации";
             editReaderSettingsPanel.ResumeLayout(false);
-            editReaderNamePanel.ResumeLayout(false);
-            editReaderNamePanel.PerformLayout();
-            editReaderPhonePanel.ResumeLayout(false);
-            editReaderPhonePanel.PerformLayout();
             editReaderAddressPanel.ResumeLayout(false);
             editReaderAddressPanel.PerformLayout();
+            editReaderPhonePanel.ResumeLayout(false);
+            editReaderPhonePanel.PerformLayout();
+            editReaderNamePanel.ResumeLayout(false);
+            editReaderNamePanel.PerformLayout();
             editReaderInfoButtonsPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -214,7 +214,7 @@
         private TextBox editPhoneNumberTextBox;
         private Label editReaderPhoneLabel;
         private Panel editReaderInfoButtonsPanel;
-        private Button discardAddBookButton;
-        private Button saveNewBookButton;
+        private Button discardEditReaderInfoButton;
+        private Button saveReaderChangesButton;
     }
 }
