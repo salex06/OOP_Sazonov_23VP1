@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_CP_Sazonov_23VP1.model
+namespace OOP_CP_Sazonov_23VP1.model.domain
 {
     /// <summary>
     /// Модель книги в системе
@@ -38,7 +38,7 @@ namespace OOP_CP_Sazonov_23VP1.model
         /// <summary>
         /// Объект выдачи книги. Если книга не выдана - null
         /// </summary>
-        public Loan Loan { get; set; } = null;
+        public Loan? Loan { get; set; } = null;
 
         private readonly List<Authorship> _authorships = new List<Authorship>();
         /// <summary>

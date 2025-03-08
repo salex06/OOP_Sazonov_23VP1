@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_CP_Sazonov_23VP1.model
+namespace OOP_CP_Sazonov_23VP1.model.domain
 {
     /// <summary>
     /// Модель отношения между автором и книгой
