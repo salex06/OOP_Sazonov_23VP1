@@ -18,24 +18,24 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// Первичный ключ
         /// </summary>
         [Key]
-        public required long Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Идентификатор жанра
         /// </summary>
         [Required]
-        public required int GenreId { get; set; }
+        public long GenreId { get; set; }
 
         /// <summary>
         /// Идентификатор книги
         /// </summary>
         [Required]
-        public required int BookId { get; set; }
+        public long BookId { get; set; }
 
         [ForeignKey("GenreId")]
-        public required virtual GenreDb Genre { get; set; }
+        public virtual GenreDb Genre { get; set; }
 
         [ForeignKey("BookId")]
-        public required virtual BookDb Book { get; set; }
+        public virtual BookDb Book { get; set; }
     }
 }

@@ -18,11 +18,11 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// Идентификатор жанра
         /// </summary>
         [Key]
-        public required long ID { get; set; }
+        public long ID { get; set; }
         /// <summary>
         /// Название жанра
         /// </summary>
         [Required]
-        public required string Name { get; set; }
+        public string Name { get; set; }
     }
 }

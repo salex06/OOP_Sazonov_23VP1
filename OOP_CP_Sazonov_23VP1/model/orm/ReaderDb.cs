@@ -18,21 +18,21 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// Идентфикатор читателя
         /// </summary>
         [Key]
-        public required long ID { get; set; }
+        public long ID { get; set; }
         /// <summary>
         /// ФИО читателя
         /// </summary>
         [Required]
-        public required string Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// Номер телефона читателя
         /// </summary>
         [Required]
-        public required string PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         /// <summary>
         /// Адрес проживания читателя
         /// </summary>
         [Required]
-        public required string Address { get; set; }
+        public string Address { get; set; }
     }
 }

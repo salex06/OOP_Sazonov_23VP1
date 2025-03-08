@@ -18,16 +18,16 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// Идентификатор автора в базе данных
         /// </summary>
         [Key]
-        public required long Id { get; set; }
+        public long Id { get; set; }
         /// <summary>
         /// Имя автора
         /// </summary>
         [Required]
-        public required string Name { get; set; }
+        public string Name { get; set; }
         /// <summary>
         /// Дата рождения автора
         /// </summary>
         [Required]
-        public required DateTime Birthday { get; set; }
+        public DateTime Birthday { get; set; }
     }
 }

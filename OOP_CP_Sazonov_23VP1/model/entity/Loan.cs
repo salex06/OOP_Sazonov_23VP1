@@ -14,7 +14,7 @@ namespace OOP_CP_Sazonov_23VP1.model.domain
         /// <summary>
         /// Идентификатор записи
         /// </summary>
-        public int Id { get; private set; }
+        public long Id { get; private set; }
         /// <summary>
         /// Читатель, получивший книгу
         /// </summary>

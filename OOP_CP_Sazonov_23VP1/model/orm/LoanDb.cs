@@ -19,22 +19,22 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// Идентификатор записи
         /// </summary>
         [Key]
-        public required long Id { get; set; }
+        public long Id { get; set; }
         /// <summary>
         /// Читатель, получивший книгу
         /// </summary>
         [Required]
-        public required int ReaderId { get; set; }
+        public long ReaderId { get; set; }
         /// <summary>
         /// Выданная книга
         /// </summary>
         [Required]
-        public required int BookId { get; set; }
+        public long BookId { get; set; }
         /// <summary>
         /// Дата выдачи
         /// </summary>
         [Required]
-        public required DateTime StartDate { get; set; }
+        public DateTime StartDate { get; set; }
         /// <summary>
         /// Дата возврата книги
         /// </summary>
@@ -43,13 +43,13 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// Срок выдачи книги
         /// </summary>
         [Required]
-        public required DateTime DateOfIssue { get; set; }
+        public DateTime DateOfIssue { get; set; }
 
 
         [ForeignKey("ReaderId")]
-        public required virtual ReaderDb Reader { get; set; }
+        public virtual ReaderDb Reader { get; set; }
 
         [ForeignKey("BookId")]
-        public required virtual BookDb Book { get; set; }
+        public virtual BookDb Book { get; set; }
     }
 }

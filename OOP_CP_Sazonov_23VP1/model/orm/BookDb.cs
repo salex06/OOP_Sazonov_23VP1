@@ -19,42 +19,42 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// Первичный ключ - идентификатор книги
         /// </summary>
         [Key]
-        public required long Id { get; set; }
+        public long Id { get; set; }
 
         /// <summary>
         /// Название книги
         /// </summary>
         [Required]
         [MaxLength(100)]
-        public required string Title { get; set; }
+        public string Title { get; set; }
         /// <summary>
         /// Год публикации книги
         /// </summary>
         [Required]
-        public required int YearOfPublication { get; set; }
+        public int YearOfPublication { get; set; }
         /// <summary>
         /// Издательство, выпустившее книгу
         /// </summary>
         [Required]
-        public required string Publisher { get; set; }
+        public string Publisher { get; set; }
         /// <summary>
         /// Международный стандартный книжный номер
         /// </summary>
         [Required]
-        public required string ISBN { get; set; }
+        public string ISBN { get; set; }
         /// <summary>
         /// Логическая переменная для определения, выдана книга или нет
         /// </summary>
         [Required]
-        public required bool IsIssued { get; set; }
+        public bool IsIssued { get; set; }
 
         /// <summary>
         /// Список авторов книг
         /// </summary>
-        public required virtual ICollection<AuthorshipDb> Authorships { get; set; }
+        public virtual ICollection<AuthorshipDb> Authorships { get; set; }
         /// <summary>
         /// Список жанров книги
         /// </summary>
-        public required virtual ICollection<BookGenresDb> BookGenres { get; set; }
+        public virtual ICollection<BookGenresDb> BookGenres { get; set; }
     }
 }
