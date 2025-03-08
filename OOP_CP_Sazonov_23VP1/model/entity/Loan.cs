@@ -69,7 +69,7 @@ namespace OOP_CP_Sazonov_23VP1.model.domain
         /// <param name="startDate">Дата выдачи</param>
         /// <param name="endDate">Дата возврата</param>
         /// <param name="dateOfIssue">Срок выдачи</param>
-        public Loan(int id, Reader reader, Book book, DateTime startDate, DateTime? endDate, DateTime dateOfIssue)
+        public Loan(long id, Reader reader, Book book, DateTime startDate, DateTime? endDate, DateTime dateOfIssue)
         {
             Id = id;
             Reader = reader;
