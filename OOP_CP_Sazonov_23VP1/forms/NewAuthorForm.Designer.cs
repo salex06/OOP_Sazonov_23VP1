@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            editAuthorBirthdayPanel = new Panel();
+            addAuthorsBirthdayTimePicker = new DateTimePicker();
+            addAuthorBirthdayLabel = new Label();
+            addAuthorNamePanel = new Panel();
+            addAuthorNameTextBox = new TextBox();
+            addAuthorNameLabel = new Label();
             addAuthorButtonsPanel = new Panel();
             discardAddAuthorButton = new Button();
             saveNewAuthorButton = new Button();
-            addAuthorNamePanel = new Panel();
-            addAuthorNameLabel = new Label();
-            addAuthorNameTextBox = new TextBox();
-            editAuthorBirthdayPanel = new Panel();
-            addAuthorBirthdayLabel = new Label();
-            addAuthorsBirthdayTimePicker = new DateTimePicker();
             panel1.SuspendLayout();
-            addAuthorButtonsPanel.SuspendLayout();
-            addAuthorNamePanel.SuspendLayout();
             editAuthorBirthdayPanel.SuspendLayout();
+            addAuthorNamePanel.SuspendLayout();
+            addAuthorButtonsPanel.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -53,6 +53,63 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(370, 138);
             panel1.TabIndex = 0;
+            // 
+            // editAuthorBirthdayPanel
+            // 
+            editAuthorBirthdayPanel.Controls.Add(addAuthorsBirthdayTimePicker);
+            editAuthorBirthdayPanel.Controls.Add(addAuthorBirthdayLabel);
+            editAuthorBirthdayPanel.Dock = DockStyle.Top;
+            editAuthorBirthdayPanel.Location = new Point(0, 71);
+            editAuthorBirthdayPanel.Name = "editAuthorBirthdayPanel";
+            editAuthorBirthdayPanel.Size = new Size(370, 64);
+            editAuthorBirthdayPanel.TabIndex = 1;
+            // 
+            // addAuthorsBirthdayTimePicker
+            // 
+            addAuthorsBirthdayTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            addAuthorsBirthdayTimePicker.Location = new Point(164, 15);
+            addAuthorsBirthdayTimePicker.Name = "addAuthorsBirthdayTimePicker";
+            addAuthorsBirthdayTimePicker.Size = new Size(194, 31);
+            addAuthorsBirthdayTimePicker.TabIndex = 10;
+            addAuthorsBirthdayTimePicker.Value = new DateTime(2025, 3, 7, 16, 57, 54, 0);
+            // 
+            // addAuthorBirthdayLabel
+            // 
+            addAuthorBirthdayLabel.Dock = DockStyle.Left;
+            addAuthorBirthdayLabel.Location = new Point(0, 0);
+            addAuthorBirthdayLabel.Name = "addAuthorBirthdayLabel";
+            addAuthorBirthdayLabel.Size = new Size(145, 64);
+            addAuthorBirthdayLabel.TabIndex = 0;
+            addAuthorBirthdayLabel.Text = "Дата рождения";
+            addAuthorBirthdayLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // addAuthorNamePanel
+            // 
+            addAuthorNamePanel.Controls.Add(addAuthorNameTextBox);
+            addAuthorNamePanel.Controls.Add(addAuthorNameLabel);
+            addAuthorNamePanel.Dock = DockStyle.Top;
+            addAuthorNamePanel.Location = new Point(0, 0);
+            addAuthorNamePanel.Name = "addAuthorNamePanel";
+            addAuthorNamePanel.Size = new Size(370, 71);
+            addAuthorNamePanel.TabIndex = 0;
+            // 
+            // addAuthorNameTextBox
+            // 
+            addAuthorNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            addAuthorNameTextBox.Location = new Point(164, 20);
+            addAuthorNameTextBox.Name = "addAuthorNameTextBox";
+            addAuthorNameTextBox.Size = new Size(194, 31);
+            addAuthorNameTextBox.TabIndex = 1;
+            // 
+            // addAuthorNameLabel
+            // 
+            addAuthorNameLabel.Dock = DockStyle.Left;
+            addAuthorNameLabel.Location = new Point(0, 0);
+            addAuthorNameLabel.Name = "addAuthorNameLabel";
+            addAuthorNameLabel.Size = new Size(145, 71);
+            addAuthorNameLabel.TabIndex = 0;
+            addAuthorNameLabel.Text = "Имя автора";
+            addAuthorNameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // addAuthorButtonsPanel
             // 
@@ -76,6 +133,7 @@
             discardAddAuthorButton.TabIndex = 1;
             discardAddAuthorButton.Text = "Отмена";
             discardAddAuthorButton.UseVisualStyleBackColor = false;
+            discardAddAuthorButton.Click += discardAddAuthorButton_Click;
             // 
             // saveNewAuthorButton
             // 
@@ -89,63 +147,7 @@
             saveNewAuthorButton.TabIndex = 0;
             saveNewAuthorButton.Text = "Добавить";
             saveNewAuthorButton.UseVisualStyleBackColor = false;
-            // 
-            // addAuthorNamePanel
-            // 
-            addAuthorNamePanel.Controls.Add(addAuthorNameTextBox);
-            addAuthorNamePanel.Controls.Add(addAuthorNameLabel);
-            addAuthorNamePanel.Dock = DockStyle.Top;
-            addAuthorNamePanel.Location = new Point(0, 0);
-            addAuthorNamePanel.Name = "addAuthorNamePanel";
-            addAuthorNamePanel.Size = new Size(370, 71);
-            addAuthorNamePanel.TabIndex = 0;
-            // 
-            // addAuthorNameLabel
-            // 
-            addAuthorNameLabel.Dock = DockStyle.Left;
-            addAuthorNameLabel.Location = new Point(0, 0);
-            addAuthorNameLabel.Name = "addAuthorNameLabel";
-            addAuthorNameLabel.Size = new Size(145, 71);
-            addAuthorNameLabel.TabIndex = 0;
-            addAuthorNameLabel.Text = "Имя автора";
-            addAuthorNameLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // addAuthorNameTextBox
-            // 
-            addAuthorNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            addAuthorNameTextBox.Location = new Point(164, 20);
-            addAuthorNameTextBox.Name = "addAuthorNameTextBox";
-            addAuthorNameTextBox.Size = new Size(194, 31);
-            addAuthorNameTextBox.TabIndex = 1;
-            // 
-            // editAuthorBirthdayPanel
-            // 
-            editAuthorBirthdayPanel.Controls.Add(addAuthorsBirthdayTimePicker);
-            editAuthorBirthdayPanel.Controls.Add(addAuthorBirthdayLabel);
-            editAuthorBirthdayPanel.Dock = DockStyle.Top;
-            editAuthorBirthdayPanel.Location = new Point(0, 71);
-            editAuthorBirthdayPanel.Name = "editAuthorBirthdayPanel";
-            editAuthorBirthdayPanel.Size = new Size(370, 64);
-            editAuthorBirthdayPanel.TabIndex = 1;
-            // 
-            // addAuthorBirthdayLabel
-            // 
-            addAuthorBirthdayLabel.Dock = DockStyle.Left;
-            addAuthorBirthdayLabel.Location = new Point(0, 0);
-            addAuthorBirthdayLabel.Name = "addAuthorBirthdayLabel";
-            addAuthorBirthdayLabel.Size = new Size(145, 64);
-            addAuthorBirthdayLabel.TabIndex = 0;
-            addAuthorBirthdayLabel.Text = "Дата рождения";
-            addAuthorBirthdayLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // addAuthorsBirthdayTimePicker
-            // 
-            addAuthorsBirthdayTimePicker.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            addAuthorsBirthdayTimePicker.Location = new Point(164, 15);
-            addAuthorsBirthdayTimePicker.Name = "addAuthorsBirthdayTimePicker";
-            addAuthorsBirthdayTimePicker.Size = new Size(194, 31);
-            addAuthorsBirthdayTimePicker.TabIndex = 10;
-            addAuthorsBirthdayTimePicker.Value = new DateTime(2025, 3, 7, 16, 57, 54, 0);
+            saveNewAuthorButton.Click += saveNewAuthorButton_Click;
             // 
             // NewAuthorForm
             // 
@@ -158,10 +160,10 @@
             Name = "NewAuthorForm";
             Text = "Новый автор";
             panel1.ResumeLayout(false);
-            addAuthorButtonsPanel.ResumeLayout(false);
+            editAuthorBirthdayPanel.ResumeLayout(false);
             addAuthorNamePanel.ResumeLayout(false);
             addAuthorNamePanel.PerformLayout();
-            editAuthorBirthdayPanel.ResumeLayout(false);
+            addAuthorButtonsPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
 

@@ -28,6 +28,6 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// Дата рождения автора
         /// </summary>
         [Required]
-        public DateTime Birthday { get; set; }
+        public DateOnly Birthday { get; set; }
     }
 }

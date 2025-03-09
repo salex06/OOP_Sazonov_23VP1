@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_CP_Sazonov_23VP1.repository
 {
-    interface IAuthorRepository
+    public interface IAuthorRepository
     {
         void SaveAuthor(Author author);
         Author? GetAuthorById(long id);

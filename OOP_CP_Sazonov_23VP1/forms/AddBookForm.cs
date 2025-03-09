@@ -8,19 +8,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OOP_CP_Sazonov_23VP1.forms;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.add_author;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
     public partial class AddBookForm : Form
     {
-        public AddBookForm()
+        private readonly IAddAuthorFormFactory _addAuthorFormFactory;
+        public AddBookForm(IAddAuthorFormFactory factory)
         {
             InitializeComponent();
+            _addAuthorFormFactory = factory;
         }
 
         private void addBookNewAuthorButton_Click(object sender, EventArgs e)
         {
-            NewAuthorForm form = new NewAuthorForm();
+            NewAuthorForm form = _addAuthorFormFactory.Create();
             form.ShowDialog();
         }
 

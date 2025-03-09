@@ -9,7 +9,7 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
     /// <summary>
     /// Модель автора книги
     /// </summary>
-    class Author
+    public class Author
     {
         /// <summary>
         /// Идентификатор автора в базе данных
@@ -22,14 +22,14 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// <summary>
         /// Дата рождения автора
         /// </summary>
-        public DateTime Birthday { get; private set; }
+        public DateOnly Birthday { get; private set; }
 
         /// <summary>
         /// Конструктор с двумя параметрами
         /// </summary>
         /// <param name="name">Имя автора</param>
         /// <param name="date">Дата рождения автора</param>
-        public Author(string name, DateTime date)
+        public Author(string name, DateOnly date)
         {
             Name = name;
             Birthday = date;
@@ -41,7 +41,7 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// <param name="id">Идентификатор автора</param>
         /// <param name="name">Имя автора</param>
         /// <param name="date">Дата рождения автора</param>
-        public Author(long id, string name, DateTime date)
+        public Author(long id, string name, DateOnly date)
         {
             Id = id;
             Name = name;
