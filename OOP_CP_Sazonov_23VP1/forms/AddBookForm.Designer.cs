@@ -344,6 +344,7 @@
             Controls.Add(addActionsPanel);
             Name = "AddBookForm";
             Text = "Добавление книги";
+            Load += AddBookForm_Load;
             addGenresPanel.ResumeLayout(false);
             addAuthorsPanel.ResumeLayout(false);
             addMainBookSettingsPanel.ResumeLayout(false);
