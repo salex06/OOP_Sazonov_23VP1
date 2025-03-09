@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_CP_Sazonov_23VP1.model.domain
+namespace OOP_CP_Sazonov_23VP1.model.entity
 {
     /// <summary>
     /// Модель автора книги

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using OOP_CP_Sazonov_23VP1.model.domain;
+using OOP_CP_Sazonov_23VP1.model.entity;
 using OOP_CP_Sazonov_23VP1.model.orm;
 using System;
 using System.Collections.Generic;

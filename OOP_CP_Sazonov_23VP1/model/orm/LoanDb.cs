@@ -1,5 +1,4 @@
-﻿using OOP_CP_Sazonov_23VP1.model.domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
