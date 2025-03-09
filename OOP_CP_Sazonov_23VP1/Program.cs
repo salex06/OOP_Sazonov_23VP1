@@ -13,6 +13,7 @@ using OOP_CP_Sazonov_23VP1.tools;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_author;
 using OOP_CP_Sazonov_23VP1.service;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.add_genre;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -42,6 +43,8 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IAddBookFormFactory, AddBookFormFactory>();
             services.AddTransient<IAddAuthorFormFactory, AddAuthorFormFactory>();
+            services.AddTransient<IAddGenreFormFactory, AddGenreFormFactory>();
+            services.AddTransient<IGenreRepository, GenreRepository>();
 
             services.AddTransient<MainLibraryForm>();
             services.AddTransient<AddBookForm>();
@@ -57,6 +60,7 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<StartForm>();
 
             services.AddTransient<AuthorService>();
+            services.AddTransient<GenreService>();
 
             services.AddDbContext<LibraryDatabaseContext>();
         }

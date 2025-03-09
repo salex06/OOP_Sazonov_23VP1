@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             addGenreInfoPanel = new Panel();
-            label1 = new Label();
             addGenreNameTextBox = new TextBox();
+            label1 = new Label();
             addGenreButtonsPanel = new Panel();
             discardAddGenreButton = new Button();
             saveNewGenreButton = new Button();
@@ -48,6 +48,14 @@
             addGenreInfoPanel.Size = new Size(393, 60);
             addGenreInfoPanel.TabIndex = 0;
             // 
+            // addGenreNameTextBox
+            // 
+            addGenreNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            addGenreNameTextBox.Location = new Point(197, 15);
+            addGenreNameTextBox.Name = "addGenreNameTextBox";
+            addGenreNameTextBox.Size = new Size(184, 31);
+            addGenreNameTextBox.TabIndex = 1;
+            // 
             // label1
             // 
             label1.Dock = DockStyle.Left;
@@ -57,14 +65,6 @@
             label1.TabIndex = 0;
             label1.Text = "Название жанра";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // addGenreNameTextBox
-            // 
-            addGenreNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            addGenreNameTextBox.Location = new Point(197, 15);
-            addGenreNameTextBox.Name = "addGenreNameTextBox";
-            addGenreNameTextBox.Size = new Size(184, 31);
-            addGenreNameTextBox.TabIndex = 1;
             // 
             // addGenreButtonsPanel
             // 
@@ -88,6 +88,7 @@
             discardAddGenreButton.TabIndex = 1;
             discardAddGenreButton.Text = "Отмена";
             discardAddGenreButton.UseVisualStyleBackColor = false;
+            discardAddGenreButton.Click += discardAddGenreButton_Click;
             // 
             // saveNewGenreButton
             // 
@@ -101,6 +102,7 @@
             saveNewGenreButton.TabIndex = 0;
             saveNewGenreButton.Text = "Добавить";
             saveNewGenreButton.UseVisualStyleBackColor = false;
+            saveNewGenreButton.Click += saveNewGenreButton_Click;
             // 
             // AddGenreForm
             // 

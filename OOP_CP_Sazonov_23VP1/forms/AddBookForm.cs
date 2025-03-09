@@ -11,6 +11,7 @@ using OOP_CP_Sazonov_23VP1.forms;
 using OOP_CP_Sazonov_23VP1.model.entity;
 using OOP_CP_Sazonov_23VP1.service;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_author;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.add_genre;
 using static System.Windows.Forms.ListViewItem;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ListView = System.Windows.Forms.ListView;
@@ -20,29 +21,39 @@ namespace OOP_CP_Sazonov_23VP1.forms
     public partial class AddBookForm : Form
     {
         private readonly IAddAuthorFormFactory _addAuthorFormFactory;
+        private readonly IAddGenreFormFactory _addGenreFormFactory;
         private readonly AuthorService _authorService;
-        public AddBookForm(IAddAuthorFormFactory factory, AuthorService service)
+        private readonly GenreService _genreService;
+        public AddBookForm(IAddAuthorFormFactory authorFactory, IAddGenreFormFactory genreFactory, AuthorService service, GenreService genreService)
         {
             InitializeComponent();
-            _addAuthorFormFactory = factory;
+            _addAuthorFormFactory = authorFactory;
+            _addGenreFormFactory = genreFactory;
             _authorService = service;
+            _genreService = genreService;
         }
 
         private void addBookNewAuthorButton_Click(object sender, EventArgs e)
         {
             NewAuthorForm form = _addAuthorFormFactory.Create();
             form.ShowDialog();
-            AddBookForm_Load(sender, e);
+            LoadAuthors();
         }
 
         private void addBookNewGenreButton_Click(object sender, EventArgs e)
         {
-            AddGenreForm form = new AddGenreForm();
+            AddGenreForm form = _addGenreFormFactory.Create();
             form.ShowDialog();
+            LoadGenres();
         }
 
         private void AddBookForm_Load(object sender, EventArgs e)
         {
+            LoadAuthors();
+            LoadGenres();
+        }
+
+        private void LoadAuthors() {
             ClearListView(addAuthorsListView);
 
             List<Author> authors = _authorService.GetAllAuthors();
@@ -52,7 +63,8 @@ namespace OOP_CP_Sazonov_23VP1.forms
             addAuthorsListView.GridLines = true;
             addAuthorsListView.Columns.Add("Имя", 100);
             addAuthorsListView.Columns.Add("Дата рождения", 100);
-            foreach (Author author in authors) {
+            foreach (Author author in authors)
+            {
                 ListViewItem item = new ListViewItem(author.Name);
                 item.SubItems.Add(author.Birthday.ToString());
                 item.Tag = author.Id;
@@ -60,6 +72,26 @@ namespace OOP_CP_Sazonov_23VP1.forms
             }
 
             ResizeListView(addAuthorsListView);
+        }
+
+        private void LoadGenres()
+        {
+            ClearListView(addGenresListView);
+
+            List<Genre> genres = _genreService.GetAllGenres();
+            addGenresListView.CheckBoxes = true;
+            addGenresListView.View = View.Details;
+            addGenresListView.FullRowSelect = true;
+            addGenresListView.GridLines = true;
+            addGenresListView.Columns.Add("Название", 100);
+            foreach (Genre genre in genres)
+            {
+                ListViewItem item = new ListViewItem(genre.Name);
+                item.Tag = genre.ID;
+                addGenresListView.Items.Add(item);
+            }
+
+            ResizeListView(addGenresListView);
         }
 
         private void ClearListView(ListView view) {

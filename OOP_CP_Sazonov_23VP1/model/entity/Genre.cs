@@ -9,7 +9,7 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
     /// <summary>
     /// Класс представляет модель жанра в системе
     /// </summary>
-    class Genre
+    public class Genre
     {
         /// <summary>
         /// Идентификатор жанра

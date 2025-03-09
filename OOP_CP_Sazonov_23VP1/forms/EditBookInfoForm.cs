@@ -28,8 +28,8 @@ namespace OOP_CP_Sazonov_23VP1.forms
 
         private void newGenreButton_Click(object sender, EventArgs e)
         {
-            AddGenreForm form = new AddGenreForm();
-            form.ShowDialog();
+            //AddGenreForm form = new AddGenreForm();
+            //form.ShowDialog();
         }
     }
 }
