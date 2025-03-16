@@ -24,13 +24,15 @@ namespace OOP_CP_Sazonov_23VP1.forms
         private readonly IAddGenreFormFactory _addGenreFormFactory;
         private readonly AuthorService _authorService;
         private readonly GenreService _genreService;
-        public AddBookForm(IAddAuthorFormFactory authorFactory, IAddGenreFormFactory genreFactory, AuthorService service, GenreService genreService)
+        private readonly BookService _bookService;
+        public AddBookForm(IAddAuthorFormFactory authorFactory, IAddGenreFormFactory genreFactory, AuthorService service, GenreService genreService, BookService bookService)
         {
             InitializeComponent();
             _addAuthorFormFactory = authorFactory;
             _addGenreFormFactory = genreFactory;
             _authorService = service;
             _genreService = genreService;
+            _bookService = bookService;
         }
 
         private void addBookNewAuthorButton_Click(object sender, EventArgs e)
@@ -53,7 +55,8 @@ namespace OOP_CP_Sazonov_23VP1.forms
             LoadGenres();
         }
 
-        private void LoadAuthors() {
+        private void LoadAuthors()
+        {
             ClearListView(addAuthorsListView);
 
             List<Author> authors = _authorService.GetAllAuthors();
@@ -94,12 +97,14 @@ namespace OOP_CP_Sazonov_23VP1.forms
             ResizeListView(addGenresListView);
         }
 
-        private void ClearListView(ListView view) {
+        private void ClearListView(ListView view)
+        {
             view.Columns.Clear();
             view.Items.Clear();
         }
 
-        private void ResizeListView(ListView view) {
+        private void ResizeListView(ListView view)
+        {
             int totalWidth = view.ClientSize.Width;
             int columnCount = view.Columns.Count;
             int columnWidth = totalWidth / columnCount;
@@ -108,6 +113,24 @@ namespace OOP_CP_Sazonov_23VP1.forms
             {
                 column.Width = columnWidth;
             }
+        }
+
+        private void discardAddBookButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void saveNewBookButton_Click(object sender, EventArgs e)
+        {
+            string bookName = addBookNameTextBox.Text;
+            int yearOfPublishing = (int)addDateOfPublishingNumericUpDown.Value;
+            string publisher = addPublisherTextBox.Text;
+            string ISBN = addIsbnTextBox.Text;
+
+            Book? savedBook = _bookService.saveBook(bookName, yearOfPublishing, publisher, ISBN);
+
+            MessageBox.Show("Книга добавлена!", "Успех");
+            Close();
         }
     }
 }

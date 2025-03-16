@@ -197,7 +197,7 @@
             addIsbnLabel.Name = "addIsbnLabel";
             addIsbnLabel.Size = new Size(160, 63);
             addIsbnLabel.TabIndex = 0;
-            addIsbnLabel.Text = "Издательство";
+            addIsbnLabel.Text = "ISBN";
             addIsbnLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // addPublisherPanel
@@ -318,6 +318,7 @@
             discardAddBookButton.TabIndex = 1;
             discardAddBookButton.Text = "Отмена";
             discardAddBookButton.UseVisualStyleBackColor = false;
+            discardAddBookButton.Click += discardAddBookButton_Click;
             // 
             // saveNewBookButton
             // 
@@ -331,6 +332,7 @@
             saveNewBookButton.TabIndex = 0;
             saveNewBookButton.Text = "Добавить";
             saveNewBookButton.UseVisualStyleBackColor = false;
+            saveNewBookButton.Click += saveNewBookButton_Click;
             // 
             // AddBookForm
             // 
