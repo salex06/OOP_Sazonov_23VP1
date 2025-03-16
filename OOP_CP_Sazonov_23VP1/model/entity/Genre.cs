@@ -14,31 +14,13 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// <summary>
         /// Идентификатор жанра
         /// </summary>
-        public long ID { get; private set; }
+        public long ID { get; set; }
         /// <summary>
         /// Название жанра
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
-        /// <summary>
-        /// Конструктор с 1 параметром
-        /// </summary>
-        /// <param name="name">Название жанра</param>
-        public Genre(string name)
-        {
-            Name = name;
-        }
-
-        /// <summary>
-        /// Конструктор для получения информации из БД
-        /// </summary>
-        /// <param name="id">Идентификатор жанра</param>
-        /// <param name="name">Название жанра</param>
-        public Genre(long id, string name)
-        {
-            ID = id;
-            Name = name;
-        }
+        public ICollection<Book> Books { get; set; } = new List<Book>();
 
         /// <summary>
         /// Представление класса в виде строки

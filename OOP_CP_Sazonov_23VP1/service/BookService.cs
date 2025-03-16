@@ -1,5 +1,4 @@
 ﻿using OOP_CP_Sazonov_23VP1.model.entity;
-using OOP_CP_Sazonov_23VP1.model.orm;
 using OOP_CP_Sazonov_23VP1.repository;
 using OOP_CP_Sazonov_23VP1.repository.impl;
 using System;
@@ -30,50 +29,35 @@ namespace OOP_CP_Sazonov_23VP1.service
             return _bookRepository.GetBookById(id);
         }
 
-        public Book? saveBook(string bookName, int yearOfPublishing, string publisher, string ISBN) {
+        public Book? saveBook(string bookName, int yearOfPublishing, string publisher, string ISBN, List<long> authorIds, List<long> genreIds) {
             Book book = new Book.Builder().WithTitle(bookName)
                 .WithYearOfPublication(yearOfPublishing)
                 .WithPublisher(publisher)
                 .WithISBN(ISBN)
                 .Build();
 
-            return _bookRepository.SaveBook(book);
+            return _bookRepository.SaveBook(book, authorIds, genreIds);
         }
 
-        public void AddAuthorsAndGenresToBook(long bookId, List<long> authorIds, List<long> genreIds)
+        public void AddAuthors(long bookId, List<long> authorIds)
         {
-            var book = _bookRepository.GetBookById(bookId) ?? throw new ArgumentException($"Книга с Id '{bookId}' не найдена.");
-            List<Author> authors = new List<Author>();
-            foreach(int authorId in authorIds){ 
-                Author? author = _authorRepository.GetAuthorById(authorId);
-                if (author != null) {
-                    authors.Add(author);
-                }
+            var book = _bookRepository.GetBookById(bookId);
+
+            if (book == null)
+            {
+                throw new ArgumentException($"Book with id {bookId} not found");
             }
 
-            List<Genre> genres = new List<Genre>();
-            foreach (int genreId in genreIds)
+            foreach (var authorId in authorIds)
             {
-                Genre? genre = _genreRepository.GetGenreById(genreId);
-                if (genre != null)
+                var author = _authorRepository.GetAuthorById(authorId);
+                if (author == null)
                 {
-                    genres.Add(genre);
+                    throw new ArgumentException($"Автор с id {authorId} не найден.");
                 }
-            }
 
-            foreach (var author in authors)
-            {
-                //book.AddAuthor(author);
-                _bookRepository.SaveAuthorship(new Authorship(book, author));
+                _bookRepository.AddAuthorship(book, author);
             }
-
-            foreach (var genre in genres)
-            {
-                //book.AddGenre(genre);
-                _bookRepository.SaveBookGenre(new BookGenres(book, genre));
-            }
-
-            _bookRepository.UpdateBook(book); 
         }
     }
 }

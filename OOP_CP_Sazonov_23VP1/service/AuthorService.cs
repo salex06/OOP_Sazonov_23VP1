@@ -17,7 +17,7 @@ namespace OOP_CP_Sazonov_23VP1.service
 
         public void SaveAuthor(string authorName, DateTime birthday) {
             DateOnly birthdayDateOnly = new DateOnly(birthday.Year, birthday.Month, birthday.Day);
-            Author author = new Author(authorName, birthdayDateOnly);
+            Author author = new Author { Name = authorName, Birthday = birthdayDateOnly };
             _authorRepository.SaveAuthor(author);
         }
 

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using OOP_CP_Sazonov_23VP1.model.orm;
+using Microsoft.VisualBasic.Devices;
+using OOP_CP_Sazonov_23VP1.model.entity;
 
 namespace OOP_CP_Sazonov_23VP1.context
 {
@@ -16,20 +17,16 @@ namespace OOP_CP_Sazonov_23VP1.context
 
         public LibraryDatabaseContext()
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
-        public DbSet<BookDb> Books { get; set; }
-        public DbSet<AuthorDb> Authors { get; set; }
-        public DbSet<ReaderDb> Readers { get; set; }
-        public DbSet<GenreDb> Genres { get; set; }
-        public DbSet<LoanDb> Loans { get; set; }
-        public DbSet<AuthorshipDb> Authorships { get; set; }
-        public DbSet<BookGenresDb> BookGenres { get; set; }
-
+        public DbSet<Book> Books { get; set; } = null!;
+        public DbSet<Author> Authors { get; set; } = null!;
+        public DbSet<Genre> Genres { get; set; } = null!;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=..\\..\\..\\library.db");
+            var dbPath = Path.Combine(AppContext.BaseDirectory, "library.db");
+            optionsBuilder.UseSqlite($"Data Source={dbPath}");
         }
     }
 

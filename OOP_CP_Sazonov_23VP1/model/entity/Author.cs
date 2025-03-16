@@ -14,47 +14,16 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// <summary>
         /// Идентификатор автора в базе данных
         /// </summary>
-        public long Id { get; private set; }
+        public long Id { get; set; }
         /// <summary>
         /// Имя автора
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
         /// <summary>
         /// Дата рождения автора
         /// </summary>
-        public DateOnly Birthday { get; private set; }
+        public DateOnly Birthday { get; set; }
 
-        /// <summary>
-        /// Конструктор с двумя параметрами
-        /// </summary>
-        /// <param name="name">Имя автора</param>
-        /// <param name="date">Дата рождения автора</param>
-        public Author(string name, DateOnly date)
-        {
-            Name = name;
-            Birthday = date;
-        }
-
-        /// <summary>
-        /// Конструктор для получения данных из БД
-        /// </summary>
-        /// <param name="id">Идентификатор автора</param>
-        /// <param name="name">Имя автора</param>
-        /// <param name="date">Дата рождения автора</param>
-        public Author(long id, string name, DateOnly date)
-        {
-            Id = id;
-            Name = name;
-            Birthday = date;
-        }
-
-        /// <summary>
-        /// Представление класса в виде строки
-        /// </summary>
-        /// <returns>Информация о классе в строковом формате</returns>
-        public override string ToString()
-        {
-            return $"Автор ID: {Id}, Имя: {Name}. Дата рождения: {Birthday}";
-        }
+        public ICollection<Book> Books { get; set; } = new List<Book>();
     }
 }

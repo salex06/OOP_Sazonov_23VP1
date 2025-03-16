@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using OOP_CP_Sazonov_23VP1.context;
 using OOP_CP_Sazonov_23VP1.model.entity;
-using OOP_CP_Sazonov_23VP1.model.orm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,31 +12,27 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
     class GenreRepository : IGenreRepository
     {
         private readonly LibraryDatabaseContext _context;
-        private readonly IMapper _mapper;
 
-        public GenreRepository(LibraryDatabaseContext context, IMapper mapper)
+        public GenreRepository(LibraryDatabaseContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public List<Genre> GetAllGenres()
         {
-            return _context.Genres.Select(src => _mapper.Map<Genre>(src)).ToList();
+            return _context.Genres.Select(src => src).ToList();
         }
 
         public Genre? GetGenreById(long id)
         {
-            GenreDb? genreDb = _context.Genres.Find(id);
-            return (genreDb != null) ? _mapper.Map<Genre>(genreDb) : null;
+            return _context.Genres.Find(id);
         }
 
         public Genre? GetGenreByName(string name)
         {
-            var genreDb = _context.Genres.Where(src => (src.Name == name))
-                .Select(src => _mapper.Map<Genre>(src))
-                .FirstOrDefault();
-            return (genreDb != null) ? _mapper.Map<Genre>(genreDb) : null;
+            return _context.Genres.Where(src => (src.Name == name))
+                .Select(src => src)
+                .FirstOrDefault(); ;
         }
 
         public bool SaveGenre(Genre genre)
@@ -46,8 +41,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
                 return false;
             }
 
-            var genreDb = _mapper.Map<GenreDb>(genre);
-            _context.Genres.Add(genreDb);
+            _context.Genres.Add(genre);
             _context.SaveChanges();
             return true;
         }

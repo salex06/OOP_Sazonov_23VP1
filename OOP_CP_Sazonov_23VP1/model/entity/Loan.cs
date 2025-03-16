@@ -46,18 +46,18 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// <exception cref="InvalidOperationException">Если книга уже выдана</exception>
         public Loan(Reader reader, Book book, DateTime startDate, DateTime dateOfIssue)
         {
-            Reader = reader;
-            Book = book;
+            //Reader = reader;
+            //Book = book;
 
-            if (Book.IsLoaned())
-            {
-                throw new InvalidOperationException($"Книга '{Book.Title}' уже выдана.");
-            }
+            //if (Book.IsLoaned())
+            //{
+            //    throw new InvalidOperationException($"Книга '{Book.Title}' уже выдана.");
+            //}
 
-            StartDate = startDate;
-            DateOfIssue = dateOfIssue;
+            //StartDate = startDate;
+            //DateOfIssue = dateOfIssue;
 
-            Book.MarkAsLoaned(this);
+            //Book.MarkAsLoaned(this);
         }
 
         /// <summary>
@@ -86,13 +86,13 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// <exception cref="InvalidOperationException">Если книга уже возвращена</exception>
         public void ReturnBook(DateTime returnDate)
         {
-            if (EndDate.HasValue)
-            {
-                throw new InvalidOperationException("Книга уже была возвращена.");
-            }
+            //if (EndDate.HasValue)
+            //{
+            //    throw new InvalidOperationException("Книга уже была возвращена.");
+            //}
 
-            EndDate = returnDate;
-            Book.MarkAsAvailable(); 
+            //EndDate = returnDate;
+            //Book.MarkAsAvailable(); 
         }
 
         /// <summary>

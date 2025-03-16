@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
+using OOP_CP_Sazonov_23VP1.context;
 using OOP_CP_Sazonov_23VP1.forms;
 using OOP_CP_Sazonov_23VP1.model.entity;
 using OOP_CP_Sazonov_23VP1.service;
@@ -127,7 +129,29 @@ namespace OOP_CP_Sazonov_23VP1.forms
             string publisher = addPublisherTextBox.Text;
             string ISBN = addIsbnTextBox.Text;
 
-            Book? savedBook = _bookService.saveBook(bookName, yearOfPublishing, publisher, ISBN);
+            List<long> authorIds = new List<long>();
+            foreach (ListViewItem item in addAuthorsListView.Items)
+            {
+                if (item.Checked && item.Tag != null)
+                {
+                    authorIds.Add((long)item.Tag);
+                }
+            }
+
+            List<long> genreIds = new List<long>();
+            foreach (ListViewItem item in addGenresListView.Items)
+            {
+                if (item.Checked && item.Tag != null)
+                {
+                    genreIds.Add((long)item.Tag);
+                }
+            }
+
+            Book? savedBook = _bookService.saveBook(bookName, yearOfPublishing, publisher, ISBN, authorIds, genreIds);
+
+            if (savedBook == null) {
+                MessageBox.Show("Ошибка сохранения книги", "Ошибка");
+            }
 
             MessageBox.Show("Книга добавлена!", "Успех");
             Close();

@@ -17,7 +17,7 @@ namespace OOP_CP_Sazonov_23VP1.service
         }
 
         public void SaveGenre(string genreName) {
-            Genre genre = new Genre(genreName);
+            Genre genre = new Genre { Name = genreName };
 
             if (!_genreRepository.SaveGenre(genre)) {
                 throw new InvalidOperationException("Жанр уже добавлен");

@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using OOP_CP_Sazonov_23VP1.context;
 using OOP_CP_Sazonov_23VP1.model.entity;
-using OOP_CP_Sazonov_23VP1.model.orm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,103 +13,60 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
     class BookRepository : IBookRepository
     {
         private readonly LibraryDatabaseContext _context;
-        private readonly IMapper _mapper;
 
-        public BookRepository(LibraryDatabaseContext context, IMapper mapper)
+        public BookRepository(LibraryDatabaseContext context)
         {
             _context = context;
-            _mapper = mapper;
         }
 
         public List<Book> GetAllBooks()
         {
-            return _context.Books.Select(src => _mapper.Map<Book>(src)).ToList();
+            return _context.Books.Select(src => src).ToList();
         }
 
         public Book? GetBookById(long id)
         {
-            BookDb? bookDb = _context.Books.Find(id);
-            return (bookDb != null) ? _mapper.Map<Book>(bookDb) : null;
+            return _context.Books.Find(id);
         }
 
-        public Book? SaveBook(Book book)
+        public Book? SaveBook(Book book, List<long> authorIds, List<long> genreIds)
         {
             if (GetBookById(book.Id) != null)
             {
                 return null;
             }
+            
+            _context.Books.Add(book);
 
-            var bookDb = _mapper.Map<BookDb>(book);
-            _context.Books.Add(bookDb);
+            foreach (long authorId in authorIds) {
+                Author? author = _context.Authors.Find(authorId);
+                if (author != null) {
+                    book.Authors.Add(author);
+                    author.Books.Add(book);
+                }
+            }
+
+            foreach (long genreId in genreIds)
+            {
+                Genre? genre = _context.Genres.Find(genreId);
+                if (genre != null)
+                {
+                    book.Genres.Add(genre);
+                    genre.Books.Add(book);
+                }
+            }
+
+
             _context.SaveChanges();
             
-            var savedBook = _mapper.Map<Book>(bookDb);
-            return savedBook;
+            return book;
         }
 
-        public void UpdateBook(Book book)
+        public void AddAuthorship(Book book, Author author)
         {
-            var bookDb = _mapper.Map<BookDb>(book);
-
-            var existingAuthorships = _context.Authorships.Where(a => a.BookId == bookDb.Id).ToList();
-
-            foreach (var authorship in existingAuthorships)
-            {
-                if (!book.Authorships.Any(a => a.Id == authorship.AuthorId)) 
-                {
-                    _context.Authorships.Remove(authorship);
-                }
-            }
-
-            foreach (var author in book.Authorships)
-            {
-                if (!existingAuthorships.Any(a => a.AuthorId == author.Id))
-                {
-                    var authorshipDb = new AuthorshipDb { BookId = bookDb.Id, AuthorId = author.Id }; 
-                    _context.Authorships.Add(authorshipDb);
-                }
-            }
-
-            var existingGenre = _context.BookGenres.Where(a => a.BookId == bookDb.Id).ToList(); 
-
-            foreach (var genre in existingGenre)
-            {
-                if (!book.Genres.Any(a => a.Id == genre.GenreId))
-                {
-                    _context.BookGenres.Remove(genre); 
-                }
-            }
-
-            foreach (var genre in book.Genres)
-            {
-                if (!existingGenre.Any(a => a.GenreId == genre.Id))
-                {
-                    var bookGenreDb = new BookGenresDb { BookId = bookDb.Id, GenreId = genre.Id };
-                    _context.BookGenres.Add(bookGenreDb);
-                }
-            }
-
+            book.Authors.Add(author);
+            author.Books.Add(book);
             _context.SaveChanges();
-        }
-
-        public Authorship? SaveAuthorship(Authorship authorship)
-        {
-            var authorshipDb = _mapper.Map<AuthorshipDb>(authorship);
-            _context.Authorships.Add(authorshipDb);
-            _context.SaveChanges();
-
-            var savedAuthorship = _mapper.Map<Authorship>(authorshipDb);
-            return savedAuthorship;
-        }
-
-        public BookGenres? SaveBookGenre(BookGenres bookGenres)
-        {
-            var bookGenresDb = _mapper.Map<BookGenresDb>(bookGenres);
-            _context.BookGenres.Add(bookGenresDb);
-            _context.SaveChanges();
-
-            var savedGenres = _mapper.Map<BookGenres>(bookGenresDb);
-            return savedGenres;
         }
     }
 }
