@@ -9,7 +9,7 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
     /// <summary>
     /// Класс представляет отношение между жанрами и книгами
     /// </summary>
-    class BookGenres
+    public class BookGenres
     {
         /// <summary>
         /// Идентификатор в БД

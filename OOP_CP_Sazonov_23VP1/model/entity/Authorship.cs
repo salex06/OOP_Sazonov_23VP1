@@ -9,7 +9,7 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
     /// <summary>
     /// Модель отношения между автором и книгой
     /// </summary>
-    class Authorship
+    public class Authorship
     {
         /// <summary>
         /// Идентификатор записи в базе данных

@@ -9,7 +9,7 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
     /// <summary>
     /// Модель читателя в системе
     /// </summary>
-    class Reader
+    public class Reader
     {
         /// <summary>
         /// Идентфикатор читателя

@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using OOP_CP_Sazonov_23VP1.context;
+using OOP_CP_Sazonov_23VP1.model.orm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +13,7 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
     /// <summary>
     /// Модель книги в системе
     /// </summary>
-    class Book
+    public class Book
     {
         /// <summary>
         /// Идентификатор книги
@@ -44,13 +48,13 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// <summary>
         /// Список авторов книги
         /// </summary>
-        public IReadOnlyCollection<Authorship> Authorships => _authorships.AsReadOnly();
+        public ICollection<Authorship> Authorships => _authorships;
 
         private readonly List<BookGenres> _genres = new List<BookGenres>();
         /// <summary>
         /// Список жанров книги
         /// </summary>
-        public IReadOnlyCollection<BookGenres> Genres => _genres.AsReadOnly();
+        public ICollection<BookGenres> Genres => _genres;
 
         /// <summary>
         /// Конструктор с 4 параметрами
@@ -222,6 +226,48 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         public override string ToString()
         {
             return $"Книга ID: {Id}, Название: {Title}, Авторы: {string.Join(", ", Authorships.Select(a => a.Author.Name))}, Выдана: {IsIssued}";
+        }
+
+
+        private Book() {
+            Title = "НЕИЗВЕСТНО";
+            YearOfPublication = 0;
+            Publisher = "НЕИЗВЕСТНО";
+            ISBN = "НЕИЗВЕСТНО";
+        }
+
+        public class Builder
+        {
+            private Book book = new Book();
+
+            public Builder WithTitle(string title)
+            {
+                book.Title = string.IsNullOrEmpty(title) ? "НЕИЗВЕСТНО" : title;
+                return this;
+            }
+
+            public Builder WithYearOfPublication(int yearOfPublication)
+            {
+                book.YearOfPublication = yearOfPublication;
+                return this;
+            }
+
+            public Builder WithPublisher(string publisher)
+            {
+                book.Publisher = string.IsNullOrEmpty(publisher) ? "НЕИЗВЕСТНО" : publisher;
+                return this;
+            }
+
+            public Builder WithISBN(string isbn)
+            {
+                book.ISBN = string.IsNullOrEmpty(isbn) ? "НЕИЗВЕСТНО" : isbn;
+                return this;
+            }
+
+            public Book Build()
+            {
+                return book;
+            }
         }
     }
 }

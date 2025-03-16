@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OOP_CP_Sazonov_23VP1.model.entity;
 
 namespace OOP_CP_Sazonov_23VP1.model.orm
 {
@@ -50,10 +51,10 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         /// <summary>
         /// Список авторов книг
         /// </summary>
-        public virtual ICollection<AuthorshipDb> Authorships { get; set; }
+        public virtual ICollection<AuthorshipDb> Authorships { get; set; } = new List<AuthorshipDb>();
         /// <summary>
         /// Список жанров книги
         /// </summary>
-        public virtual ICollection<BookGenresDb> BookGenres { get; set; }
+        public virtual ICollection<BookGenresDb> BookGenres { get; set; } = new List<BookGenresDb>();
     }
 }

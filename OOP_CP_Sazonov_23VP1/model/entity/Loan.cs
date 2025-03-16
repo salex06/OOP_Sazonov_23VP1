@@ -9,7 +9,7 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
     /// <summary>
     /// Модель записи о выдаче книги в системе
     /// </summary>
-    class Loan
+    public class Loan
     {
         /// <summary>
         /// Идентификатор записи

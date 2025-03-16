@@ -36,6 +36,6 @@ namespace OOP_CP_Sazonov_23VP1.model.orm
         public virtual AuthorDb Author { get; set; }
 
         [ForeignKey("BookId")]
-        public required virtual BookDb Book { get; set; }
+        public virtual BookDb Book { get; set; }
     }
 }
