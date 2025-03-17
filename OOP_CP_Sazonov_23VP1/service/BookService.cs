@@ -59,5 +59,23 @@ namespace OOP_CP_Sazonov_23VP1.service
                 _bookRepository.AddAuthorship(book, author);
             }
         }
+
+        public Book? UpdateBook(long bookId, string bookName, int yearOfPublishing, string publisher, string isbn, List<long> authorIds, List<long> genreIds)
+        {
+            Book? book = _bookRepository.GetBookById(bookId);
+
+            if (book == null) {
+                return null;
+            }
+
+            book.Title = bookName;
+            book.YearOfPublication = yearOfPublishing;
+            book.Publisher = publisher;
+            book.ISBN = isbn;
+            book.Authors.Clear();
+            book.Genres.Clear();
+
+            return _bookRepository.UpdateBook(book, authorIds, genreIds);
+        }
     }
 }

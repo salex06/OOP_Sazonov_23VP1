@@ -26,7 +26,10 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
 
         public Book? GetBookById(long id)
         {
-            return _context.Books.Find(id);
+            return _context.Books
+                .Include(b => b.Authors)  
+                .Include(b => b.Genres)   
+                .FirstOrDefault(b => b.Id == id);
         }
 
         public Book? SaveBook(Book book, List<long> authorIds, List<long> genreIds)
@@ -67,6 +70,34 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             book.Authors.Add(author);
             author.Books.Add(book);
             _context.SaveChanges();
+        }
+
+        public Book UpdateBook(Book book, List<long> authorIds, List<long> genreIds)
+        {
+            foreach (long authorId in authorIds)
+            {
+                Author? author = _context.Authors.Find(authorId);
+                if (author != null)
+                {
+                    book.Authors.Add(author);
+                    author.Books.Add(book);
+                }
+            }
+
+            foreach (long genreId in genreIds)
+            {
+                Genre? genre = _context.Genres.Find(genreId);
+                if (genre != null)
+                {
+                    book.Genres.Add(genre);
+                    genre.Books.Add(book);
+                }
+            }
+
+
+            _context.SaveChanges();
+
+            return book;
         }
     }
 }

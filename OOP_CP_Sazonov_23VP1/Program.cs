@@ -16,6 +16,7 @@ using OOP_CP_Sazonov_23VP1.tools.form_factories.add_genre;
 using OOP_CP_Sazonov_23VP1.model.entity;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_book;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -40,10 +41,12 @@ namespace OOP_CP_Sazonov_23VP1
 
         private static void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IAddBookFormFactory, AddBookFormFactory>();
             services.AddTransient<IAddAuthorFormFactory, AddAuthorFormFactory>();
             services.AddTransient<IAddGenreFormFactory, AddGenreFormFactory>();
+            services.AddTransient<IEditBookFormFactory, EditBookFormFactory>();
+
+            services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IGenreRepository, GenreRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
 

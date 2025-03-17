@@ -1,18 +1,21 @@
 using OOP_CP_Sazonov_23VP1.forms;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_book;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_book;
 
 namespace OOP_CP_Sazonov_23VP1
 {
     public partial class MainLibraryForm : Form
     {
         private readonly IAddBookFormFactory _addBookFormFactory;
+        private readonly IEditBookFormFactory _editBookFormFactory;
 
-        public MainLibraryForm(IAddBookFormFactory addBookFormFactory)
+        public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory)
         {
             InitializeComponent();
             StartForm start = new StartForm();
             start.ShowDialog();
             _addBookFormFactory = addBookFormFactory;
+            _editBookFormFactory = editBookFormFactory;
         }
 
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,8 +38,8 @@ namespace OOP_CP_Sazonov_23VP1
 
         private void editBookInfoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //EditBookInfoForm form = new EditBookInfoForm();
-            //form.ShowDialog();
+            EditBookInfoForm form = _editBookFormFactory.Create();
+            form.ShowDialog();
         }
 
         private void addReadersToolStripMenuItem_Click(object sender, EventArgs e)
