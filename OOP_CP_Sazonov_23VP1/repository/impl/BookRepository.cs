@@ -99,5 +99,11 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
 
             return book;
         }
+
+        public void RemoveBook(Book book)
+        {
+            _context.Books.Remove(book);
+            _context.SaveChanges();
+        }
     }
 }

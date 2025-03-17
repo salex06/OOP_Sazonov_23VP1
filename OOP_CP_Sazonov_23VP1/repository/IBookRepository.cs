@@ -9,5 +9,6 @@ namespace OOP_CP_Sazonov_23VP1.repository
         public List<Book> GetAllBooks();
         public void AddAuthorship(Book book, Author author);
         public Book UpdateBook(Book book, List<long> authorIds, List<long> genreIds);
+        public void RemoveBook(Book book);
     }
 }

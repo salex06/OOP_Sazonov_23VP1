@@ -1,6 +1,7 @@
 using OOP_CP_Sazonov_23VP1.forms;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_book;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -8,14 +9,16 @@ namespace OOP_CP_Sazonov_23VP1
     {
         private readonly IAddBookFormFactory _addBookFormFactory;
         private readonly IEditBookFormFactory _editBookFormFactory;
+        private readonly IRemoveBookFormFactory _removeBookFormFactory;
 
-        public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory)
+        public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory, IRemoveBookFormFactory removeBookFormFactory)
         {
             InitializeComponent();
             StartForm start = new StartForm();
             start.ShowDialog();
             _addBookFormFactory = addBookFormFactory;
             _editBookFormFactory = editBookFormFactory;
+            _removeBookFormFactory = removeBookFormFactory;
         }
 
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -26,7 +29,7 @@ namespace OOP_CP_Sazonov_23VP1
 
         private void removeBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveBookForm form = new RemoveBookForm();
+            RemoveBookForm form = _removeBookFormFactory.Create();
             form.ShowDialog();
         }
 

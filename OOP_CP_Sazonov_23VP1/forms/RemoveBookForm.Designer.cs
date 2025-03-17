@@ -31,7 +31,6 @@
             deleteFormLabel = new Label();
             deleteBookIdNumericUpDown = new NumericUpDown();
             deleteBookButton = new Button();
-            removeBookInfoTextBox = new TextBox();
             deleteExtraPanel = new Panel();
             deleteFormPanel = new Panel();
             ((System.ComponentModel.ISupportInitialize)deleteBookIdNumericUpDown).BeginInit();
@@ -70,22 +69,13 @@
             deleteBookButton.TabIndex = 0;
             deleteBookButton.Text = "Удалить книгу";
             deleteBookButton.UseVisualStyleBackColor = false;
-            // 
-            // removeBookInfoTextBox
-            // 
-            removeBookInfoTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            removeBookInfoTextBox.Location = new Point(16, 17);
-            removeBookInfoTextBox.Name = "removeBookInfoTextBox";
-            removeBookInfoTextBox.ReadOnly = true;
-            removeBookInfoTextBox.Size = new Size(317, 31);
-            removeBookInfoTextBox.TabIndex = 1;
+            deleteBookButton.Click += deleteBookButton_Click;
             // 
             // deleteExtraPanel
             // 
-            deleteExtraPanel.Controls.Add(removeBookInfoTextBox);
             deleteExtraPanel.Controls.Add(deleteBookButton);
             deleteExtraPanel.Dock = DockStyle.Bottom;
-            deleteExtraPanel.Location = new Point(0, 112);
+            deleteExtraPanel.Location = new Point(0, 70);
             deleteExtraPanel.Name = "deleteExtraPanel";
             deleteExtraPanel.Size = new Size(565, 60);
             deleteExtraPanel.TabIndex = 1;
@@ -105,7 +95,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AntiqueWhite;
-            ClientSize = new Size(565, 172);
+            ClientSize = new Size(565, 130);
             Controls.Add(deleteExtraPanel);
             Controls.Add(deleteFormPanel);
             Name = "RemoveBookForm";
@@ -122,7 +112,6 @@
         private NumericUpDown deleteBookIdNumericUpDown;
         private Label deleteFormLabel;
         private Button deleteBookButton;
-        private TextBox removeBookInfoTextBox;
         private Panel deleteExtraPanel;
         private Panel deleteFormPanel;
     }

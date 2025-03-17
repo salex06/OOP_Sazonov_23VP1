@@ -1,4 +1,5 @@
-﻿using OOP_CP_Sazonov_23VP1.model.entity;
+﻿using OOP_CP_Sazonov_23VP1.forms;
+using OOP_CP_Sazonov_23VP1.model.entity;
 using OOP_CP_Sazonov_23VP1.repository;
 using OOP_CP_Sazonov_23VP1.repository.impl;
 using System;
@@ -76,6 +77,16 @@ namespace OOP_CP_Sazonov_23VP1.service
             book.Genres.Clear();
 
             return _bookRepository.UpdateBook(book, authorIds, genreIds);
+        }
+
+        public bool RemoveBook(long bookId) { 
+            Book? book = _bookRepository.GetBookById(bookId);
+            if(book == null) {
+                return false;
+            }
+
+            _bookRepository.RemoveBook(book);
+            return true;
         }
     }
 }
