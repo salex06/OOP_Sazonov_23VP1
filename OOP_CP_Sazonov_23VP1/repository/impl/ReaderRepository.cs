@@ -16,6 +16,12 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
         {
             _context = context;
         }
+
+        public bool containsReader(long readerId)
+        {
+            return _context.Readers.Find(readerId) != null;
+        }
+
         public List<Reader> getAllReaders()
         {
             return _context.Readers.ToList();
@@ -24,6 +30,12 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
         public Reader? getReaderById(long readerId)
         {
             return _context.Readers.Find(readerId);
+        }
+
+        public void removeReader(Reader reader)
+        {
+            _context.Readers.Remove(reader);
+            _context.SaveChanges();
         }
 
         public Reader saveReader(Reader reader)

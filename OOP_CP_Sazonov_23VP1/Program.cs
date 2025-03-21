@@ -19,6 +19,7 @@ using System.Configuration;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_reader;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_reader;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -49,6 +50,7 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<IEditBookFormFactory, EditBookFormFactory>();
             services.AddTransient<IRemoveBookFormFactory, RemoveBookFormFactory>();
             services.AddTransient<IAddReaderFormFactory, AddReaderFormFactory>();
+            services.AddTransient<IRemoveReaderFormFactory, RemoveReaderFormFactory>();
 
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IGenreRepository, GenreRepository>();

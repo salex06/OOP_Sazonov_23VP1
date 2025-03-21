@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             readerInfoPanel = new Panel();
-            readerIdLabel = new Label();
             readerIdNumericUpDown = new NumericUpDown();
+            readerIdLabel = new Label();
             removeReaderButtonsPanel = new Panel();
             removeReaderButton = new Button();
             readerInfoPanel.SuspendLayout();
@@ -48,6 +48,14 @@
             readerInfoPanel.Size = new Size(333, 125);
             readerInfoPanel.TabIndex = 0;
             // 
+            // readerIdNumericUpDown
+            // 
+            readerIdNumericUpDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            readerIdNumericUpDown.Location = new Point(173, 48);
+            readerIdNumericUpDown.Name = "readerIdNumericUpDown";
+            readerIdNumericUpDown.Size = new Size(148, 31);
+            readerIdNumericUpDown.TabIndex = 1;
+            // 
             // readerIdLabel
             // 
             readerIdLabel.Dock = DockStyle.Left;
@@ -57,14 +65,6 @@
             readerIdLabel.TabIndex = 0;
             readerIdLabel.Text = "ID читателя";
             readerIdLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // readerIdNumericUpDown
-            // 
-            readerIdNumericUpDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            readerIdNumericUpDown.Location = new Point(173, 48);
-            readerIdNumericUpDown.Name = "readerIdNumericUpDown";
-            readerIdNumericUpDown.Size = new Size(148, 31);
-            readerIdNumericUpDown.TabIndex = 1;
             // 
             // removeReaderButtonsPanel
             // 
@@ -87,6 +87,7 @@
             removeReaderButton.TabIndex = 4;
             removeReaderButton.Text = "Удалить";
             removeReaderButton.UseVisualStyleBackColor = false;
+            removeReaderButton.Click += removeReaderButton_Click;
             // 
             // RemoveReaderForm
             // 

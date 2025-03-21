@@ -3,6 +3,7 @@ using OOP_CP_Sazonov_23VP1.tools.form_factories.add_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_reader;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -12,8 +13,11 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly IEditBookFormFactory _editBookFormFactory;
         private readonly IRemoveBookFormFactory _removeBookFormFactory;
         private readonly IAddReaderFormFactory _addReaderFormFactory;
+        private readonly IRemoveReaderFormFactory _removeReaderFormFactory;
 
-        public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory, IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory)
+        public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory, 
+            IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
+            IRemoveReaderFormFactory removeReaderFormFactory)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -22,6 +26,7 @@ namespace OOP_CP_Sazonov_23VP1
             _editBookFormFactory = editBookFormFactory;
             _removeBookFormFactory = removeBookFormFactory;
             _addReaderFormFactory = addReaderFormFactory;
+            _removeReaderFormFactory = removeReaderFormFactory;
         }
 
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,7 +61,7 @@ namespace OOP_CP_Sazonov_23VP1
 
         private void removeReaderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveReaderForm form = new RemoveReaderForm();
+            RemoveReaderForm form = _removeReaderFormFactory.Create();
             form.ShowDialog();
         }
 

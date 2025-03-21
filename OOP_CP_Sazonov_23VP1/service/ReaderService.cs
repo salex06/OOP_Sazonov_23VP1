@@ -27,5 +27,14 @@ namespace OOP_CP_Sazonov_23VP1.service
 
             return reader;
         }
+
+        public bool RemoveReader(long readerId) {
+            Reader? reader = _readerRepository.getReaderById(readerId);
+            if (reader == null) {
+                return false;
+            }
+            _readerRepository.removeReader(reader);
+            return true;
+        }
     }
 }

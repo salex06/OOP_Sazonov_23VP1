@@ -12,5 +12,7 @@ namespace OOP_CP_Sazonov_23VP1.repository
         Reader saveReader(Reader reader);
         Reader? getReaderById(long readerId);
         List<Reader> getAllReaders();
+        void removeReader(Reader reader);
+        bool containsReader(long readerId);
     }
 }

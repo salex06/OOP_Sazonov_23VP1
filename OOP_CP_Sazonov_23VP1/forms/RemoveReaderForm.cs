@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOP_CP_Sazonov_23VP1.service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,25 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
-    public partial class RemoveReaderForm: Form
+    public partial class RemoveReaderForm : Form
     {
-        public RemoveReaderForm()
+        private readonly ReaderService _service;
+        public RemoveReaderForm(ReaderService service)
         {
             InitializeComponent();
+            _service = service;
+        }
+
+        private void removeReaderButton_Click(object sender, EventArgs e)
+        {
+            long id = (long) readerIdNumericUpDown.Value;
+
+            if (_service.RemoveReader(id)) {
+                MessageBox.Show("Пользователь удалён!", "Успех");
+                Close();
+                return;
+            }
+            MessageBox.Show("Пользователь не найден", "Ошибка");
         }
     }
 }
