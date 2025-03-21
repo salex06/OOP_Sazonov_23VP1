@@ -14,71 +14,19 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// <summary>
         /// Идентфикатор читателя
         /// </summary>
-        public long ID { get; private set; }
+        public long ID { get; set; }
         /// <summary>
         /// ФИО читателя
         /// </summary>
-        public string Name { get; private set; }
+        public string Name { get; set; }
         /// <summary>
         /// Номер телефона читателя
         /// </summary>
-        public string PhoneNumber { get; private set; }
+        public string PhoneNumber { get; set; }
         /// <summary>
         /// Адрес проживания читателя
         /// </summary>
-        public string Address { get; private set; }
-
-        /// <summary>
-        /// Конструктор с 3 параметрами
-        /// </summary>
-        /// <param name="name">ФИО читателя</param>
-        /// <param name="phoneNumber">Номер телефона читателя</param>
-        /// <param name="address">Адрес проживания читателя</param>
-        public Reader(string name, string phoneNumber, string address)
-        {
-            Name = name;
-            PhoneNumber = phoneNumber;
-            Address = address;
-        }
-
-        /// <summary>
-        /// Конструктор для получения данных из БД
-        /// </summary>
-        /// <param name="id">Идентификатор читателя</param>
-        /// <param name="name">ФИО читателя</param>
-        /// <param name="phoneNumber">Номер телефона читателя</param>
-        /// <param name="address">Адрес проживания читателя</param>
-        public Reader(long id, string name, string phoneNumber, string address) : this(name, phoneNumber, address)
-        {
-            ID = id;
-        }
-
-        /// <summary>
-        /// Установить новое ФИО
-        /// </summary>
-        /// <param name="name">Новые данные</param>
-        public void SetName(string name)
-        {
-            Name = name;
-        }
-
-        /// <summary>
-        /// Установить новый номер телефона
-        /// </summary>
-        /// <param name="phoneNumber">Новые данные</param>
-        public void SetPhoneNumber(string phoneNumber)
-        {
-            PhoneNumber = phoneNumber;
-        }
-
-        /// <summary>
-        /// Установить новый адрес
-        /// </summary>
-        /// <param name="address">Новый адрес</param>
-        public void SetAddress(string address)
-        {
-            Address = address;
-        }
+        public string Address { get; set; }
 
         /// <summary>
         /// Представление класса в виде строки
@@ -87,7 +35,41 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         public override string ToString()
         {
             return $"Читатель {Name}. Телефон: {PhoneNumber}. Адрес: {Address}";
-            ;
+        }
+
+        public class Builder
+        {
+            private string _name;
+            private string _phoneNumber;
+            private string _address;
+
+            public Builder WithName(string name)
+            {
+                _name = string.IsNullOrEmpty(name) ? "НЕИЗВЕСТНО" : name;
+                return this;
+            }
+
+            public Builder WithPhoneNumber(string phoneNumber)
+            {
+                _phoneNumber = string.IsNullOrEmpty(phoneNumber) ? "НЕИЗВЕСТНО" : phoneNumber;
+                return this;
+            }
+
+            public Builder WithAddress(string address)
+            {
+                _address = string.IsNullOrEmpty(address) ? "НЕИЗВЕСТНО" : address;
+                return this;
+            }
+
+            public Reader Build()
+            {
+                return new Reader
+                {
+                    Name = _name,
+                    PhoneNumber = _phoneNumber,
+                    Address = _address
+                };
+            }
         }
     }
 }

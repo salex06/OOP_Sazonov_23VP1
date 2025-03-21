@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.add_reader;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -47,10 +48,12 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<IAddGenreFormFactory, AddGenreFormFactory>();
             services.AddTransient<IEditBookFormFactory, EditBookFormFactory>();
             services.AddTransient<IRemoveBookFormFactory, RemoveBookFormFactory>();
+            services.AddTransient<IAddReaderFormFactory, AddReaderFormFactory>();
 
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IGenreRepository, GenreRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
+            services.AddTransient<IReaderRepository, ReaderRepository>();
 
             services.AddTransient<MainLibraryForm>();
             services.AddTransient<AddBookForm>();
@@ -68,6 +71,7 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<AuthorService>();
             services.AddTransient<GenreService>();
             services.AddTransient<BookService>();
+            services.AddTransient<ReaderService>();
 
             services.AddDbContext<LibraryDatabaseContext>(options => options.UseSqlite());
         }

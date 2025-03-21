@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOP_CP_Sazonov_23VP1.service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +11,30 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
-    public partial class AddReaderForm: Form
+    public partial class AddReaderForm : Form
     {
-        public AddReaderForm()
+        private readonly ReaderService _service;
+        public AddReaderForm(ReaderService service)
         {
             InitializeComponent();
+            _service = service;
+        }
+
+        private void discardAddReaderButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void saveNewReaderButton_Click(object sender, EventArgs e)
+        {
+            string readerName = readerNameTextBox.Text;
+            string phoneNumber = readerPhoneTextBox.Text;
+            string address = readerAddressTextBox.Text;
+
+            _service.SaveReader(readerName, phoneNumber, address);
+
+            MessageBox.Show("Читатель добавлен", "Успех");
+            Close();
         }
     }
 }

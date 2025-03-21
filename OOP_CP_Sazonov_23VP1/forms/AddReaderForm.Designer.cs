@@ -30,22 +30,22 @@
         {
             addReaderLabel = new Label();
             addClientInfoPanel = new Panel();
-            readerNamePanel = new Panel();
-            readerNameLabel = new Label();
-            readerNameTextBox = new TextBox();
-            readerPhonePanel = new Panel();
-            readerPhoneLabel = new Label();
-            readerPhoneTextBox = new TextBox();
             readerAddressPanel = new Panel();
-            readerAddressLabel = new Label();
             readerAddressTextBox = new TextBox();
+            readerAddressLabel = new Label();
+            readerPhonePanel = new Panel();
+            readerPhoneTextBox = new TextBox();
+            readerPhoneLabel = new Label();
+            readerNamePanel = new Panel();
+            readerNameTextBox = new TextBox();
+            readerNameLabel = new Label();
             addReaderButtonsPanel = new Panel();
-            discardAddReaderButton = new Button();
             saveNewReaderButton = new Button();
+            discardAddReaderButton = new Button();
             addClientInfoPanel.SuspendLayout();
-            readerNamePanel.SuspendLayout();
-            readerPhonePanel.SuspendLayout();
             readerAddressPanel.SuspendLayout();
+            readerPhonePanel.SuspendLayout();
+            readerNamePanel.SuspendLayout();
             addReaderButtonsPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -71,62 +71,6 @@
             addClientInfoPanel.Size = new Size(502, 191);
             addClientInfoPanel.TabIndex = 1;
             // 
-            // readerNamePanel
-            // 
-            readerNamePanel.Controls.Add(readerNameTextBox);
-            readerNamePanel.Controls.Add(readerNameLabel);
-            readerNamePanel.Dock = DockStyle.Top;
-            readerNamePanel.Location = new Point(0, 0);
-            readerNamePanel.Name = "readerNamePanel";
-            readerNamePanel.Size = new Size(502, 41);
-            readerNamePanel.TabIndex = 0;
-            // 
-            // readerNameLabel
-            // 
-            readerNameLabel.Dock = DockStyle.Left;
-            readerNameLabel.Location = new Point(0, 0);
-            readerNameLabel.Name = "readerNameLabel";
-            readerNameLabel.Size = new Size(212, 41);
-            readerNameLabel.TabIndex = 0;
-            readerNameLabel.Text = "ФИО читателя";
-            readerNameLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // readerNameTextBox
-            // 
-            readerNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            readerNameTextBox.Location = new Point(243, 5);
-            readerNameTextBox.Name = "readerNameTextBox";
-            readerNameTextBox.Size = new Size(247, 31);
-            readerNameTextBox.TabIndex = 1;
-            // 
-            // readerPhonePanel
-            // 
-            readerPhonePanel.Controls.Add(readerPhoneTextBox);
-            readerPhonePanel.Controls.Add(readerPhoneLabel);
-            readerPhonePanel.Dock = DockStyle.Top;
-            readerPhonePanel.Location = new Point(0, 41);
-            readerPhonePanel.Name = "readerPhonePanel";
-            readerPhonePanel.Size = new Size(502, 47);
-            readerPhonePanel.TabIndex = 1;
-            // 
-            // readerPhoneLabel
-            // 
-            readerPhoneLabel.Dock = DockStyle.Left;
-            readerPhoneLabel.Location = new Point(0, 0);
-            readerPhoneLabel.Name = "readerPhoneLabel";
-            readerPhoneLabel.Size = new Size(212, 47);
-            readerPhoneLabel.TabIndex = 0;
-            readerPhoneLabel.Text = "Номер телефона";
-            readerPhoneLabel.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // readerPhoneTextBox
-            // 
-            readerPhoneTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            readerPhoneTextBox.Location = new Point(243, 8);
-            readerPhoneTextBox.Name = "readerPhoneTextBox";
-            readerPhoneTextBox.Size = new Size(247, 31);
-            readerPhoneTextBox.TabIndex = 1;
-            // 
             // readerAddressPanel
             // 
             readerAddressPanel.Controls.Add(readerAddressTextBox);
@@ -136,6 +80,15 @@
             readerAddressPanel.Name = "readerAddressPanel";
             readerAddressPanel.Size = new Size(502, 103);
             readerAddressPanel.TabIndex = 2;
+            // 
+            // readerAddressTextBox
+            // 
+            readerAddressTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            readerAddressTextBox.Location = new Point(243, 16);
+            readerAddressTextBox.Multiline = true;
+            readerAddressTextBox.Name = "readerAddressTextBox";
+            readerAddressTextBox.Size = new Size(247, 69);
+            readerAddressTextBox.TabIndex = 1;
             // 
             // readerAddressLabel
             // 
@@ -147,14 +100,61 @@
             readerAddressLabel.Text = "Адрес";
             readerAddressLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // readerAddressTextBox
+            // readerPhonePanel
             // 
-            readerAddressTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            readerAddressTextBox.Location = new Point(243, 16);
-            readerAddressTextBox.Multiline = true;
-            readerAddressTextBox.Name = "readerAddressTextBox";
-            readerAddressTextBox.Size = new Size(247, 69);
-            readerAddressTextBox.TabIndex = 1;
+            readerPhonePanel.Controls.Add(readerPhoneTextBox);
+            readerPhonePanel.Controls.Add(readerPhoneLabel);
+            readerPhonePanel.Dock = DockStyle.Top;
+            readerPhonePanel.Location = new Point(0, 41);
+            readerPhonePanel.Name = "readerPhonePanel";
+            readerPhonePanel.Size = new Size(502, 47);
+            readerPhonePanel.TabIndex = 1;
+            // 
+            // readerPhoneTextBox
+            // 
+            readerPhoneTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            readerPhoneTextBox.Location = new Point(243, 8);
+            readerPhoneTextBox.Name = "readerPhoneTextBox";
+            readerPhoneTextBox.Size = new Size(247, 31);
+            readerPhoneTextBox.TabIndex = 1;
+            // 
+            // readerPhoneLabel
+            // 
+            readerPhoneLabel.Dock = DockStyle.Left;
+            readerPhoneLabel.Location = new Point(0, 0);
+            readerPhoneLabel.Name = "readerPhoneLabel";
+            readerPhoneLabel.Size = new Size(212, 47);
+            readerPhoneLabel.TabIndex = 0;
+            readerPhoneLabel.Text = "Номер телефона";
+            readerPhoneLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // readerNamePanel
+            // 
+            readerNamePanel.Controls.Add(readerNameTextBox);
+            readerNamePanel.Controls.Add(readerNameLabel);
+            readerNamePanel.Dock = DockStyle.Top;
+            readerNamePanel.Location = new Point(0, 0);
+            readerNamePanel.Name = "readerNamePanel";
+            readerNamePanel.Size = new Size(502, 41);
+            readerNamePanel.TabIndex = 0;
+            // 
+            // readerNameTextBox
+            // 
+            readerNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            readerNameTextBox.Location = new Point(243, 5);
+            readerNameTextBox.Name = "readerNameTextBox";
+            readerNameTextBox.Size = new Size(247, 31);
+            readerNameTextBox.TabIndex = 1;
+            // 
+            // readerNameLabel
+            // 
+            readerNameLabel.Dock = DockStyle.Left;
+            readerNameLabel.Location = new Point(0, 0);
+            readerNameLabel.Name = "readerNameLabel";
+            readerNameLabel.Size = new Size(212, 41);
+            readerNameLabel.TabIndex = 0;
+            readerNameLabel.Text = "ФИО читателя";
+            readerNameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // addReaderButtonsPanel
             // 
@@ -165,19 +165,6 @@
             addReaderButtonsPanel.Name = "addReaderButtonsPanel";
             addReaderButtonsPanel.Size = new Size(502, 70);
             addReaderButtonsPanel.TabIndex = 2;
-            // 
-            // discardAddReaderButton
-            // 
-            discardAddReaderButton.BackColor = Color.Coral;
-            discardAddReaderButton.Cursor = Cursors.Hand;
-            discardAddReaderButton.Dock = DockStyle.Left;
-            discardAddReaderButton.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            discardAddReaderButton.Location = new Point(0, 0);
-            discardAddReaderButton.Name = "discardAddReaderButton";
-            discardAddReaderButton.Size = new Size(106, 70);
-            discardAddReaderButton.TabIndex = 2;
-            discardAddReaderButton.Text = "Отмена";
-            discardAddReaderButton.UseVisualStyleBackColor = false;
             // 
             // saveNewReaderButton
             // 
@@ -191,6 +178,21 @@
             saveNewReaderButton.TabIndex = 3;
             saveNewReaderButton.Text = "Сохранить";
             saveNewReaderButton.UseVisualStyleBackColor = false;
+            saveNewReaderButton.Click += saveNewReaderButton_Click;
+            // 
+            // discardAddReaderButton
+            // 
+            discardAddReaderButton.BackColor = Color.Coral;
+            discardAddReaderButton.Cursor = Cursors.Hand;
+            discardAddReaderButton.Dock = DockStyle.Left;
+            discardAddReaderButton.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            discardAddReaderButton.Location = new Point(0, 0);
+            discardAddReaderButton.Name = "discardAddReaderButton";
+            discardAddReaderButton.Size = new Size(106, 70);
+            discardAddReaderButton.TabIndex = 2;
+            discardAddReaderButton.Text = "Отмена";
+            discardAddReaderButton.UseVisualStyleBackColor = false;
+            discardAddReaderButton.Click += discardAddReaderButton_Click;
             // 
             // AddReaderForm
             // 
@@ -204,12 +206,12 @@
             Name = "AddReaderForm";
             Text = "Новый читатель";
             addClientInfoPanel.ResumeLayout(false);
-            readerNamePanel.ResumeLayout(false);
-            readerNamePanel.PerformLayout();
-            readerPhonePanel.ResumeLayout(false);
-            readerPhonePanel.PerformLayout();
             readerAddressPanel.ResumeLayout(false);
             readerAddressPanel.PerformLayout();
+            readerPhonePanel.ResumeLayout(false);
+            readerPhonePanel.PerformLayout();
+            readerNamePanel.ResumeLayout(false);
+            readerNamePanel.PerformLayout();
             addReaderButtonsPanel.ResumeLayout(false);
             ResumeLayout(false);
         }

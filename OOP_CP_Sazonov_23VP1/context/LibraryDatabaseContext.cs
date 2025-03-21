@@ -23,6 +23,7 @@ namespace OOP_CP_Sazonov_23VP1.context
         public DbSet<Book> Books { get; set; } = null!;
         public DbSet<Author> Authors { get; set; } = null!;
         public DbSet<Genre> Genres { get; set; } = null!;
+        public DbSet<Reader> Readers { get; set; } = null!;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var dbPath = Path.Combine(AppContext.BaseDirectory, "library.db");
