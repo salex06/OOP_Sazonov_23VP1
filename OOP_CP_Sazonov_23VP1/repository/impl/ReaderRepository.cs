@@ -44,5 +44,11 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             _context.SaveChanges();
             return reader;
         }
+
+        public Reader? updateReader(Reader reader)
+        {
+            _context.SaveChanges();
+            return reader;
+        }
     }
 }

@@ -32,6 +32,7 @@
             saveReaderChangesButton = new Button();
             discardEditReaderInfoButton = new Button();
             editReaderIdPanel = new Panel();
+            loadReaderInfoButton = new Button();
             editReaderIdNumericUpDown = new NumericUpDown();
             editReaderIdLabel = new Label();
             editReaderSettingsPanel = new Panel();
@@ -42,7 +43,7 @@
             editPhoneNumberTextBox = new TextBox();
             editReaderPhoneLabel = new Label();
             editReaderNamePanel = new Panel();
-            textBox1 = new TextBox();
+            editReaderNameTextBox = new TextBox();
             editReaderNameLabel = new Label();
             editReaderInfoButtonsPanel.SuspendLayout();
             editReaderIdPanel.SuspendLayout();
@@ -58,7 +59,7 @@
             editReaderInfoButtonsPanel.Controls.Add(saveReaderChangesButton);
             editReaderInfoButtonsPanel.Controls.Add(discardEditReaderInfoButton);
             editReaderInfoButtonsPanel.Dock = DockStyle.Bottom;
-            editReaderInfoButtonsPanel.Location = new Point(0, 274);
+            editReaderInfoButtonsPanel.Location = new Point(0, 357);
             editReaderInfoButtonsPanel.Name = "editReaderInfoButtonsPanel";
             editReaderInfoButtonsPanel.Size = new Size(404, 66);
             editReaderInfoButtonsPanel.TabIndex = 1;
@@ -75,6 +76,7 @@
             saveReaderChangesButton.TabIndex = 3;
             saveReaderChangesButton.Text = "Сохранить изменения";
             saveReaderChangesButton.UseVisualStyleBackColor = false;
+            saveReaderChangesButton.Click += saveReaderChangesButton_Click;
             // 
             // discardEditReaderInfoButton
             // 
@@ -88,23 +90,38 @@
             discardEditReaderInfoButton.TabIndex = 2;
             discardEditReaderInfoButton.Text = "Отменить изменения";
             discardEditReaderInfoButton.UseVisualStyleBackColor = false;
+            discardEditReaderInfoButton.Click += discardEditReaderInfoButton_Click;
             // 
             // editReaderIdPanel
             // 
+            editReaderIdPanel.Controls.Add(loadReaderInfoButton);
             editReaderIdPanel.Controls.Add(editReaderIdNumericUpDown);
             editReaderIdPanel.Controls.Add(editReaderIdLabel);
             editReaderIdPanel.Dock = DockStyle.Top;
             editReaderIdPanel.Location = new Point(0, 0);
             editReaderIdPanel.Name = "editReaderIdPanel";
-            editReaderIdPanel.Size = new Size(404, 64);
+            editReaderIdPanel.Size = new Size(404, 121);
             editReaderIdPanel.TabIndex = 2;
+            // 
+            // loadReaderInfoButton
+            // 
+            loadReaderInfoButton.BackColor = Color.LightSalmon;
+            loadReaderInfoButton.Cursor = Cursors.Hand;
+            loadReaderInfoButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            loadReaderInfoButton.Location = new Point(206, 55);
+            loadReaderInfoButton.Name = "loadReaderInfoButton";
+            loadReaderInfoButton.Size = new Size(185, 60);
+            loadReaderInfoButton.TabIndex = 4;
+            loadReaderInfoButton.Text = "Загрузить данные читателя";
+            loadReaderInfoButton.UseVisualStyleBackColor = false;
+            loadReaderInfoButton.Click += loadReaderInfoButton_Click;
             // 
             // editReaderIdNumericUpDown
             // 
             editReaderIdNumericUpDown.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            editReaderIdNumericUpDown.Location = new Point(222, 18);
+            editReaderIdNumericUpDown.Location = new Point(206, 18);
             editReaderIdNumericUpDown.Name = "editReaderIdNumericUpDown";
-            editReaderIdNumericUpDown.Size = new Size(169, 31);
+            editReaderIdNumericUpDown.Size = new Size(185, 31);
             editReaderIdNumericUpDown.TabIndex = 1;
             // 
             // editReaderIdLabel
@@ -112,7 +129,7 @@
             editReaderIdLabel.Dock = DockStyle.Left;
             editReaderIdLabel.Location = new Point(0, 0);
             editReaderIdLabel.Name = "editReaderIdLabel";
-            editReaderIdLabel.Size = new Size(213, 64);
+            editReaderIdLabel.Size = new Size(213, 121);
             editReaderIdLabel.TabIndex = 0;
             editReaderIdLabel.Text = "ID читателя";
             editReaderIdLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -123,7 +140,7 @@
             editReaderSettingsPanel.Controls.Add(editReaderPhonePanel);
             editReaderSettingsPanel.Controls.Add(editReaderNamePanel);
             editReaderSettingsPanel.Dock = DockStyle.Top;
-            editReaderSettingsPanel.Location = new Point(0, 64);
+            editReaderSettingsPanel.Location = new Point(0, 121);
             editReaderSettingsPanel.Name = "editReaderSettingsPanel";
             editReaderSettingsPanel.Padding = new Padding(10);
             editReaderSettingsPanel.Size = new Size(404, 190);
@@ -188,7 +205,7 @@
             // 
             // editReaderNamePanel
             // 
-            editReaderNamePanel.Controls.Add(textBox1);
+            editReaderNamePanel.Controls.Add(editReaderNameTextBox);
             editReaderNamePanel.Controls.Add(editReaderNameLabel);
             editReaderNamePanel.Dock = DockStyle.Top;
             editReaderNamePanel.Location = new Point(10, 10);
@@ -196,13 +213,13 @@
             editReaderNamePanel.Size = new Size(384, 49);
             editReaderNamePanel.TabIndex = 0;
             // 
-            // textBox1
+            // editReaderNameTextBox
             // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox1.Location = new Point(209, 9);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(172, 31);
-            textBox1.TabIndex = 1;
+            editReaderNameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            editReaderNameTextBox.Location = new Point(209, 9);
+            editReaderNameTextBox.Name = "editReaderNameTextBox";
+            editReaderNameTextBox.Size = new Size(172, 31);
+            editReaderNameTextBox.TabIndex = 1;
             // 
             // editReaderNameLabel
             // 
@@ -219,7 +236,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AntiqueWhite;
-            ClientSize = new Size(404, 340);
+            ClientSize = new Size(404, 423);
             Controls.Add(editReaderSettingsPanel);
             Controls.Add(editReaderIdPanel);
             Controls.Add(editReaderInfoButtonsPanel);
@@ -253,7 +270,8 @@
         private TextBox editPhoneNumberTextBox;
         private Label editReaderPhoneLabel;
         private Panel editReaderNamePanel;
-        private TextBox textBox1;
+        private TextBox editReaderNameTextBox;
         private Label editReaderNameLabel;
+        private Button loadReaderInfoButton;
     }
 }
