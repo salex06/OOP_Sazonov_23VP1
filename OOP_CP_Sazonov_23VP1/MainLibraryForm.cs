@@ -3,6 +3,7 @@ using OOP_CP_Sazonov_23VP1.tools.form_factories.add_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_reader;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.lend_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_reader;
 
@@ -16,10 +17,12 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly IAddReaderFormFactory _addReaderFormFactory;
         private readonly IRemoveReaderFormFactory _removeReaderFormFactory;
         private readonly IEditReaderInfoFormFactory _editReaderInfoFormFactory;
+        private readonly ILendBookFormFactory _lendBookFormFactory;
 
         public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory, 
             IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
-            IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory)
+            IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory,
+            ILendBookFormFactory lendBookFormFactory)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -30,6 +33,7 @@ namespace OOP_CP_Sazonov_23VP1
             _addReaderFormFactory = addReaderFormFactory;
             _removeReaderFormFactory = removeReaderFormFactory;
             _editReaderInfoFormFactory = editReaderInfoFormFactory;
+            _lendBookFormFactory = lendBookFormFactory;
         }
 
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,7 +50,7 @@ namespace OOP_CP_Sazonov_23VP1
 
         private void giveOutBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GiveOutABookForm form = new GiveOutABookForm();
+            GiveOutABookForm form = _lendBookFormFactory.Create();
             form.ShowDialog();
         }
 

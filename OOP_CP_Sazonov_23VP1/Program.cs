@@ -21,6 +21,7 @@ using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_reader;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.lend_book;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -53,11 +54,13 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<IAddReaderFormFactory, AddReaderFormFactory>();
             services.AddTransient<IRemoveReaderFormFactory, RemoveReaderFormFactory>();
             services.AddTransient<IEditReaderInfoFormFactory, EditReaderInfoFormFactory>();
+            services.AddTransient<ILendBookFormFactory, LendBookFormFactory>();
 
             services.AddTransient<IAuthorRepository, AuthorRepository>();
             services.AddTransient<IGenreRepository, GenreRepository>();
             services.AddTransient<IBookRepository, BookRepository>();
             services.AddTransient<IReaderRepository, ReaderRepository>();
+            services.AddTransient<ILoanRepository, LoanRepository>();
 
             services.AddTransient<MainLibraryForm>();
             services.AddTransient<AddBookForm>();
@@ -76,6 +79,7 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<GenreService>();
             services.AddTransient<BookService>();
             services.AddTransient<ReaderService>();
+            services.AddTransient<LoanService>();
 
             services.AddDbContext<LibraryDatabaseContext>(options => options.UseSqlite());
         }

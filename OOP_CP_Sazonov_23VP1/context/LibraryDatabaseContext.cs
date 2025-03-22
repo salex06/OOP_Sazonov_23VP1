@@ -24,10 +24,28 @@ namespace OOP_CP_Sazonov_23VP1.context
         public DbSet<Author> Authors { get; set; } = null!;
         public DbSet<Genre> Genres { get; set; } = null!;
         public DbSet<Reader> Readers { get; set; } = null!;
+        public DbSet<Loan> Loans { get; set; } = null!;
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var dbPath = Path.Combine(AppContext.BaseDirectory, "library.db");
             optionsBuilder.UseSqlite($"Data Source={dbPath}");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Loan>()
+                .HasOne(l => l.Reader)
+                .WithMany(r => r.Loans)
+                .HasForeignKey(l => l.ReaderId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Loan>()
+                .HasOne(l => l.Book)
+                .WithMany(b => b.Loans)
+                .HasForeignKey(l => l.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 

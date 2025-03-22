@@ -28,6 +28,8 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// </summary>
         public string Address { get; set; }
 
+        public ICollection<Loan> Loans { get; set; } = new List<Loan>(); 
+
         /// <summary>
         /// Представление класса в виде строки
         /// </summary>

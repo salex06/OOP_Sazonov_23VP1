@@ -43,6 +43,8 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
 
         public ICollection<Genre> Genres { get; set; } = new List<Genre>();
 
+        public ICollection<Loan> Loans { get; set; } = new List<Loan>();
+
         private Book() {
             Title = "НЕИЗВЕСТНО";
             YearOfPublication = 0;
