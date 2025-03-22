@@ -6,6 +6,7 @@ using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.lend_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_reader;
+using OOP_CP_Sazonov_23VP1.tools.form_factories.return_book;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -18,11 +19,12 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly IRemoveReaderFormFactory _removeReaderFormFactory;
         private readonly IEditReaderInfoFormFactory _editReaderInfoFormFactory;
         private readonly ILendBookFormFactory _lendBookFormFactory;
+        private readonly IReturnBookFormFactory _returnBookFormFactory;
 
-        public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory, 
+        public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory,
             IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
             IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory,
-            ILendBookFormFactory lendBookFormFactory)
+            ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -34,6 +36,7 @@ namespace OOP_CP_Sazonov_23VP1
             _removeReaderFormFactory = removeReaderFormFactory;
             _editReaderInfoFormFactory = editReaderInfoFormFactory;
             _lendBookFormFactory = lendBookFormFactory;
+            _returnBookFormFactory = returnBookFormFactory;
         }
 
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -74,7 +77,7 @@ namespace OOP_CP_Sazonov_23VP1
 
         private void returnBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReturnBookForm form = new ReturnBookForm();
+            ReturnBookForm form = _returnBookFormFactory.Create();
             form.ShowDialog();
         }
 
