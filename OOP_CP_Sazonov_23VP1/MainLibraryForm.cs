@@ -10,6 +10,7 @@ using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.return_book;
 using System.Windows.Forms;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -24,12 +25,13 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly ILendBookFormFactory _lendBookFormFactory;
         private readonly IReturnBookFormFactory _returnBookFormFactory;
         private readonly BookService _bookService;
+        private readonly ReaderService _readerService;
 
         public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory,
             IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
             IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory,
-            ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory, 
-            BookService bookService)
+            ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory,
+            BookService bookService, ReaderService readerService)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -43,6 +45,7 @@ namespace OOP_CP_Sazonov_23VP1
             _lendBookFormFactory = lendBookFormFactory;
             _returnBookFormFactory = returnBookFormFactory;
             _bookService = bookService;
+            _readerService = readerService;
 
             booksReviewDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
 
@@ -99,6 +102,7 @@ namespace OOP_CP_Sazonov_23VP1
         private void findBookButton_Click(object sender, EventArgs e)
         {
             ClearTable(booksReviewDataGridView);
+
             List<Book> books = _bookService.getAllBooks();
             foreach (Book book in books)
             {
@@ -130,13 +134,38 @@ namespace OOP_CP_Sazonov_23VP1
             }
 
             booksReviewDataGridView.Rows.Add([
-                id, title, 
-                yearOfPublication, authors, 
-                genres, publisher, 
-                ISBN, readerId?.ToString() ?? "-", 
+                id, title,
+                yearOfPublication, authors,
+                genres, publisher,
+                ISBN, readerId?.ToString() ?? "-",
                 dueTime?.ToString() ?? "-"
             ]);
         }
 
+        private void findReadersButton_Click(object sender, EventArgs e)
+        {
+            ClearTable(readersPreviewDataGridView);
+
+            List<Reader> readers = _readerService.GetAllReaders();
+            foreach (Reader reader in readers)
+            {
+                AddReaderToTable(reader);
+            }
+        }
+
+        private void AddReaderToTable(Reader reader)
+        {
+            long id = reader.ID;
+            string name = reader.Name;
+            string phone = reader.PhoneNumber;
+            string address = reader.Address;
+            bool isDebtor = reader.Loans.Any(src => src.ReturnDate == null && src.DueDate < DateTime.Now);
+
+            readersPreviewDataGridView.Rows.Add([
+                id, name,
+                phone, address,
+                isDebtor ? "Да" : "Нет"
+                ]);
+        }
     }
 }

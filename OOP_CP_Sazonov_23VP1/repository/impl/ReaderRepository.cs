@@ -1,4 +1,5 @@
-﻿using OOP_CP_Sazonov_23VP1.context;
+﻿using Microsoft.EntityFrameworkCore;
+using OOP_CP_Sazonov_23VP1.context;
 using OOP_CP_Sazonov_23VP1.model.entity;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
 
         public List<Reader> getAllReaders()
         {
-            return _context.Readers.ToList();
+            return _context.Readers.Include(src => src.Loans).ToList();
         }
 
         public Reader? getReaderById(long readerId)

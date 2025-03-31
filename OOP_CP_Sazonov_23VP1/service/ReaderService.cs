@@ -19,6 +19,10 @@ namespace OOP_CP_Sazonov_23VP1.service
             _readerRepository = repository;
         }
 
+        public List<Reader> GetAllReaders() {
+            return _readerRepository.getAllReaders();
+        }
+
         public Reader SaveReader(string readerName, string phoneNumber, string address) {
             Reader reader = new Reader.Builder()
                 .WithName(readerName)
