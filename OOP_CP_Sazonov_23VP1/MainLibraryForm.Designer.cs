@@ -270,6 +270,7 @@
             // 
             booksReviewDataGridView.AllowUserToAddRows = false;
             booksReviewDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            booksReviewDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             booksReviewDataGridView.BackgroundColor = Color.PapayaWhip;
             booksReviewDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             booksReviewDataGridView.Columns.AddRange(new DataGridViewColumn[] { bookId, bookName, yearOfPublishing, bookAuthors, bookGenres, publisherName, bookISBN, readerID, returnDate });
@@ -700,6 +701,7 @@
             findBookButton.TabIndex = 0;
             findBookButton.Text = "Найти книги";
             findBookButton.UseVisualStyleBackColor = false;
+            findBookButton.Click += findBookButton_Click;
             // 
             // mainWindowTabs
             // 

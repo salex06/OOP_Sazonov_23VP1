@@ -1,4 +1,6 @@
 using OOP_CP_Sazonov_23VP1.forms;
+using OOP_CP_Sazonov_23VP1.model.entity;
+using OOP_CP_Sazonov_23VP1.service;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_book;
@@ -7,6 +9,7 @@ using OOP_CP_Sazonov_23VP1.tools.form_factories.lend_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.return_book;
+using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -20,11 +23,13 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly IEditReaderInfoFormFactory _editReaderInfoFormFactory;
         private readonly ILendBookFormFactory _lendBookFormFactory;
         private readonly IReturnBookFormFactory _returnBookFormFactory;
+        private readonly BookService _bookService;
 
         public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory,
             IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
             IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory,
-            ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory)
+            ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory, 
+            BookService bookService)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -37,6 +42,10 @@ namespace OOP_CP_Sazonov_23VP1
             _editReaderInfoFormFactory = editReaderInfoFormFactory;
             _lendBookFormFactory = lendBookFormFactory;
             _returnBookFormFactory = returnBookFormFactory;
+            _bookService = bookService;
+
+            booksReviewDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+
         }
 
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,5 +95,48 @@ namespace OOP_CP_Sazonov_23VP1
             EditReaderInfoForm form = _editReaderInfoFormFactory.Create();
             form.ShowDialog();
         }
+
+        private void findBookButton_Click(object sender, EventArgs e)
+        {
+            ClearTable(booksReviewDataGridView);
+            List<Book> books = _bookService.getAllBooks();
+            foreach (Book book in books)
+            {
+                AddBookToTable(book);
+            }
+        }
+
+        private void ClearTable(DataGridView table)
+        {
+            table.Rows.Clear();
+        }
+
+        private void AddBookToTable(Book book)
+        {
+            long id = book.Id;
+            string title = book.Title;
+            int yearOfPublication = book.YearOfPublication;
+            string authors = String.Join(", ", book.Authors.Select(i => i.Name).ToList());
+            string genres = String.Join(", ", book.Genres.Select(i => i.Name).ToList());
+            string publisher = book.Publisher;
+            string ISBN = book.ISBN;
+            Loan? activeLoan = book.Loans.SingleOrDefault(i => i.ReturnDate == null);
+            long? readerId = null;
+            DateOnly? dueTime = null;
+            if (activeLoan != null)
+            {
+                readerId = activeLoan.ReaderId;
+                dueTime = DateOnly.FromDateTime(activeLoan.DueDate.Date);
+            }
+
+            booksReviewDataGridView.Rows.Add([
+                id, title, 
+                yearOfPublication, authors, 
+                genres, publisher, 
+                ISBN, readerId?.ToString() ?? "-", 
+                dueTime?.ToString() ?? "-"
+            ]);
+        }
+
     }
 }

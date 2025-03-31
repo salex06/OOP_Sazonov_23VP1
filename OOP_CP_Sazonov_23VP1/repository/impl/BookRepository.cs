@@ -21,7 +21,11 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
 
         public List<Book> GetAllBooks()
         {
-            return _context.Books.Select(src => src).ToList();
+            return _context.Books
+                .Include(src => src.Authors)
+                .Include(src => src.Genres)
+                .Include(src => src.Loans)
+                .ToList();
         }
 
         public Book? GetBookById(long id)
