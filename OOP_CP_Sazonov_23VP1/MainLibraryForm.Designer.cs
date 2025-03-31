@@ -60,6 +60,11 @@
             descendingOrder = new RadioButton();
             ascendingOrder = new RadioButton();
             orderByPanel = new Panel();
+            orderByIsbn = new RadioButton();
+            orderByPublisher = new RadioButton();
+            orderByDateButton = new RadioButton();
+            orderByName = new RadioButton();
+            defaultOrderRadioButton = new RadioButton();
             panel2 = new Panel();
             genreComboBox = new ComboBox();
             genreLabel = new Label();
@@ -90,6 +95,11 @@
             descendingReaderOrder = new RadioButton();
             ascendingReaderOrder = new RadioButton();
             fieldOrderPanel = new Panel();
+            orderByDebtor = new RadioButton();
+            orderByAddress = new RadioButton();
+            orderByPhone = new RadioButton();
+            orderByReaderName = new RadioButton();
+            defaultOrder = new RadioButton();
             selectReaderSettingsPanel = new Panel();
             isDebtorPanel = new Panel();
             isDebtorComboBox = new ComboBox();
@@ -110,16 +120,6 @@
             phoneNumber = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
             isDebtor = new DataGridViewTextBoxColumn();
-            defaultOrderRadioButton = new RadioButton();
-            orderByIsbn = new RadioButton();
-            orderByPublisher = new RadioButton();
-            orderByDateButton = new RadioButton();
-            orderByName = new RadioButton();
-            defaultOrder = new RadioButton();
-            orderByDebtor = new RadioButton();
-            orderByAddress = new RadioButton();
-            orderByPhone = new RadioButton();
-            orderByReaderName = new RadioButton();
             addBookToDataBaseToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)booksReviewDataGridView).BeginInit();
             booksReviewPanel.SuspendLayout();
@@ -401,6 +401,7 @@
             descendingOrder.Name = "descendingOrder";
             descendingOrder.Size = new Size(152, 119);
             descendingOrder.TabIndex = 1;
+            descendingOrder.Tag = "Descending";
             descendingOrder.Text = "По убыванию";
             descendingOrder.UseVisualStyleBackColor = true;
             // 
@@ -414,6 +415,7 @@
             ascendingOrder.Size = new Size(174, 119);
             ascendingOrder.TabIndex = 0;
             ascendingOrder.TabStop = true;
+            ascendingOrder.Tag = "Ascending";
             ascendingOrder.Text = "По возрастанию";
             ascendingOrder.UseVisualStyleBackColor = true;
             // 
@@ -429,6 +431,68 @@
             orderByPanel.Name = "orderByPanel";
             orderByPanel.Size = new Size(947, 119);
             orderByPanel.TabIndex = 8;
+            // 
+            // orderByIsbn
+            // 
+            orderByIsbn.AutoSize = true;
+            orderByIsbn.Dock = DockStyle.Left;
+            orderByIsbn.Location = new Point(647, 0);
+            orderByIsbn.Name = "orderByIsbn";
+            orderByIsbn.Size = new Size(104, 119);
+            orderByIsbn.TabIndex = 10;
+            orderByIsbn.Tag = "ISBN";
+            orderByIsbn.Text = "По ISBN";
+            orderByIsbn.UseVisualStyleBackColor = true;
+            // 
+            // orderByPublisher
+            // 
+            orderByPublisher.AutoSize = true;
+            orderByPublisher.Dock = DockStyle.Left;
+            orderByPublisher.Location = new Point(476, 0);
+            orderByPublisher.Name = "orderByPublisher";
+            orderByPublisher.Size = new Size(171, 119);
+            orderByPublisher.TabIndex = 9;
+            orderByPublisher.Tag = "Publisher";
+            orderByPublisher.Text = "По издательству";
+            orderByPublisher.UseVisualStyleBackColor = true;
+            // 
+            // orderByDateButton
+            // 
+            orderByDateButton.AutoSize = true;
+            orderByDateButton.Dock = DockStyle.Left;
+            orderByDateButton.Location = new Point(309, 0);
+            orderByDateButton.Name = "orderByDateButton";
+            orderByDateButton.Size = new Size(167, 119);
+            orderByDateButton.TabIndex = 8;
+            orderByDateButton.Tag = "YearOfPublication";
+            orderByDateButton.Text = "По дате выхода";
+            orderByDateButton.UseVisualStyleBackColor = true;
+            // 
+            // orderByName
+            // 
+            orderByName.AutoSize = true;
+            orderByName.Dock = DockStyle.Left;
+            orderByName.Location = new Point(162, 0);
+            orderByName.Name = "orderByName";
+            orderByName.Size = new Size(147, 119);
+            orderByName.TabIndex = 7;
+            orderByName.Tag = "Title";
+            orderByName.Text = "По названию";
+            orderByName.UseVisualStyleBackColor = true;
+            // 
+            // defaultOrderRadioButton
+            // 
+            defaultOrderRadioButton.AutoSize = true;
+            defaultOrderRadioButton.Checked = true;
+            defaultOrderRadioButton.Dock = DockStyle.Left;
+            defaultOrderRadioButton.Location = new Point(0, 0);
+            defaultOrderRadioButton.Name = "defaultOrderRadioButton";
+            defaultOrderRadioButton.Size = new Size(162, 119);
+            defaultOrderRadioButton.TabIndex = 6;
+            defaultOrderRadioButton.TabStop = true;
+            defaultOrderRadioButton.Tag = "Id";
+            defaultOrderRadioButton.Text = "По умолчанию";
+            defaultOrderRadioButton.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -744,6 +808,63 @@
             fieldOrderPanel.Size = new Size(319, 153);
             fieldOrderPanel.TabIndex = 4;
             // 
+            // orderByDebtor
+            // 
+            orderByDebtor.AutoSize = true;
+            orderByDebtor.Dock = DockStyle.Top;
+            orderByDebtor.Location = new Point(0, 116);
+            orderByDebtor.Name = "orderByDebtor";
+            orderByDebtor.Size = new Size(319, 29);
+            orderByDebtor.TabIndex = 8;
+            orderByDebtor.Text = "По наличию задолженностей";
+            orderByDebtor.UseVisualStyleBackColor = true;
+            // 
+            // orderByAddress
+            // 
+            orderByAddress.AutoSize = true;
+            orderByAddress.Dock = DockStyle.Top;
+            orderByAddress.Location = new Point(0, 87);
+            orderByAddress.Name = "orderByAddress";
+            orderByAddress.Size = new Size(319, 29);
+            orderByAddress.TabIndex = 7;
+            orderByAddress.Text = "По адресу";
+            orderByAddress.UseVisualStyleBackColor = true;
+            // 
+            // orderByPhone
+            // 
+            orderByPhone.AutoSize = true;
+            orderByPhone.Dock = DockStyle.Top;
+            orderByPhone.Location = new Point(0, 58);
+            orderByPhone.Name = "orderByPhone";
+            orderByPhone.Size = new Size(319, 29);
+            orderByPhone.TabIndex = 6;
+            orderByPhone.Text = "По номеру телефона";
+            orderByPhone.UseVisualStyleBackColor = true;
+            // 
+            // orderByReaderName
+            // 
+            orderByReaderName.AutoSize = true;
+            orderByReaderName.Dock = DockStyle.Top;
+            orderByReaderName.Location = new Point(0, 29);
+            orderByReaderName.Name = "orderByReaderName";
+            orderByReaderName.Size = new Size(319, 29);
+            orderByReaderName.TabIndex = 5;
+            orderByReaderName.Text = "По ФИО";
+            orderByReaderName.UseVisualStyleBackColor = true;
+            // 
+            // defaultOrder
+            // 
+            defaultOrder.AutoSize = true;
+            defaultOrder.Checked = true;
+            defaultOrder.Dock = DockStyle.Top;
+            defaultOrder.Location = new Point(0, 0);
+            defaultOrder.Name = "defaultOrder";
+            defaultOrder.Size = new Size(319, 29);
+            defaultOrder.TabIndex = 4;
+            defaultOrder.TabStop = true;
+            defaultOrder.Text = "По умолчанию";
+            defaultOrder.UseVisualStyleBackColor = true;
+            // 
             // selectReaderSettingsPanel
             // 
             selectReaderSettingsPanel.Controls.Add(isDebtorPanel);
@@ -935,125 +1056,6 @@
             isDebtor.MinimumWidth = 8;
             isDebtor.Name = "isDebtor";
             isDebtor.ReadOnly = true;
-            // 
-            // defaultOrderRadioButton
-            // 
-            defaultOrderRadioButton.AutoSize = true;
-            defaultOrderRadioButton.Checked = true;
-            defaultOrderRadioButton.Dock = DockStyle.Left;
-            defaultOrderRadioButton.Location = new Point(0, 0);
-            defaultOrderRadioButton.Name = "defaultOrderRadioButton";
-            defaultOrderRadioButton.Size = new Size(162, 119);
-            defaultOrderRadioButton.TabIndex = 6;
-            defaultOrderRadioButton.TabStop = true;
-            defaultOrderRadioButton.Tag = "ISBN";
-            defaultOrderRadioButton.Text = "По умолчанию";
-            defaultOrderRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // orderByIsbn
-            // 
-            orderByIsbn.AutoSize = true;
-            orderByIsbn.Dock = DockStyle.Left;
-            orderByIsbn.Location = new Point(647, 0);
-            orderByIsbn.Name = "orderByIsbn";
-            orderByIsbn.Size = new Size(104, 119);
-            orderByIsbn.TabIndex = 10;
-            orderByIsbn.Tag = "ISBN";
-            orderByIsbn.Text = "По ISBN";
-            orderByIsbn.UseVisualStyleBackColor = true;
-            // 
-            // orderByPublisher
-            // 
-            orderByPublisher.AutoSize = true;
-            orderByPublisher.Dock = DockStyle.Left;
-            orderByPublisher.Location = new Point(476, 0);
-            orderByPublisher.Name = "orderByPublisher";
-            orderByPublisher.Size = new Size(171, 119);
-            orderByPublisher.TabIndex = 9;
-            orderByPublisher.Tag = "Publisher";
-            orderByPublisher.Text = "По издательству";
-            orderByPublisher.UseVisualStyleBackColor = true;
-            // 
-            // orderByDateButton
-            // 
-            orderByDateButton.AutoSize = true;
-            orderByDateButton.Dock = DockStyle.Left;
-            orderByDateButton.Location = new Point(309, 0);
-            orderByDateButton.Name = "orderByDateButton";
-            orderByDateButton.Size = new Size(167, 119);
-            orderByDateButton.TabIndex = 8;
-            orderByDateButton.Tag = "YearOfPublication";
-            orderByDateButton.Text = "По дате выхода";
-            orderByDateButton.UseVisualStyleBackColor = true;
-            // 
-            // orderByName
-            // 
-            orderByName.AutoSize = true;
-            orderByName.Dock = DockStyle.Left;
-            orderByName.Location = new Point(162, 0);
-            orderByName.Name = "orderByName";
-            orderByName.Size = new Size(147, 119);
-            orderByName.TabIndex = 7;
-            orderByName.Tag = "Name";
-            orderByName.Text = "По названию";
-            orderByName.UseVisualStyleBackColor = true;
-            // 
-            // defaultOrder
-            // 
-            defaultOrder.AutoSize = true;
-            defaultOrder.Checked = true;
-            defaultOrder.Dock = DockStyle.Top;
-            defaultOrder.Location = new Point(0, 0);
-            defaultOrder.Name = "defaultOrder";
-            defaultOrder.Size = new Size(319, 29);
-            defaultOrder.TabIndex = 4;
-            defaultOrder.TabStop = true;
-            defaultOrder.Text = "По умолчанию";
-            defaultOrder.UseVisualStyleBackColor = true;
-            // 
-            // orderByDebtor
-            // 
-            orderByDebtor.AutoSize = true;
-            orderByDebtor.Dock = DockStyle.Top;
-            orderByDebtor.Location = new Point(0, 116);
-            orderByDebtor.Name = "orderByDebtor";
-            orderByDebtor.Size = new Size(319, 29);
-            orderByDebtor.TabIndex = 8;
-            orderByDebtor.Text = "По наличию задолженностей";
-            orderByDebtor.UseVisualStyleBackColor = true;
-            // 
-            // orderByAddress
-            // 
-            orderByAddress.AutoSize = true;
-            orderByAddress.Dock = DockStyle.Top;
-            orderByAddress.Location = new Point(0, 87);
-            orderByAddress.Name = "orderByAddress";
-            orderByAddress.Size = new Size(319, 29);
-            orderByAddress.TabIndex = 7;
-            orderByAddress.Text = "По адресу";
-            orderByAddress.UseVisualStyleBackColor = true;
-            // 
-            // orderByPhone
-            // 
-            orderByPhone.AutoSize = true;
-            orderByPhone.Dock = DockStyle.Top;
-            orderByPhone.Location = new Point(0, 58);
-            orderByPhone.Name = "orderByPhone";
-            orderByPhone.Size = new Size(319, 29);
-            orderByPhone.TabIndex = 6;
-            orderByPhone.Text = "По номеру телефона";
-            orderByPhone.UseVisualStyleBackColor = true;
-            // 
-            // orderByReaderName
-            // 
-            orderByReaderName.AutoSize = true;
-            orderByReaderName.Dock = DockStyle.Top;
-            orderByReaderName.Location = new Point(0, 29);
-            orderByReaderName.Name = "orderByReaderName";
-            orderByReaderName.Size = new Size(319, 29);
-            orderByReaderName.TabIndex = 5;
-            orderByReaderName.Text = "По ФИО";
-            orderByReaderName.UseVisualStyleBackColor = true;
             // 
             // MainLibraryForm
             // 

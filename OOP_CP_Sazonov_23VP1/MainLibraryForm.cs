@@ -103,7 +103,16 @@ namespace OOP_CP_Sazonov_23VP1
         {
             ClearTable(booksReviewDataGridView);
 
-            List<Book> books = _bookService.getAllBooks();
+            string orderBy_Value = "ID";
+            foreach (RadioButton button in orderByPanel.Controls.OfType<RadioButton>()) {
+                if (button.Checked) {
+                    orderBy_Value = (string)button.Tag;
+                }
+            }
+
+            bool isAscendingOrder = (ascendingOrder.Checked ? true : false);
+
+            List<Book> books = _bookService.getAllBooks(orderBy_Value, isAscendingOrder);
             foreach (Book book in books)
             {
                 AddBookToTable(book);

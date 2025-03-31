@@ -22,8 +22,8 @@ namespace OOP_CP_Sazonov_23VP1.service
             _genreRepository = genreRepository;
         }
 
-        public List<Book> getAllBooks() {
-            return _bookRepository.GetAllBooks();
+        public List<Book> getAllBooks(string orderBy_value, bool isAscending) {
+            return _bookRepository.GetAllBooks(orderBy_value, isAscending);
         }
 
         public Book? getBookById(long id) {

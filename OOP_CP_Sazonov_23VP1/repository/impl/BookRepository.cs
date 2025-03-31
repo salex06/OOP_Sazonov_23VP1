@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace OOP_CP_Sazonov_23VP1.repository.impl
 {
@@ -19,12 +20,21 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             _context = context;
         }
 
-        public List<Book> GetAllBooks()
+        public List<Book> GetAllBooks(string orderBy_value, bool isAscending)
         {
+            if(isAscending)
+                return _context.Books
+                    .Include(src => src.Authors)
+                    .Include(src => src.Genres)
+                    .Include(src => src.Loans)
+                    .OrderBy(src => EF.Property<Book>(src!, orderBy_value))
+                    .ToList();
+
             return _context.Books
                 .Include(src => src.Authors)
                 .Include(src => src.Genres)
                 .Include(src => src.Loans)
+                .OrderByDescending(src => EF.Property<Book>(src!, orderBy_value))
                 .ToList();
         }
 
