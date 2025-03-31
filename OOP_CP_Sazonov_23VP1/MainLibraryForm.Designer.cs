@@ -61,8 +61,6 @@
             descendingOrder = new RadioButton();
             ascendingOrder = new RadioButton();
             orderByPanel = new Panel();
-            orderByGenre = new RadioButton();
-            orderByAuthor = new RadioButton();
             orderByIsbn = new RadioButton();
             orderByPublisher = new RadioButton();
             orderByDateButton = new RadioButton();
@@ -274,13 +272,13 @@
             booksReviewDataGridView.BackgroundColor = Color.PapayaWhip;
             booksReviewDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             booksReviewDataGridView.Columns.AddRange(new DataGridViewColumn[] { bookId, bookName, yearOfPublishing, bookAuthors, bookGenres, publisherName, bookISBN, readerID, returnDate });
-            booksReviewDataGridView.Dock = DockStyle.Left;
+            booksReviewDataGridView.Dock = DockStyle.Top;
             booksReviewDataGridView.Location = new Point(10, 0);
             booksReviewDataGridView.Name = "booksReviewDataGridView";
             booksReviewDataGridView.ReadOnly = true;
             booksReviewDataGridView.RowHeadersVisible = false;
             booksReviewDataGridView.RowHeadersWidth = 62;
-            booksReviewDataGridView.Size = new Size(926, 685);
+            booksReviewDataGridView.Size = new Size(1296, 308);
             booksReviewDataGridView.TabIndex = 1;
             // 
             // bookId
@@ -364,7 +362,7 @@
             booksReviewPanel.Margin = new Padding(30, 3, 3, 3);
             booksReviewPanel.Name = "booksReviewPanel";
             booksReviewPanel.Padding = new Padding(10, 0, 0, 0);
-            booksReviewPanel.Size = new Size(1306, 685);
+            booksReviewPanel.Size = new Size(1306, 732);
             booksReviewPanel.TabIndex = 2;
             // 
             // doSelectQueryPanel
@@ -380,10 +378,10 @@
             doSelectQueryPanel.Controls.Add(selectBookNamePanel);
             doSelectQueryPanel.Controls.Add(findAndSortBooksLabel);
             doSelectQueryPanel.Controls.Add(findBookButton);
-            doSelectQueryPanel.Dock = DockStyle.Fill;
-            doSelectQueryPanel.Location = new Point(936, 0);
+            doSelectQueryPanel.Dock = DockStyle.Top;
+            doSelectQueryPanel.Location = new Point(10, 308);
             doSelectQueryPanel.Name = "doSelectQueryPanel";
-            doSelectQueryPanel.Size = new Size(370, 685);
+            doSelectQueryPanel.Size = new Size(1296, 428);
             doSelectQueryPanel.TabIndex = 2;
             // 
             // resetQuery
@@ -391,118 +389,105 @@
             resetQuery.BackColor = Color.WhiteSmoke;
             resetQuery.Cursor = Cursors.Hand;
             resetQuery.Dock = DockStyle.Bottom;
-            resetQuery.Location = new Point(0, 617);
+            resetQuery.Location = new Point(0, 360);
             resetQuery.Name = "resetQuery";
-            resetQuery.Size = new Size(370, 34);
+            resetQuery.Size = new Size(1296, 34);
             resetQuery.TabIndex = 10;
             resetQuery.Text = "Сбросить параметры";
             resetQuery.UseVisualStyleBackColor = false;
             // 
             // ascendingDescendingPanel
             // 
-            ascendingDescendingPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            ascendingDescendingPanel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ascendingDescendingPanel.Controls.Add(descendingOrder);
             ascendingDescendingPanel.Controls.Add(ascendingOrder);
-            ascendingDescendingPanel.Location = new Point(0, 509);
+            ascendingDescendingPanel.Location = new Point(953, 231);
             ascendingDescendingPanel.Name = "ascendingDescendingPanel";
-            ascendingDescendingPanel.Size = new Size(370, 43);
+            ascendingDescendingPanel.Size = new Size(338, 119);
             ascendingDescendingPanel.TabIndex = 9;
             // 
             // descendingOrder
             // 
             descendingOrder.AutoSize = true;
-            descendingOrder.Location = new Point(189, 3);
+            descendingOrder.Dock = DockStyle.Right;
+            descendingOrder.Location = new Point(12, 0);
             descendingOrder.Name = "descendingOrder";
-            descendingOrder.Size = new Size(152, 29);
+            descendingOrder.Size = new Size(152, 119);
             descendingOrder.TabIndex = 1;
-            descendingOrder.TabStop = true;
             descendingOrder.Text = "По убыванию";
             descendingOrder.UseVisualStyleBackColor = true;
             // 
             // ascendingOrder
             // 
             ascendingOrder.AutoSize = true;
-            ascendingOrder.Location = new Point(9, 3);
+            ascendingOrder.Checked = true;
+            ascendingOrder.Dock = DockStyle.Right;
+            ascendingOrder.Location = new Point(164, 0);
             ascendingOrder.Name = "ascendingOrder";
-            ascendingOrder.Size = new Size(174, 29);
+            ascendingOrder.Size = new Size(174, 119);
             ascendingOrder.TabIndex = 0;
+            ascendingOrder.TabStop = true;
             ascendingOrder.Text = "По возрастанию";
             ascendingOrder.UseVisualStyleBackColor = true;
             // 
             // orderByPanel
             // 
             orderByPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            orderByPanel.Controls.Add(orderByGenre);
-            orderByPanel.Controls.Add(orderByAuthor);
             orderByPanel.Controls.Add(orderByIsbn);
             orderByPanel.Controls.Add(orderByPublisher);
             orderByPanel.Controls.Add(orderByDateButton);
             orderByPanel.Controls.Add(orderByName);
-            orderByPanel.Location = new Point(0, 390);
+            orderByPanel.Location = new Point(0, 231);
             orderByPanel.Name = "orderByPanel";
-            orderByPanel.Size = new Size(370, 119);
+            orderByPanel.Size = new Size(947, 119);
             orderByPanel.TabIndex = 8;
-            // 
-            // orderByGenre
-            // 
-            orderByGenre.AutoSize = true;
-            orderByGenre.Location = new Point(189, 76);
-            orderByGenre.Name = "orderByGenre";
-            orderByGenre.Size = new Size(118, 29);
-            orderByGenre.TabIndex = 5;
-            orderByGenre.TabStop = true;
-            orderByGenre.Text = "По жанру";
-            orderByGenre.UseVisualStyleBackColor = true;
-            // 
-            // orderByAuthor
-            // 
-            orderByAuthor.AutoSize = true;
-            orderByAuthor.Location = new Point(9, 76);
-            orderByAuthor.Name = "orderByAuthor";
-            orderByAuthor.Size = new Size(123, 29);
-            orderByAuthor.TabIndex = 4;
-            orderByAuthor.TabStop = true;
-            orderByAuthor.Text = "По автору";
-            orderByAuthor.UseVisualStyleBackColor = true;
             // 
             // orderByIsbn
             // 
             orderByIsbn.AutoSize = true;
-            orderByIsbn.Location = new Point(189, 41);
+            orderByIsbn.Dock = DockStyle.Left;
+            orderByIsbn.Location = new Point(485, 0);
             orderByIsbn.Name = "orderByIsbn";
-            orderByIsbn.Size = new Size(104, 29);
-            orderByIsbn.TabIndex = 3;
+            orderByIsbn.Size = new Size(104, 119);
+            orderByIsbn.TabIndex = 5;
             orderByIsbn.TabStop = true;
+            orderByIsbn.Tag = "ISBN";
             orderByIsbn.Text = "По ISBN";
             orderByIsbn.UseVisualStyleBackColor = true;
             // 
             // orderByPublisher
             // 
             orderByPublisher.AutoSize = true;
-            orderByPublisher.Location = new Point(9, 41);
+            orderByPublisher.Dock = DockStyle.Left;
+            orderByPublisher.Location = new Point(314, 0);
             orderByPublisher.Name = "orderByPublisher";
-            orderByPublisher.Size = new Size(171, 29);
-            orderByPublisher.TabIndex = 2;
+            orderByPublisher.Size = new Size(171, 119);
+            orderByPublisher.TabIndex = 4;
+            orderByPublisher.Tag = "Publisher";
             orderByPublisher.Text = "По издательству";
             orderByPublisher.UseVisualStyleBackColor = true;
             // 
             // orderByDateButton
             // 
             orderByDateButton.AutoSize = true;
-            orderByDateButton.Location = new Point(189, 6);
+            orderByDateButton.Dock = DockStyle.Left;
+            orderByDateButton.Location = new Point(147, 0);
             orderByDateButton.Name = "orderByDateButton";
-            orderByDateButton.Size = new Size(167, 29);
+            orderByDateButton.Size = new Size(167, 119);
             orderByDateButton.TabIndex = 1;
+            orderByDateButton.Tag = "YearOfPublication";
             orderByDateButton.Text = "По дате выхода";
             orderByDateButton.UseVisualStyleBackColor = true;
             // 
             // orderByName
             // 
             orderByName.AutoSize = true;
-            orderByName.Location = new Point(9, 6);
+            orderByName.Dock = DockStyle.Left;
+            orderByName.Location = new Point(0, 0);
             orderByName.Name = "orderByName";
-            orderByName.Size = new Size(147, 29);
+            orderByName.Size = new Size(147, 119);
             orderByName.TabIndex = 0;
+            orderByName.Tag = "Name";
             orderByName.Text = "По названию";
             orderByName.UseVisualStyleBackColor = true;
             // 
@@ -512,9 +497,9 @@
             panel2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel2.Controls.Add(genreComboBox);
             panel2.Controls.Add(genreLabel);
-            panel2.Location = new Point(0, 331);
+            panel2.Location = new Point(584, 166);
             panel2.Name = "panel2";
-            panel2.Size = new Size(370, 59);
+            panel2.Size = new Size(707, 59);
             panel2.TabIndex = 7;
             // 
             // genreComboBox
@@ -537,13 +522,12 @@
             // 
             // authorNamePanel
             // 
-            authorNamePanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             authorNamePanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             authorNamePanel.Controls.Add(authorNameComboBox);
             authorNamePanel.Controls.Add(authorNameLabel);
-            authorNamePanel.Location = new Point(0, 272);
+            authorNamePanel.Location = new Point(0, 166);
             authorNamePanel.Name = "authorNamePanel";
-            authorNamePanel.Size = new Size(370, 59);
+            authorNamePanel.Size = new Size(578, 59);
             authorNamePanel.TabIndex = 6;
             // 
             // authorNameComboBox
@@ -570,9 +554,9 @@
             isbnPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             isbnPanel.Controls.Add(isbnValueTextBox);
             isbnPanel.Controls.Add(isbnValueLabel);
-            isbnPanel.Location = new Point(0, 213);
+            isbnPanel.Location = new Point(584, 101);
             isbnPanel.Name = "isbnPanel";
-            isbnPanel.Size = new Size(370, 59);
+            isbnPanel.Size = new Size(707, 59);
             isbnPanel.TabIndex = 5;
             // 
             // isbnValueTextBox
@@ -594,13 +578,12 @@
             // 
             // bookPublisherPanel
             // 
-            bookPublisherPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             bookPublisherPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             bookPublisherPanel.Controls.Add(bookPublisherNameTextBox);
             bookPublisherPanel.Controls.Add(publisherNameLabel);
-            bookPublisherPanel.Location = new Point(0, 154);
+            bookPublisherPanel.Location = new Point(0, 101);
             bookPublisherPanel.Name = "bookPublisherPanel";
-            bookPublisherPanel.Size = new Size(370, 59);
+            bookPublisherPanel.Size = new Size(578, 59);
             bookPublisherPanel.TabIndex = 4;
             // 
             // bookPublisherNameTextBox
@@ -626,9 +609,9 @@
             bookPublishingDatePanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             bookPublishingDatePanel.Controls.Add(bookPublishingDateNumericUpDown);
             bookPublishingDatePanel.Controls.Add(bookPublishingDateLabel);
-            bookPublishingDatePanel.Location = new Point(0, 95);
+            bookPublishingDatePanel.Location = new Point(584, 36);
             bookPublishingDatePanel.Name = "bookPublishingDatePanel";
-            bookPublishingDatePanel.Size = new Size(370, 59);
+            bookPublishingDatePanel.Size = new Size(707, 59);
             bookPublishingDatePanel.TabIndex = 3;
             // 
             // bookPublishingDateNumericUpDown
@@ -651,13 +634,12 @@
             // 
             // selectBookNamePanel
             // 
-            selectBookNamePanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             selectBookNamePanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             selectBookNamePanel.Controls.Add(bookNameSelectTextBox);
             selectBookNamePanel.Controls.Add(bookNameSelectLabel);
             selectBookNamePanel.Location = new Point(0, 36);
             selectBookNamePanel.Name = "selectBookNamePanel";
-            selectBookNamePanel.Size = new Size(370, 59);
+            selectBookNamePanel.Size = new Size(578, 59);
             selectBookNamePanel.TabIndex = 2;
             // 
             // bookNameSelectTextBox
@@ -683,7 +665,7 @@
             findAndSortBooksLabel.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
             findAndSortBooksLabel.Location = new Point(0, 0);
             findAndSortBooksLabel.Name = "findAndSortBooksLabel";
-            findAndSortBooksLabel.Size = new Size(370, 36);
+            findAndSortBooksLabel.Size = new Size(1296, 36);
             findAndSortBooksLabel.TabIndex = 1;
             findAndSortBooksLabel.Text = "Поиск и сортировка книг";
             findAndSortBooksLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -695,9 +677,9 @@
             findBookButton.Dock = DockStyle.Bottom;
             findBookButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             findBookButton.ForeColor = SystemColors.ControlText;
-            findBookButton.Location = new Point(0, 651);
+            findBookButton.Location = new Point(0, 394);
             findBookButton.Name = "findBookButton";
-            findBookButton.Size = new Size(370, 34);
+            findBookButton.Size = new Size(1296, 34);
             findBookButton.TabIndex = 0;
             findBookButton.Text = "Найти книги";
             findBookButton.UseVisualStyleBackColor = false;
@@ -712,7 +694,7 @@
             mainWindowTabs.Margin = new Padding(0);
             mainWindowTabs.Name = "mainWindowTabs";
             mainWindowTabs.SelectedIndex = 0;
-            mainWindowTabs.Size = new Size(1320, 729);
+            mainWindowTabs.Size = new Size(1320, 776);
             mainWindowTabs.TabIndex = 3;
             // 
             // booksPage
@@ -721,7 +703,7 @@
             booksPage.Location = new Point(4, 34);
             booksPage.Name = "booksPage";
             booksPage.Padding = new Padding(3);
-            booksPage.Size = new Size(1312, 691);
+            booksPage.Size = new Size(1312, 738);
             booksPage.TabIndex = 0;
             booksPage.Text = "Поиск и сортировка книг";
             booksPage.UseVisualStyleBackColor = true;
@@ -733,7 +715,7 @@
             findAndSortClients.Location = new Point(4, 34);
             findAndSortClients.Name = "findAndSortClients";
             findAndSortClients.Padding = new Padding(3);
-            findAndSortClients.Size = new Size(1312, 691);
+            findAndSortClients.Size = new Size(1312, 738);
             findAndSortClients.TabIndex = 1;
             findAndSortClients.Text = "Поиск и сортировка клиентов";
             findAndSortClients.UseVisualStyleBackColor = true;
@@ -745,11 +727,11 @@
             findAndSortReadersPanel.Controls.Add(fieldOrderPanel);
             findAndSortReadersPanel.Controls.Add(selectReaderSettingsPanel);
             findAndSortReadersPanel.Controls.Add(findAndSortReadersLabel);
-            findAndSortReadersPanel.Dock = DockStyle.Fill;
-            findAndSortReadersPanel.Location = new Point(920, 3);
+            findAndSortReadersPanel.Dock = DockStyle.Right;
+            findAndSortReadersPanel.Location = new Point(980, 3);
             findAndSortReadersPanel.Name = "findAndSortReadersPanel";
             findAndSortReadersPanel.Padding = new Padding(10, 0, 0, 0);
-            findAndSortReadersPanel.Size = new Size(389, 685);
+            findAndSortReadersPanel.Size = new Size(329, 732);
             findAndSortReadersPanel.TabIndex = 3;
             // 
             // buttonsPanel
@@ -757,9 +739,9 @@
             buttonsPanel.Controls.Add(resetButton);
             buttonsPanel.Controls.Add(findReadersButton);
             buttonsPanel.Dock = DockStyle.Bottom;
-            buttonsPanel.Location = new Point(10, 560);
+            buttonsPanel.Location = new Point(10, 607);
             buttonsPanel.Name = "buttonsPanel";
-            buttonsPanel.Size = new Size(379, 125);
+            buttonsPanel.Size = new Size(319, 125);
             buttonsPanel.TabIndex = 6;
             // 
             // resetButton
@@ -769,7 +751,7 @@
             resetButton.Dock = DockStyle.Bottom;
             resetButton.Location = new Point(0, 57);
             resetButton.Name = "resetButton";
-            resetButton.Size = new Size(379, 34);
+            resetButton.Size = new Size(319, 34);
             resetButton.TabIndex = 13;
             resetButton.Text = "Сбросить параметры";
             resetButton.UseVisualStyleBackColor = false;
@@ -783,7 +765,7 @@
             findReadersButton.ForeColor = SystemColors.ControlText;
             findReadersButton.Location = new Point(0, 91);
             findReadersButton.Name = "findReadersButton";
-            findReadersButton.Size = new Size(379, 34);
+            findReadersButton.Size = new Size(319, 34);
             findReadersButton.TabIndex = 12;
             findReadersButton.Text = "Найти читателей";
             findReadersButton.UseVisualStyleBackColor = false;
@@ -795,7 +777,7 @@
             ascDescOrderPanel.Dock = DockStyle.Top;
             ascDescOrderPanel.Location = new Point(10, 312);
             ascDescOrderPanel.Name = "ascDescOrderPanel";
-            ascDescOrderPanel.Size = new Size(379, 73);
+            ascDescOrderPanel.Size = new Size(319, 73);
             ascDescOrderPanel.TabIndex = 5;
             // 
             // descendingReaderOrder
@@ -804,7 +786,7 @@
             descendingReaderOrder.Dock = DockStyle.Top;
             descendingReaderOrder.Location = new Point(0, 29);
             descendingReaderOrder.Name = "descendingReaderOrder";
-            descendingReaderOrder.Size = new Size(379, 29);
+            descendingReaderOrder.Size = new Size(319, 29);
             descendingReaderOrder.TabIndex = 3;
             descendingReaderOrder.Text = "По убыванию";
             descendingReaderOrder.UseVisualStyleBackColor = true;
@@ -812,11 +794,13 @@
             // ascendingReaderOrder
             // 
             ascendingReaderOrder.AutoSize = true;
+            ascendingReaderOrder.Checked = true;
             ascendingReaderOrder.Dock = DockStyle.Top;
             ascendingReaderOrder.Location = new Point(0, 0);
             ascendingReaderOrder.Name = "ascendingReaderOrder";
-            ascendingReaderOrder.Size = new Size(379, 29);
+            ascendingReaderOrder.Size = new Size(319, 29);
             ascendingReaderOrder.TabIndex = 2;
+            ascendingReaderOrder.TabStop = true;
             ascendingReaderOrder.Text = "По возрастанию";
             ascendingReaderOrder.UseVisualStyleBackColor = true;
             // 
@@ -829,7 +813,7 @@
             fieldOrderPanel.Dock = DockStyle.Top;
             fieldOrderPanel.Location = new Point(10, 188);
             fieldOrderPanel.Name = "fieldOrderPanel";
-            fieldOrderPanel.Size = new Size(379, 124);
+            fieldOrderPanel.Size = new Size(319, 124);
             fieldOrderPanel.TabIndex = 4;
             // 
             // orderByDebtor
@@ -838,7 +822,7 @@
             orderByDebtor.Dock = DockStyle.Top;
             orderByDebtor.Location = new Point(0, 87);
             orderByDebtor.Name = "orderByDebtor";
-            orderByDebtor.Size = new Size(379, 29);
+            orderByDebtor.Size = new Size(319, 29);
             orderByDebtor.TabIndex = 3;
             orderByDebtor.Text = "По наличию задолженностей";
             orderByDebtor.UseVisualStyleBackColor = true;
@@ -849,7 +833,7 @@
             orderByAddress.Dock = DockStyle.Top;
             orderByAddress.Location = new Point(0, 58);
             orderByAddress.Name = "orderByAddress";
-            orderByAddress.Size = new Size(379, 29);
+            orderByAddress.Size = new Size(319, 29);
             orderByAddress.TabIndex = 2;
             orderByAddress.Text = "По адресу";
             orderByAddress.UseVisualStyleBackColor = true;
@@ -860,7 +844,7 @@
             orderByPhone.Dock = DockStyle.Top;
             orderByPhone.Location = new Point(0, 29);
             orderByPhone.Name = "orderByPhone";
-            orderByPhone.Size = new Size(379, 29);
+            orderByPhone.Size = new Size(319, 29);
             orderByPhone.TabIndex = 1;
             orderByPhone.Text = "По номеру телефона";
             orderByPhone.UseVisualStyleBackColor = true;
@@ -871,7 +855,7 @@
             orderByReaderName.Dock = DockStyle.Top;
             orderByReaderName.Location = new Point(0, 0);
             orderByReaderName.Name = "orderByReaderName";
-            orderByReaderName.Size = new Size(379, 29);
+            orderByReaderName.Size = new Size(319, 29);
             orderByReaderName.TabIndex = 0;
             orderByReaderName.Text = "По ФИО";
             orderByReaderName.UseVisualStyleBackColor = true;
@@ -885,7 +869,7 @@
             selectReaderSettingsPanel.Dock = DockStyle.Top;
             selectReaderSettingsPanel.Location = new Point(10, 36);
             selectReaderSettingsPanel.Name = "selectReaderSettingsPanel";
-            selectReaderSettingsPanel.Size = new Size(379, 152);
+            selectReaderSettingsPanel.Size = new Size(319, 152);
             selectReaderSettingsPanel.TabIndex = 3;
             // 
             // isDebtorPanel
@@ -895,7 +879,7 @@
             isDebtorPanel.Dock = DockStyle.Top;
             isDebtorPanel.Location = new Point(0, 108);
             isDebtorPanel.Name = "isDebtorPanel";
-            isDebtorPanel.Size = new Size(379, 36);
+            isDebtorPanel.Size = new Size(319, 36);
             isDebtorPanel.TabIndex = 3;
             // 
             // isDebtorComboBox
@@ -906,7 +890,7 @@
             isDebtorComboBox.Items.AddRange(new object[] { "Не важно", "Да", "Нет" });
             isDebtorComboBox.Location = new Point(120, 0);
             isDebtorComboBox.Name = "isDebtorComboBox";
-            isDebtorComboBox.Size = new Size(259, 33);
+            isDebtorComboBox.Size = new Size(199, 33);
             isDebtorComboBox.TabIndex = 1;
             isDebtorComboBox.Text = "Не важно";
             isDebtorComboBox.ValueMember = "Не важно";
@@ -928,7 +912,7 @@
             readerAddressPanel.Dock = DockStyle.Top;
             readerAddressPanel.Location = new Point(0, 72);
             readerAddressPanel.Name = "readerAddressPanel";
-            readerAddressPanel.Size = new Size(379, 36);
+            readerAddressPanel.Size = new Size(319, 36);
             readerAddressPanel.TabIndex = 2;
             // 
             // readerAddressTextBox
@@ -936,7 +920,7 @@
             readerAddressTextBox.Dock = DockStyle.Fill;
             readerAddressTextBox.Location = new Point(120, 0);
             readerAddressTextBox.Name = "readerAddressTextBox";
-            readerAddressTextBox.Size = new Size(259, 31);
+            readerAddressTextBox.Size = new Size(199, 31);
             readerAddressTextBox.TabIndex = 1;
             // 
             // readerAddressLabel
@@ -956,7 +940,7 @@
             readerPhoneTextBox.Dock = DockStyle.Top;
             readerPhoneTextBox.Location = new Point(0, 36);
             readerPhoneTextBox.Name = "readerPhoneTextBox";
-            readerPhoneTextBox.Size = new Size(379, 36);
+            readerPhoneTextBox.Size = new Size(319, 36);
             readerPhoneTextBox.TabIndex = 1;
             // 
             // textBox2
@@ -964,7 +948,7 @@
             textBox2.Dock = DockStyle.Fill;
             textBox2.Location = new Point(120, 0);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(259, 31);
+            textBox2.Size = new Size(199, 31);
             textBox2.TabIndex = 1;
             // 
             // phoneNumberLabel
@@ -984,7 +968,7 @@
             readerNamePanel.Dock = DockStyle.Top;
             readerNamePanel.Location = new Point(0, 0);
             readerNamePanel.Name = "readerNamePanel";
-            readerNamePanel.Size = new Size(379, 36);
+            readerNamePanel.Size = new Size(319, 36);
             readerNamePanel.TabIndex = 0;
             // 
             // readerNameTextBox
@@ -992,7 +976,7 @@
             readerNameTextBox.Dock = DockStyle.Fill;
             readerNameTextBox.Location = new Point(120, 0);
             readerNameTextBox.Name = "readerNameTextBox";
-            readerNameTextBox.Size = new Size(259, 31);
+            readerNameTextBox.Size = new Size(199, 31);
             readerNameTextBox.TabIndex = 1;
             // 
             // readerNameLabel
@@ -1011,7 +995,7 @@
             findAndSortReadersLabel.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 204);
             findAndSortReadersLabel.Location = new Point(10, 0);
             findAndSortReadersLabel.Name = "findAndSortReadersLabel";
-            findAndSortReadersLabel.Size = new Size(379, 36);
+            findAndSortReadersLabel.Size = new Size(319, 36);
             findAndSortReadersLabel.TabIndex = 2;
             findAndSortReadersLabel.Text = "Поиск и сортировка книг";
             findAndSortReadersLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -1019,22 +1003,22 @@
             // readersPreviewDataGridView
             // 
             readersPreviewDataGridView.AllowUserToAddRows = false;
+            readersPreviewDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             readersPreviewDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             readersPreviewDataGridView.BackgroundColor = Color.PapayaWhip;
             readersPreviewDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             readersPreviewDataGridView.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, readerName, phoneNumber, Address, isDebtor });
-            readersPreviewDataGridView.Dock = DockStyle.Left;
             readersPreviewDataGridView.Location = new Point(3, 3);
             readersPreviewDataGridView.Name = "readersPreviewDataGridView";
             readersPreviewDataGridView.ReadOnly = true;
             readersPreviewDataGridView.RowHeadersVisible = false;
             readersPreviewDataGridView.RowHeadersWidth = 62;
-            readersPreviewDataGridView.Size = new Size(917, 685);
+            readersPreviewDataGridView.Size = new Size(971, 732);
             readersPreviewDataGridView.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            dataGridViewTextBoxColumn1.FillWeight = 15.794117F;
+            dataGridViewTextBoxColumn1.FillWeight = 25.794117F;
             dataGridViewTextBoxColumn1.HeaderText = "ID";
             dataGridViewTextBoxColumn1.MinimumWidth = 8;
             dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -1073,7 +1057,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.AntiqueWhite;
-            ClientSize = new Size(1320, 763);
+            ClientSize = new Size(1320, 810);
             Controls.Add(mainWindowTabs);
             Controls.Add(addBookToDataBaseToolStrip);
             Name = "MainLibraryForm";
@@ -1160,10 +1144,6 @@
         private ComboBox authorNameComboBox;
         private Panel orderByPanel;
         private RadioButton orderByName;
-        private RadioButton orderByGenre;
-        private RadioButton orderByAuthor;
-        private RadioButton orderByIsbn;
-        private RadioButton orderByPublisher;
         private RadioButton orderByDateButton;
         private Panel ascendingDescendingPanel;
         private RadioButton descendingOrder;
@@ -1173,11 +1153,6 @@
         private Button resetQuery;
         private TabPage findAndSortClients;
         private DataGridView readersPreviewDataGridView;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn readerName;
-        private DataGridViewTextBoxColumn phoneNumber;
-        private DataGridViewTextBoxColumn Address;
-        private DataGridViewTextBoxColumn isDebtor;
         private Panel findAndSortReadersPanel;
         private Label findAndSortReadersLabel;
         private Panel selectReaderSettingsPanel;
@@ -1213,5 +1188,12 @@
         private DataGridViewTextBoxColumn bookISBN;
         private DataGridViewTextBoxColumn readerID;
         private DataGridViewTextBoxColumn returnDate;
+        private RadioButton orderByPublisher;
+        private RadioButton orderByIsbn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn readerName;
+        private DataGridViewTextBoxColumn phoneNumber;
+        private DataGridViewTextBoxColumn Address;
+        private DataGridViewTextBoxColumn isDebtor;
     }
 }
