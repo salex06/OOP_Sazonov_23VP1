@@ -95,7 +95,6 @@
             descendingReaderOrder = new RadioButton();
             ascendingReaderOrder = new RadioButton();
             fieldOrderPanel = new Panel();
-            orderByDebtor = new RadioButton();
             orderByAddress = new RadioButton();
             orderByPhone = new RadioButton();
             orderByReaderName = new RadioButton();
@@ -797,7 +796,6 @@
             // 
             // fieldOrderPanel
             // 
-            fieldOrderPanel.Controls.Add(orderByDebtor);
             fieldOrderPanel.Controls.Add(orderByAddress);
             fieldOrderPanel.Controls.Add(orderByPhone);
             fieldOrderPanel.Controls.Add(orderByReaderName);
@@ -808,17 +806,6 @@
             fieldOrderPanel.Size = new Size(319, 153);
             fieldOrderPanel.TabIndex = 4;
             // 
-            // orderByDebtor
-            // 
-            orderByDebtor.AutoSize = true;
-            orderByDebtor.Dock = DockStyle.Top;
-            orderByDebtor.Location = new Point(0, 116);
-            orderByDebtor.Name = "orderByDebtor";
-            orderByDebtor.Size = new Size(319, 29);
-            orderByDebtor.TabIndex = 8;
-            orderByDebtor.Text = "По наличию задолженностей";
-            orderByDebtor.UseVisualStyleBackColor = true;
-            // 
             // orderByAddress
             // 
             orderByAddress.AutoSize = true;
@@ -827,6 +814,7 @@
             orderByAddress.Name = "orderByAddress";
             orderByAddress.Size = new Size(319, 29);
             orderByAddress.TabIndex = 7;
+            orderByAddress.Tag = "Address";
             orderByAddress.Text = "По адресу";
             orderByAddress.UseVisualStyleBackColor = true;
             // 
@@ -838,6 +826,7 @@
             orderByPhone.Name = "orderByPhone";
             orderByPhone.Size = new Size(319, 29);
             orderByPhone.TabIndex = 6;
+            orderByPhone.Tag = "PhoneNumber";
             orderByPhone.Text = "По номеру телефона";
             orderByPhone.UseVisualStyleBackColor = true;
             // 
@@ -849,6 +838,7 @@
             orderByReaderName.Name = "orderByReaderName";
             orderByReaderName.Size = new Size(319, 29);
             orderByReaderName.TabIndex = 5;
+            orderByReaderName.Tag = "Name";
             orderByReaderName.Text = "По ФИО";
             orderByReaderName.UseVisualStyleBackColor = true;
             // 
@@ -862,6 +852,7 @@
             defaultOrder.Size = new Size(319, 29);
             defaultOrder.TabIndex = 4;
             defaultOrder.TabStop = true;
+            defaultOrder.Tag = "ID";
             defaultOrder.Text = "По умолчанию";
             defaultOrder.UseVisualStyleBackColor = true;
             // 
@@ -1195,7 +1186,6 @@
         private RadioButton orderByDateButton;
         private RadioButton orderByName;
         private RadioButton defaultOrderRadioButton;
-        private RadioButton orderByDebtor;
         private RadioButton orderByAddress;
         private RadioButton orderByPhone;
         private RadioButton orderByReaderName;

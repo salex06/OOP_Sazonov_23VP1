@@ -103,9 +103,9 @@ namespace OOP_CP_Sazonov_23VP1
         {
             ClearTable(booksReviewDataGridView);
 
-            string orderBy_Value = "ID";
+            string orderBy_Value = "Id";
             foreach (RadioButton button in orderByPanel.Controls.OfType<RadioButton>()) {
-                if (button.Checked) {
+                if (button.Checked && button.Tag != null) {
                     orderBy_Value = (string)button.Tag;
                 }
             }
@@ -155,7 +155,18 @@ namespace OOP_CP_Sazonov_23VP1
         {
             ClearTable(readersPreviewDataGridView);
 
-            List<Reader> readers = _readerService.GetAllReaders();
+            string orderBy_Value = "Id";
+            foreach (RadioButton button in fieldOrderPanel.Controls.OfType<RadioButton>())
+            {
+                if (button.Checked && button.Tag != null)
+                {
+                    orderBy_Value = (string)button.Tag;
+                }
+            }
+
+            bool isAscendingOrder = (ascendingReaderOrder.Checked ? true : false);
+
+            List<Reader> readers = _readerService.GetAllReaders(orderBy_Value, isAscendingOrder);
             foreach (Reader reader in readers)
             {
                 AddReaderToTable(reader);

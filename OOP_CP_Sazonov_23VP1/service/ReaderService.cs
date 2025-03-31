@@ -19,8 +19,8 @@ namespace OOP_CP_Sazonov_23VP1.service
             _readerRepository = repository;
         }
 
-        public List<Reader> GetAllReaders() {
-            return _readerRepository.getAllReaders();
+        public List<Reader> GetAllReaders(string orderBy_Value, bool isAscendingOrder) {
+            return _readerRepository.getAllReaders(orderBy_Value, isAscendingOrder);
         }
 
         public Reader SaveReader(string readerName, string phoneNumber, string address) {

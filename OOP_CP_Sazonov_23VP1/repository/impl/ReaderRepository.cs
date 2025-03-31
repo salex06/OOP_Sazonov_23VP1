@@ -23,9 +23,12 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             return _context.Readers.Find(readerId) != null;
         }
 
-        public List<Reader> getAllReaders()
+        public List<Reader> getAllReaders(string orderBy_Value, bool isAscendingOrder)
         {
-            return _context.Readers.Include(src => src.Loans).ToList();
+            if(isAscendingOrder)
+                return _context.Readers.Include(src => src.Loans).OrderBy(src => EF.Property<Reader>(src!, orderBy_Value)).ToList();
+
+            return _context.Readers.Include(src => src.Loans).OrderByDescending(src => EF.Property<Reader>(src!, orderBy_Value)).ToList();
         }
 
         public Reader? getReaderById(long readerId)
