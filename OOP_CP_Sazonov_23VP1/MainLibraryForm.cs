@@ -246,5 +246,11 @@ namespace OOP_CP_Sazonov_23VP1
             BookReportForm reportForm = new BookReportForm(_bookService);
             reportForm.ShowDialog();
         }
+
+        private void readerReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReaderReportForm reportForm = new ReaderReportForm(_readerService);
+            reportForm.ShowDialog();
+        }
     }
 }

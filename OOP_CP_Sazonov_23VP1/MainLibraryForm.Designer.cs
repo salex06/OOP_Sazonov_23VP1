@@ -256,6 +256,7 @@
             readerReportToolStripMenuItem.Name = "readerReportToolStripMenuItem";
             readerReportToolStripMenuItem.Size = new Size(271, 34);
             readerReportToolStripMenuItem.Text = "Отчёт о читателях";
+            readerReportToolStripMenuItem.Click += readerReportToolStripMenuItem_Click;
             // 
             // bookReportToolStripMenuItem
             // 
