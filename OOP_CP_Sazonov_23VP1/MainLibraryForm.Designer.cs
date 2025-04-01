@@ -250,6 +250,7 @@
             debtorReportToolStripMenuItem.Name = "debtorReportToolStripMenuItem";
             debtorReportToolStripMenuItem.Size = new Size(271, 34);
             debtorReportToolStripMenuItem.Text = "Отчёт о должниках";
+            debtorReportToolStripMenuItem.Click += debtorReportToolStripMenuItem_Click;
             // 
             // readerReportToolStripMenuItem
             // 

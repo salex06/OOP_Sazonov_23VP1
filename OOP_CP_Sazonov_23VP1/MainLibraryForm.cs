@@ -252,5 +252,11 @@ namespace OOP_CP_Sazonov_23VP1
             ReaderReportForm reportForm = new ReaderReportForm(_readerService);
             reportForm.ShowDialog();
         }
+
+        private void debtorReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DebtorsReportForm reportForm = new DebtorsReportForm(_readerService);
+            reportForm.ShowDialog();
+        }
     }
 }
