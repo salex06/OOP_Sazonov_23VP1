@@ -262,6 +262,7 @@
             bookReportToolStripMenuItem.Name = "bookReportToolStripMenuItem";
             bookReportToolStripMenuItem.Size = new Size(271, 34);
             bookReportToolStripMenuItem.Text = "Отчёт о книгах";
+            bookReportToolStripMenuItem.Click += bookReportToolStripMenuItem_Click;
             // 
             // booksReviewDataGridView
             // 

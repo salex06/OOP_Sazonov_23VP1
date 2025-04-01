@@ -228,15 +228,23 @@ namespace OOP_CP_Sazonov_23VP1
         {
             List<string> authors = _authorService.GetAllAuthors().ConvertAll(src => src.Name);
             authorNameComboBox.Items.Add("");
-            foreach(string authorName in authors){
+            foreach (string authorName in authors)
+            {
                 authorNameComboBox.Items.Add(authorName);
             }
 
             List<string> genres = _genreService.GetAllGenres().ConvertAll(src => src.Name);
             genreComboBox.Items.Add("");
-            foreach (string genreName in genres) {
+            foreach (string genreName in genres)
+            {
                 genreComboBox.Items.Add(genreName);
             }
+        }
+
+        private void bookReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BookReportForm reportForm = new BookReportForm(_bookService);
+            reportForm.ShowDialog();
         }
     }
 }
