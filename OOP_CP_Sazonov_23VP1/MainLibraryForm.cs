@@ -187,9 +187,22 @@ namespace OOP_CP_Sazonov_23VP1
                 }
             }
 
+            string? name = string.IsNullOrEmpty(readerNameTextBox.Text) ? null : readerNameTextBox.Text;
+            string? phone = string.IsNullOrEmpty(readerPhoneNumberTextBox.Text) ? null : readerPhoneNumberTextBox.Text;
+            string? address = string.IsNullOrEmpty(readerAddressTextBox.Text) ? null : readerAddressTextBox.Text;
+            bool? debtor = (isDebtorComboBox.Text == "Не важно") ? null : isDebtorComboBox.Text == "Да";
+
+            ReaderFilterOptions filters = new ReaderFilterOptions
+            {
+                Name = name,
+                PhoneNumber = phone,
+                Address = address,
+                isDebtor = debtor
+            };
+
             bool isAscendingOrder = (ascendingReaderOrder.Checked ? true : false);
 
-            List<Reader> readers = _readerService.GetAllReaders(orderBy_Value, isAscendingOrder);
+            List<Reader> readers = _readerService.GetAllReaders(orderBy_Value, isAscendingOrder, filters);
             foreach (Reader reader in readers)
             {
                 AddReaderToTable(reader);

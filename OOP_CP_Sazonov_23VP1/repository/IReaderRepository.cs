@@ -11,7 +11,7 @@ namespace OOP_CP_Sazonov_23VP1.repository
     {
         Reader saveReader(Reader reader);
         Reader? getReaderById(long readerId);
-        List<Reader> getAllReaders(string orderBy_Value, bool isAscendingOrder);
+        List<Reader> getAllReaders(string orderBy_Value, bool isAscendingOrder, dto.ReaderFilterOptions filters);
         void removeReader(Reader reader);
         bool containsReader(long readerId);
         Reader? updateReader(Reader reader);

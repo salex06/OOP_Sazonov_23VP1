@@ -23,12 +23,35 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             return _context.Readers.Find(readerId) != null;
         }
 
-        public List<Reader> getAllReaders(string orderBy_Value, bool isAscendingOrder)
+        public List<Reader> getAllReaders(string orderBy_Value, bool isAscendingOrder, dto.ReaderFilterOptions filters)
         {
-            if(isAscendingOrder)
-                return _context.Readers.Include(src => src.Loans).OrderBy(src => EF.Property<Reader>(src!, orderBy_Value)).ToList();
+            var query = _context.Readers
+                .Include(src => src.Loans)
+                .Where(src => filters.Name == null || src.Name == filters.Name)
+                .Where(src => filters.PhoneNumber == null || src.PhoneNumber == filters.PhoneNumber)
+                .Where(src => filters.Address == null || src.Address == filters.Address);
 
-            return _context.Readers.Include(src => src.Loans).OrderByDescending(src => EF.Property<Reader>(src!, orderBy_Value)).ToList();
+
+            List<Reader> readers;
+            if (isAscendingOrder)
+                readers = query.OrderBy(src => EF.Property<Reader>(src!, orderBy_Value)).ToList();
+            else
+            {
+                readers = query.OrderByDescending(src => EF.Property<Reader>(src!, orderBy_Value)).ToList();
+            }
+
+            if (filters.isDebtor != null)
+            {
+                if ((bool)filters.isDebtor)
+                {
+                    readers = readers.Where(src => src.Loans.Any(loan => loan.ReturnDate == null && loan.DueDate < DateTime.Now)).ToList();
+                }
+                else {
+                    readers = readers.Where(src => !src.Loans.Any(loan => loan.ReturnDate == null && loan.DueDate < DateTime.Now)).ToList();
+                }
+            }
+
+            return readers;
         }
 
         public Reader? getReaderById(long readerId)

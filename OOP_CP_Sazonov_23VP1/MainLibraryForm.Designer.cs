@@ -107,7 +107,7 @@
             readerAddressTextBox = new TextBox();
             readerAddressLabel = new Label();
             readerPhoneTextBox = new Panel();
-            textBox2 = new TextBox();
+            readerPhoneNumberTextBox = new TextBox();
             phoneNumberLabel = new Label();
             readerNamePanel = new Panel();
             readerNameTextBox = new TextBox();
@@ -931,7 +931,7 @@
             // 
             // readerPhoneTextBox
             // 
-            readerPhoneTextBox.Controls.Add(textBox2);
+            readerPhoneTextBox.Controls.Add(readerPhoneNumberTextBox);
             readerPhoneTextBox.Controls.Add(phoneNumberLabel);
             readerPhoneTextBox.Dock = DockStyle.Top;
             readerPhoneTextBox.Location = new Point(0, 36);
@@ -939,13 +939,13 @@
             readerPhoneTextBox.Size = new Size(319, 36);
             readerPhoneTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // readerPhoneNumberTextBox
             // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(120, 0);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(199, 31);
-            textBox2.TabIndex = 1;
+            readerPhoneNumberTextBox.Dock = DockStyle.Fill;
+            readerPhoneNumberTextBox.Location = new Point(120, 0);
+            readerPhoneNumberTextBox.Name = "readerPhoneNumberTextBox";
+            readerPhoneNumberTextBox.Size = new Size(199, 31);
+            readerPhoneNumberTextBox.TabIndex = 1;
             // 
             // phoneNumberLabel
             // 
@@ -1154,7 +1154,7 @@
         private TextBox readerNameTextBox;
         private Label readerNameLabel;
         private Panel readerPhoneTextBox;
-        private TextBox textBox2;
+        private TextBox readerPhoneNumberTextBox;
         private Label phoneNumberLabel;
         private Panel readerAddressPanel;
         private TextBox readerAddressTextBox;
