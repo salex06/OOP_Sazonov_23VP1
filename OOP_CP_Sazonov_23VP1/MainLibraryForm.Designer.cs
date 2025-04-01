@@ -1058,6 +1058,7 @@
             Controls.Add(addBookToDataBaseToolStrip);
             Name = "MainLibraryForm";
             Text = "Библиотека";
+            Load += MainLibraryForm_Load;
             addBookToDataBaseToolStrip.ResumeLayout(false);
             addBookToDataBaseToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)booksReviewDataGridView).EndInit();

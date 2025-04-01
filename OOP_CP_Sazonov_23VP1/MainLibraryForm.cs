@@ -1,3 +1,4 @@
+using OOP_CP_Sazonov_23VP1.dto;
 using OOP_CP_Sazonov_23VP1.forms;
 using OOP_CP_Sazonov_23VP1.model.entity;
 using OOP_CP_Sazonov_23VP1.service;
@@ -26,12 +27,14 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly IReturnBookFormFactory _returnBookFormFactory;
         private readonly BookService _bookService;
         private readonly ReaderService _readerService;
+        private readonly AuthorService _authorService;
+        private readonly GenreService _genreService;
 
         public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory,
             IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
             IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory,
             ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory,
-            BookService bookService, ReaderService readerService)
+            BookService bookService, ReaderService readerService, AuthorService authorService, GenreService genreService)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -46,9 +49,10 @@ namespace OOP_CP_Sazonov_23VP1
             _returnBookFormFactory = returnBookFormFactory;
             _bookService = bookService;
             _readerService = readerService;
+            _authorService = authorService;
+            _genreService = genreService;
 
             booksReviewDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
         }
 
         private void addBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,15 +108,34 @@ namespace OOP_CP_Sazonov_23VP1
             ClearTable(booksReviewDataGridView);
 
             string orderBy_Value = "Id";
-            foreach (RadioButton button in orderByPanel.Controls.OfType<RadioButton>()) {
-                if (button.Checked && button.Tag != null) {
+            foreach (RadioButton button in orderByPanel.Controls.OfType<RadioButton>())
+            {
+                if (button.Checked && button.Tag != null)
+                {
                     orderBy_Value = (string)button.Tag;
                 }
             }
 
             bool isAscendingOrder = (ascendingOrder.Checked ? true : false);
 
-            List<Book> books = _bookService.getAllBooks(orderBy_Value, isAscendingOrder);
+            string? title = string.IsNullOrEmpty(bookNameSelectTextBox.Text) ? null : bookNameSelectTextBox.Text;
+            int? yearOfPublication = bookPublishingDateNumericUpDown.Value == 0 ? null : (int)bookPublishingDateNumericUpDown.Value;
+            string? author = string.IsNullOrEmpty(authorNameComboBox.Text) ? null : authorNameComboBox.Text;
+            string? genre = string.IsNullOrEmpty(genreComboBox.Text) ? null : genreComboBox.Text;
+            string? isbn = string.IsNullOrEmpty(isbnValueTextBox.Text) ? null : isbnValueTextBox.Text;
+            string? publisher = string.IsNullOrEmpty(bookPublisherNameTextBox.Text) ? null : bookPublisherNameTextBox.Text;
+
+            BookFilterOptions filters = new BookFilterOptions
+            {
+                Title = title,
+                YearOfPublication = yearOfPublication,
+                Author = author,
+                Genre = genre,
+                ISBN = isbn,
+                Publisher = publisher
+            };
+
+            List<Book> books = _bookService.getAllBooks(orderBy_Value, isAscendingOrder, filters);
             foreach (Book book in books)
             {
                 AddBookToTable(book);
@@ -186,6 +209,21 @@ namespace OOP_CP_Sazonov_23VP1
                 phone, address,
                 isDebtor ? "Да" : "Нет"
                 ]);
+        }
+
+        private void MainLibraryForm_Load(object sender, EventArgs e)
+        {
+            List<string> authors = _authorService.GetAllAuthors().ConvertAll(src => src.Name);
+            authorNameComboBox.Items.Add("");
+            foreach(string authorName in authors){
+                authorNameComboBox.Items.Add(authorName);
+            }
+
+            List<string> genres = _genreService.GetAllGenres().ConvertAll(src => src.Name);
+            genreComboBox.Items.Add("");
+            foreach (string genreName in genres) {
+                genreComboBox.Items.Add(genreName);
+            }
         }
     }
 }

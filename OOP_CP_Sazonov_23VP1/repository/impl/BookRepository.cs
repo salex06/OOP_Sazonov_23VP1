@@ -20,20 +20,25 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             _context = context;
         }
 
-        public List<Book> GetAllBooks(string orderBy_value, bool isAscending)
+        public List<Book> GetAllBooks(string orderBy_value, bool isAscending, dto.BookFilterOptions filters)
         {
-            if(isAscending)
-                return _context.Books
+            var query = _context.Books
                     .Include(src => src.Authors)
                     .Include(src => src.Genres)
                     .Include(src => src.Loans)
+                    .Where(src => filters.Title == null || src.Title == filters.Title)
+                    .Where(src => filters.YearOfPublication == null || src.YearOfPublication == filters.YearOfPublication)
+                    .Where(src => filters.Publisher == null || src.Publisher == filters.Publisher)
+                    .Where(src => filters.Author == null || src.Authors.Any(author => author.Name == filters.Author))
+                    .Where(src => filters.Genre == null || src.Genres.Any(genre => genre.Name == filters.Genre))
+                    .Where(src => filters.ISBN == null || src.ISBN == filters.ISBN);
+
+            if (isAscending)
+                return query
                     .OrderBy(src => EF.Property<Book>(src!, orderBy_value))
                     .ToList();
 
-            return _context.Books
-                .Include(src => src.Authors)
-                .Include(src => src.Genres)
-                .Include(src => src.Loans)
+            return query
                 .OrderByDescending(src => EF.Property<Book>(src!, orderBy_value))
                 .ToList();
         }
