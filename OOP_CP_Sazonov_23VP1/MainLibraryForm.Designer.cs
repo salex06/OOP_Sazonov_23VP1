@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainLibraryForm));
             addBookToDataBaseToolStrip = new ToolStrip();
             booksDropBoxToolStrip = new ToolStripDropDownButton();
@@ -54,6 +55,11 @@
             bookISBN = new DataGridViewTextBoxColumn();
             readerID = new DataGridViewTextBoxColumn();
             returnDate = new DataGridViewTextBoxColumn();
+            booksContextMenuStrip = new ContextMenuStrip(components);
+            removeBookContextStripMenuItem = new ToolStripMenuItem();
+            editBookContextStripMenuItem = new ToolStripMenuItem();
+            returnBookContextStripMenuItem1 = new ToolStripMenuItem();
+            giveOutBookContextStripMenuItem = new ToolStripMenuItem();
             booksReviewPanel = new Panel();
             doSelectQueryPanel = new Panel();
             ascendingDescendingPanel = new Panel();
@@ -121,6 +127,7 @@
             isDebtor = new DataGridViewTextBoxColumn();
             addBookToDataBaseToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)booksReviewDataGridView).BeginInit();
+            booksContextMenuStrip.SuspendLayout();
             booksReviewPanel.SuspendLayout();
             doSelectQueryPanel.SuspendLayout();
             ascendingDescendingPanel.SuspendLayout();
@@ -354,6 +361,38 @@
             returnDate.MinimumWidth = 8;
             returnDate.Name = "returnDate";
             returnDate.ReadOnly = true;
+            // 
+            // booksContextMenuStrip
+            // 
+            booksContextMenuStrip.ImageScalingSize = new Size(24, 24);
+            booksContextMenuStrip.Items.AddRange(new ToolStripItem[] { removeBookContextStripMenuItem, editBookContextStripMenuItem, returnBookContextStripMenuItem1, giveOutBookContextStripMenuItem });
+            booksContextMenuStrip.Name = "booksContextMenuStrip";
+            booksContextMenuStrip.Size = new Size(218, 132);
+            // 
+            // removeBookContextStripMenuItem
+            // 
+            removeBookContextStripMenuItem.Name = "removeBookContextStripMenuItem";
+            removeBookContextStripMenuItem.Size = new Size(217, 32);
+            removeBookContextStripMenuItem.Text = "Удалить";
+            removeBookContextStripMenuItem.Click += removeBookContextStripMenuItem_Click;
+            // 
+            // editBookContextStripMenuItem
+            // 
+            editBookContextStripMenuItem.Name = "editBookContextStripMenuItem";
+            editBookContextStripMenuItem.Size = new Size(217, 32);
+            editBookContextStripMenuItem.Text = "Редактировать...";
+            // 
+            // returnBookContextStripMenuItem1
+            // 
+            returnBookContextStripMenuItem1.Name = "returnBookContextStripMenuItem1";
+            returnBookContextStripMenuItem1.Size = new Size(217, 32);
+            returnBookContextStripMenuItem1.Text = "Вернуть книгу";
+            // 
+            // giveOutBookContextStripMenuItem
+            // 
+            giveOutBookContextStripMenuItem.Name = "giveOutBookContextStripMenuItem";
+            giveOutBookContextStripMenuItem.Size = new Size(217, 32);
+            giveOutBookContextStripMenuItem.Text = "Выдать книгу...";
             // 
             // booksReviewPanel
             // 
@@ -1065,6 +1104,7 @@
             addBookToDataBaseToolStrip.ResumeLayout(false);
             addBookToDataBaseToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)booksReviewDataGridView).EndInit();
+            booksContextMenuStrip.ResumeLayout(false);
             booksReviewPanel.ResumeLayout(false);
             doSelectQueryPanel.ResumeLayout(false);
             ascendingDescendingPanel.ResumeLayout(false);
@@ -1194,5 +1234,10 @@
         private RadioButton orderByPhone;
         private RadioButton orderByReaderName;
         private RadioButton defaultOrder;
+        private ContextMenuStrip booksContextMenuStrip;
+        private ToolStripMenuItem removeBookContextStripMenuItem;
+        private ToolStripMenuItem editBookContextStripMenuItem;
+        private ToolStripMenuItem returnBookContextStripMenuItem1;
+        private ToolStripMenuItem giveOutBookContextStripMenuItem;
     }
 }

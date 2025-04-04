@@ -165,13 +165,17 @@ namespace OOP_CP_Sazonov_23VP1
                 dueTime = DateOnly.FromDateTime(activeLoan.DueDate.Date);
             }
 
-            booksReviewDataGridView.Rows.Add([
+            int index = booksReviewDataGridView.Rows.Add([
                 id, title,
                 yearOfPublication, authors,
                 genres, publisher,
                 ISBN, readerId?.ToString() ?? "-",
                 dueTime?.ToString() ?? "-"
             ]);
+
+            DataGridViewRow row = booksReviewDataGridView.Rows[index];
+            row.ContextMenuStrip = booksContextMenuStrip;
+            row.Tag = id;
         }
 
         private void findReadersButton_Click(object sender, EventArgs e)
@@ -257,6 +261,28 @@ namespace OOP_CP_Sazonov_23VP1
         {
             DebtorsReportForm reportForm = new DebtorsReportForm(_readerService);
             reportForm.ShowDialog();
+        }
+
+        private void removeBookContextStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridView? dataGridView = (DataGridView)booksContextMenuStrip.SourceControl;
+            if (dataGridView == null)
+            {
+                return;
+            }
+
+            int selectedRowIndex = dataGridView.CurrentCell.RowIndex;
+            long? bookId = (long)dataGridView.Rows[selectedRowIndex].Tag;
+
+            if (bookId != null && _bookService.RemoveBook((long)bookId))
+            {
+                MessageBox.Show("Книга удалена!", "Успех");
+                dataGridView.Rows.RemoveAt(selectedRowIndex);
+            }
+            else
+            {
+                MessageBox.Show("Ошибка при удалении книги! Проверьте данные", "Ошибка");
+            }
         }
     }
 }
