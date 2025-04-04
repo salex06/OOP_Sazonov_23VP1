@@ -23,7 +23,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             return _context.Readers.Find(readerId) != null;
         }
 
-        public List<Reader> getAllReaders(string orderBy_Value, bool isAscendingOrder, dto.ReaderFilterOptions filters)
+        public KeyValuePair<List<Reader>, int> getAllReaders(string orderBy_Value, bool isAscendingOrder, dto.ReaderFilterOptions filters)
         {
             var query = _context.Readers
                 .Include(src => src.Loans)
@@ -51,7 +51,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
                 }
             }
 
-            return readers;
+            return new KeyValuePair<List<Reader>, int>(readers, _context.Readers.Count());
         }
 
         public Reader? getReaderById(long readerId)

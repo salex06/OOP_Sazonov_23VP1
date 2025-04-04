@@ -62,6 +62,7 @@
             giveOutBookContextStripMenuItem = new ToolStripMenuItem();
             booksReviewPanel = new Panel();
             doSelectQueryPanel = new Panel();
+            queryResultLabel = new Label();
             ascendingDescendingPanel = new Panel();
             descendingOrder = new RadioButton();
             ascendingOrder = new RadioButton();
@@ -128,6 +129,7 @@
             readersContextMenuStrip = new ContextMenuStrip(components);
             removeReaderContextStripMenuItem = new ToolStripMenuItem();
             editReaderContextStripMenuItem = new ToolStripMenuItem();
+            readerQueryResultLabel = new Label();
             addBookToDataBaseToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)booksReviewDataGridView).BeginInit();
             booksContextMenuStrip.SuspendLayout();
@@ -415,6 +417,7 @@
             // 
             // doSelectQueryPanel
             // 
+            doSelectQueryPanel.Controls.Add(queryResultLabel);
             doSelectQueryPanel.Controls.Add(ascendingDescendingPanel);
             doSelectQueryPanel.Controls.Add(orderByPanel);
             doSelectQueryPanel.Controls.Add(panel2);
@@ -430,6 +433,15 @@
             doSelectQueryPanel.Name = "doSelectQueryPanel";
             doSelectQueryPanel.Size = new Size(1296, 428);
             doSelectQueryPanel.TabIndex = 2;
+            // 
+            // queryResultLabel
+            // 
+            queryResultLabel.AutoSize = true;
+            queryResultLabel.Location = new Point(12, 380);
+            queryResultLabel.Name = "queryResultLabel";
+            queryResultLabel.Size = new Size(0, 25);
+            queryResultLabel.TabIndex = 10;
+            queryResultLabel.Visible = false;
             // 
             // ascendingDescendingPanel
             // 
@@ -723,14 +735,14 @@
             // 
             // findBookButton
             // 
+            findBookButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             findBookButton.BackColor = Color.DarkSalmon;
             findBookButton.Cursor = Cursors.Hand;
-            findBookButton.Dock = DockStyle.Bottom;
             findBookButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
             findBookButton.ForeColor = SystemColors.ControlText;
-            findBookButton.Location = new Point(0, 356);
+            findBookButton.Location = new Point(740, 356);
             findBookButton.Name = "findBookButton";
-            findBookButton.Size = new Size(1296, 72);
+            findBookButton.Size = new Size(556, 72);
             findBookButton.TabIndex = 0;
             findBookButton.Text = "Найти книги";
             findBookButton.UseVisualStyleBackColor = false;
@@ -773,6 +785,7 @@
             // 
             // findAndSortReadersPanel
             // 
+            findAndSortReadersPanel.Controls.Add(readerQueryResultLabel);
             findAndSortReadersPanel.Controls.Add(buttonsPanel);
             findAndSortReadersPanel.Controls.Add(ascDescOrderPanel);
             findAndSortReadersPanel.Controls.Add(fieldOrderPanel);
@@ -1102,21 +1115,31 @@
             readersContextMenuStrip.ImageScalingSize = new Size(24, 24);
             readersContextMenuStrip.Items.AddRange(new ToolStripItem[] { removeReaderContextStripMenuItem, editReaderContextStripMenuItem });
             readersContextMenuStrip.Name = "readersContextMenuStrip";
-            readersContextMenuStrip.Size = new Size(241, 101);
+            readersContextMenuStrip.Size = new Size(218, 68);
             // 
             // removeReaderContextStripMenuItem
             // 
             removeReaderContextStripMenuItem.Name = "removeReaderContextStripMenuItem";
-            removeReaderContextStripMenuItem.Size = new Size(240, 32);
+            removeReaderContextStripMenuItem.Size = new Size(217, 32);
             removeReaderContextStripMenuItem.Text = "Удалить";
             removeReaderContextStripMenuItem.Click += removeReaderContextStripMenuItem_Click;
             // 
             // editReaderContextStripMenuItem
             // 
             editReaderContextStripMenuItem.Name = "editReaderContextStripMenuItem";
-            editReaderContextStripMenuItem.Size = new Size(240, 32);
+            editReaderContextStripMenuItem.Size = new Size(217, 32);
             editReaderContextStripMenuItem.Text = "Редактировать...";
             editReaderContextStripMenuItem.Click += editReaderContextStripMenuItem_Click;
+            // 
+            // readerQueryResultLabel
+            // 
+            readerQueryResultLabel.Dock = DockStyle.Bottom;
+            readerQueryResultLabel.Location = new Point(10, 616);
+            readerQueryResultLabel.Name = "readerQueryResultLabel";
+            readerQueryResultLabel.Size = new Size(319, 44);
+            readerQueryResultLabel.TabIndex = 7;
+            readerQueryResultLabel.TextAlign = ContentAlignment.MiddleCenter;
+            readerQueryResultLabel.Visible = false;
             // 
             // MainLibraryForm
             // 
@@ -1135,6 +1158,7 @@
             booksContextMenuStrip.ResumeLayout(false);
             booksReviewPanel.ResumeLayout(false);
             doSelectQueryPanel.ResumeLayout(false);
+            doSelectQueryPanel.PerformLayout();
             ascendingDescendingPanel.ResumeLayout(false);
             ascendingDescendingPanel.PerformLayout();
             orderByPanel.ResumeLayout(false);
@@ -1271,5 +1295,7 @@
         private ContextMenuStrip readersContextMenuStrip;
         private ToolStripMenuItem removeReaderContextStripMenuItem;
         private ToolStripMenuItem editReaderContextStripMenuItem;
+        private Label queryResultLabel;
+        private Label readerQueryResultLabel;
     }
 }

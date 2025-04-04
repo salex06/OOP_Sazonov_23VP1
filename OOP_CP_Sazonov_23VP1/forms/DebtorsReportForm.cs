@@ -24,7 +24,7 @@ namespace OOP_CP_Sazonov_23VP1.forms
 
         private void DebtorsReportForm_Load(object sender, EventArgs e)
         {
-            List<Reader> debtors = _readerService.GetAllReaders("ID", true, new dto.ReaderFilterOptions())
+            List<Reader> debtors = _readerService.GetAllReaders("ID", true, new dto.ReaderFilterOptions()).Key
                 .Where(reader => reader.Loans.Any(loan => loan.ReturnDate == null && loan.DueDate < DateTime.Now)).ToList();
 
             Panel labelPanel = new Panel();

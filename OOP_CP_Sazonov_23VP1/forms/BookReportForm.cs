@@ -23,7 +23,7 @@ namespace OOP_CP_Sazonov_23VP1.forms
 
         private void BookReportForm_Load(object sender, EventArgs e)
         {
-            List<Book> books = _bookService.getAllBooks("Id", true, new dto.BookFilterOptions());
+            List<Book> books = _bookService.getAllBooks("Id", true, new dto.BookFilterOptions()).Key;
             Panel labelPanel = new Panel();
             labelPanel.Dock = DockStyle.Top;
             Label bookReportLabel = new Label();

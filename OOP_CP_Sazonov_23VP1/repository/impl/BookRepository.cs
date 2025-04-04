@@ -20,7 +20,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             _context = context;
         }
 
-        public List<Book> GetAllBooks(string orderBy_value, bool isAscending, dto.BookFilterOptions filters)
+        public KeyValuePair<List<Book>, int> GetAllBooks(string orderBy_value, bool isAscending, dto.BookFilterOptions filters)
         {
             var query = _context.Books
                     .Include(src => src.Authors)
@@ -34,13 +34,13 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
                     .Where(src => filters.ISBN == null || src.ISBN == filters.ISBN);
 
             if (isAscending)
-                return query
+                return new KeyValuePair<List<Book>, int>(query
                     .OrderBy(src => EF.Property<Book>(src!, orderBy_value))
-                    .ToList();
+                    .ToList(), _context.Books.Count());
 
-            return query
+            return new KeyValuePair<List<Book>, int>(query
                 .OrderByDescending(src => EF.Property<Book>(src!, orderBy_value))
-                .ToList();
+                .ToList(), _context.Books.Count());
         }
 
         public Book? GetBookById(long id)

@@ -138,11 +138,14 @@ namespace OOP_CP_Sazonov_23VP1
                 Publisher = publisher
             };
 
-            List<Book> books = _bookService.getAllBooks(orderBy_Value, isAscendingOrder, filters);
-            foreach (Book book in books)
+            KeyValuePair<List<Book>, int> books = _bookService.getAllBooks(orderBy_Value, isAscendingOrder, filters);
+            foreach (Book book in books.Key)
             {
                 AddBookToTable(book);
             }
+
+            queryResultLabel.Visible = true;
+            queryResultLabel.Text = $"Выбрано {books.Key.Count} записей из {books.Value}";
         }
 
         private void ClearTable(DataGridView table)
@@ -209,11 +212,14 @@ namespace OOP_CP_Sazonov_23VP1
 
             bool isAscendingOrder = (ascendingReaderOrder.Checked ? true : false);
 
-            List<Reader> readers = _readerService.GetAllReaders(orderBy_Value, isAscendingOrder, filters);
-            foreach (Reader reader in readers)
+            KeyValuePair<List<Reader>, int> readers = _readerService.GetAllReaders(orderBy_Value, isAscendingOrder, filters);
+            foreach (Reader reader in readers.Key)
             {
                 AddReaderToTable(reader);
             }
+
+            readerQueryResultLabel.Visible = true;
+            readerQueryResultLabel.Text = $"Выбрано {readers.Key.Count} записей из {readers.Value}";
         }
 
         private void AddReaderToTable(Reader reader)

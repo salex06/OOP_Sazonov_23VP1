@@ -6,7 +6,7 @@ namespace OOP_CP_Sazonov_23VP1.repository
     {
         public Book? SaveBook(Book book, List<long> authorIds, List<long> genreIds);
         public Book? GetBookById(long id);
-        public List<Book> GetAllBooks(string orderBy_value, bool isAscending, dto.BookFilterOptions filters);
+        public KeyValuePair<List<Book>, int> GetAllBooks(string orderBy_value, bool isAscending, dto.BookFilterOptions filters);
         public void AddAuthorship(Book book, Author author);
         public Book UpdateBook(Book book, List<long> authorIds, List<long> genreIds);
         public void RemoveBook(Book book);

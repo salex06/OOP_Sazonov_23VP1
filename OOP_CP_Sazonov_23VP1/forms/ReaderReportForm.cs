@@ -24,7 +24,7 @@ namespace OOP_CP_Sazonov_23VP1.forms
 
         private void ReaderReportForm_Load(object sender, EventArgs e)
         {
-            List<Reader> readers = _readerService.GetAllReaders("ID", true, new dto.ReaderFilterOptions());
+            List<Reader> readers = _readerService.GetAllReaders("ID", true, new dto.ReaderFilterOptions()).Key;
 
             Panel labelPanel = new Panel();
             labelPanel.Dock = DockStyle.Top;
