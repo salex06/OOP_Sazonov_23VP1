@@ -284,5 +284,20 @@ namespace OOP_CP_Sazonov_23VP1
                 MessageBox.Show("Ошибка при удалении книги! Проверьте данные", "Ошибка");
             }
         }
+
+        private void editBookContextStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditBookInfoForm form = _editBookFormFactory.Create();
+            DataGridView? dataGridView = (DataGridView)booksContextMenuStrip.SourceControl;
+            if (dataGridView == null)
+            {
+                return;
+            }
+
+            int selectedRowIndex = dataGridView.CurrentCell.RowIndex;
+            long? bookId = (long)dataGridView.Rows[selectedRowIndex].Tag;
+            form.SetId(bookId);
+            form.ShowDialog();
+        }
     }
 }

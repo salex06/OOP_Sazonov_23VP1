@@ -35,6 +35,13 @@ namespace OOP_CP_Sazonov_23VP1.forms
             _bookService = bookService;
         }
 
+        public void SetId(long? bookId) {
+            if (bookId == null) {
+                return;
+            }
+            editBookIdNumericUpDown.Value = (long)bookId;
+        }
+
         private void addNewAuthorButton_Click(object sender, EventArgs e)
         {
             NewAuthorForm form = _addAuthorFormFactory.Create();
@@ -163,7 +170,8 @@ namespace OOP_CP_Sazonov_23VP1.forms
 
             Book? book = _bookService.UpdateBook(bookId, bookName, yearOfPublishing, publisher, ISBN, authorIds, genreIds);
 
-            if (book == null) {
+            if (book == null)
+            {
                 MessageBox.Show("Ошибка редактирования книги! Проверьте данные", "Ошибка");
                 return;
             }
