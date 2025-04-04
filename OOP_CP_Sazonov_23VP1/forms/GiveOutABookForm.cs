@@ -24,6 +24,10 @@ namespace OOP_CP_Sazonov_23VP1.forms
             _readerService = readerService;
         }
 
+        public void setBookId(long bookId) {
+            giveBookIdNumericUpDown.Value = bookId;
+        }
+
         private void giveOutABookButton_Click(object sender, EventArgs e)
         {
             long bookId = (long)giveBookIdNumericUpDown.Value;

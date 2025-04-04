@@ -325,5 +325,23 @@ namespace OOP_CP_Sazonov_23VP1
                 MessageBox.Show(ex.Message, "Ошибка");
             }
         }
+
+        private void giveOutBookContextStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridView? dataGridView = (DataGridView)booksContextMenuStrip.SourceControl;
+            if (dataGridView == null)
+            {
+                return;
+            }
+
+            int selectedRowIndex = dataGridView.CurrentCell.RowIndex;
+            long? bookId = (long)dataGridView.Rows[selectedRowIndex].Tag;
+            if (bookId == null) return;
+
+
+            GiveOutABookForm form = _lendBookFormFactory.Create();
+            form.setBookId((long)bookId);
+            form.ShowDialog();
+        }
     }
 }

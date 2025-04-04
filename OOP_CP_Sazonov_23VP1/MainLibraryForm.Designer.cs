@@ -395,6 +395,7 @@
             giveOutBookContextStripMenuItem.Name = "giveOutBookContextStripMenuItem";
             giveOutBookContextStripMenuItem.Size = new Size(217, 32);
             giveOutBookContextStripMenuItem.Text = "Выдать книгу...";
+            giveOutBookContextStripMenuItem.Click += giveOutBookContextStripMenuItem_Click;
             // 
             // booksReviewPanel
             // 
