@@ -367,32 +367,33 @@
             booksContextMenuStrip.ImageScalingSize = new Size(24, 24);
             booksContextMenuStrip.Items.AddRange(new ToolStripItem[] { removeBookContextStripMenuItem, editBookContextStripMenuItem, returnBookContextStripMenuItem1, giveOutBookContextStripMenuItem });
             booksContextMenuStrip.Name = "booksContextMenuStrip";
-            booksContextMenuStrip.Size = new Size(241, 165);
+            booksContextMenuStrip.Size = new Size(218, 132);
             // 
             // removeBookContextStripMenuItem
             // 
             removeBookContextStripMenuItem.Name = "removeBookContextStripMenuItem";
-            removeBookContextStripMenuItem.Size = new Size(240, 32);
+            removeBookContextStripMenuItem.Size = new Size(217, 32);
             removeBookContextStripMenuItem.Text = "Удалить";
             removeBookContextStripMenuItem.Click += removeBookContextStripMenuItem_Click;
             // 
             // editBookContextStripMenuItem
             // 
             editBookContextStripMenuItem.Name = "editBookContextStripMenuItem";
-            editBookContextStripMenuItem.Size = new Size(240, 32);
+            editBookContextStripMenuItem.Size = new Size(217, 32);
             editBookContextStripMenuItem.Text = "Редактировать...";
             editBookContextStripMenuItem.Click += editBookContextStripMenuItem_Click;
             // 
             // returnBookContextStripMenuItem1
             // 
             returnBookContextStripMenuItem1.Name = "returnBookContextStripMenuItem1";
-            returnBookContextStripMenuItem1.Size = new Size(240, 32);
+            returnBookContextStripMenuItem1.Size = new Size(217, 32);
             returnBookContextStripMenuItem1.Text = "Вернуть книгу";
+            returnBookContextStripMenuItem1.Click += returnBookContextStripMenuItem1_Click;
             // 
             // giveOutBookContextStripMenuItem
             // 
             giveOutBookContextStripMenuItem.Name = "giveOutBookContextStripMenuItem";
-            giveOutBookContextStripMenuItem.Size = new Size(240, 32);
+            giveOutBookContextStripMenuItem.Size = new Size(217, 32);
             giveOutBookContextStripMenuItem.Text = "Выдать книгу...";
             // 
             // booksReviewPanel

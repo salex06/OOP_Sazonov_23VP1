@@ -25,6 +25,7 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly IEditReaderInfoFormFactory _editReaderInfoFormFactory;
         private readonly ILendBookFormFactory _lendBookFormFactory;
         private readonly IReturnBookFormFactory _returnBookFormFactory;
+        private readonly LoanService _loanService;
         private readonly BookService _bookService;
         private readonly ReaderService _readerService;
         private readonly AuthorService _authorService;
@@ -34,7 +35,8 @@ namespace OOP_CP_Sazonov_23VP1
             IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
             IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory,
             ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory,
-            BookService bookService, ReaderService readerService, AuthorService authorService, GenreService genreService)
+            BookService bookService, ReaderService readerService, AuthorService authorService, GenreService genreService,
+            LoanService loanService)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -51,6 +53,7 @@ namespace OOP_CP_Sazonov_23VP1
             _readerService = readerService;
             _authorService = authorService;
             _genreService = genreService;
+            _loanService = loanService;
 
             booksReviewDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
@@ -298,6 +301,29 @@ namespace OOP_CP_Sazonov_23VP1
             long? bookId = (long)dataGridView.Rows[selectedRowIndex].Tag;
             form.SetId(bookId);
             form.ShowDialog();
+        }
+
+        private void returnBookContextStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            EditBookInfoForm form = _editBookFormFactory.Create();
+            DataGridView? dataGridView = (DataGridView)booksContextMenuStrip.SourceControl;
+            if (dataGridView == null)
+            {
+                return;
+            }
+
+            int selectedRowIndex = dataGridView.CurrentCell.RowIndex;
+            long? bookId = (long)dataGridView.Rows[selectedRowIndex].Tag;
+            try
+            {
+                _loanService.ReturnBook((long)bookId);
+                MessageBox.Show("Книга возвращена!", "Успех");
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
         }
     }
 }
