@@ -125,6 +125,9 @@
             phoneNumber = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
             isDebtor = new DataGridViewTextBoxColumn();
+            readersContextMenuStrip = new ContextMenuStrip(components);
+            removeReaderContextStripMenuItem = new ToolStripMenuItem();
+            editReaderContextStripMenuItem = new ToolStripMenuItem();
             addBookToDataBaseToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)booksReviewDataGridView).BeginInit();
             booksContextMenuStrip.SuspendLayout();
@@ -152,6 +155,7 @@
             readerPhoneTextBox.SuspendLayout();
             readerNamePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)readersPreviewDataGridView).BeginInit();
+            readersContextMenuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // addBookToDataBaseToolStrip
@@ -1093,6 +1097,27 @@
             isDebtor.Name = "isDebtor";
             isDebtor.ReadOnly = true;
             // 
+            // readersContextMenuStrip
+            // 
+            readersContextMenuStrip.ImageScalingSize = new Size(24, 24);
+            readersContextMenuStrip.Items.AddRange(new ToolStripItem[] { removeReaderContextStripMenuItem, editReaderContextStripMenuItem });
+            readersContextMenuStrip.Name = "readersContextMenuStrip";
+            readersContextMenuStrip.Size = new Size(241, 101);
+            // 
+            // removeReaderContextStripMenuItem
+            // 
+            removeReaderContextStripMenuItem.Name = "removeReaderContextStripMenuItem";
+            removeReaderContextStripMenuItem.Size = new Size(240, 32);
+            removeReaderContextStripMenuItem.Text = "Удалить";
+            removeReaderContextStripMenuItem.Click += removeReaderContextStripMenuItem_Click;
+            // 
+            // editReaderContextStripMenuItem
+            // 
+            editReaderContextStripMenuItem.Name = "editReaderContextStripMenuItem";
+            editReaderContextStripMenuItem.Size = new Size(240, 32);
+            editReaderContextStripMenuItem.Text = "Редактировать...";
+            editReaderContextStripMenuItem.Click += editReaderContextStripMenuItem_Click;
+            // 
             // MainLibraryForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -1142,6 +1167,7 @@
             readerNamePanel.ResumeLayout(false);
             readerNamePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)readersPreviewDataGridView).EndInit();
+            readersContextMenuStrip.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1242,5 +1268,8 @@
         private ToolStripMenuItem editBookContextStripMenuItem;
         private ToolStripMenuItem returnBookContextStripMenuItem1;
         private ToolStripMenuItem giveOutBookContextStripMenuItem;
+        private ContextMenuStrip readersContextMenuStrip;
+        private ToolStripMenuItem removeReaderContextStripMenuItem;
+        private ToolStripMenuItem editReaderContextStripMenuItem;
     }
 }

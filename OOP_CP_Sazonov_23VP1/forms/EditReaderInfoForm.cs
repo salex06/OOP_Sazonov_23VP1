@@ -21,6 +21,10 @@ namespace OOP_CP_Sazonov_23VP1.forms
             _service = service;
         }
 
+        public void SetReaderId(long readerId) {
+            editReaderIdNumericUpDown.Value = readerId;
+        }
+
         private void loadReaderInfoButton_Click(object sender, EventArgs e)
         {
             long id = (long)editReaderIdNumericUpDown.Value;
@@ -47,7 +51,7 @@ namespace OOP_CP_Sazonov_23VP1.forms
                 MessageBox.Show("Выберите читателя!", "Ошибка");
                 return;
             }
-            long id = (long)editReaderIdNumericUpDown.Tag;
+            long id = (long)editReaderIdNumericUpDown.Value;
             string name = editReaderNameTextBox.Text;
             string phoneNumber = editPhoneNumberTextBox.Text;
             string address = editReaderAddressTextBox.Text;

@@ -224,11 +224,15 @@ namespace OOP_CP_Sazonov_23VP1
             string address = reader.Address;
             bool isDebtor = reader.Loans.Any(src => src.ReturnDate == null && src.DueDate < DateTime.Now);
 
-            readersPreviewDataGridView.Rows.Add([
+            int index = readersPreviewDataGridView.Rows.Add([
                 id, name,
                 phone, address,
                 isDebtor ? "Да" : "Нет"
                 ]);
+
+            DataGridViewRow row = readersPreviewDataGridView.Rows[index];
+            row.ContextMenuStrip = readersContextMenuStrip;
+            row.Tag = id;
         }
 
         private void MainLibraryForm_Load(object sender, EventArgs e)
@@ -341,6 +345,43 @@ namespace OOP_CP_Sazonov_23VP1
 
             GiveOutABookForm form = _lendBookFormFactory.Create();
             form.setBookId((long)bookId);
+            form.ShowDialog();
+        }
+
+        private void removeReaderContextStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataGridView? dataGridView = (DataGridView)readersContextMenuStrip.SourceControl;
+            if (dataGridView == null)
+            {
+                return;
+            }
+
+            int selectedRowIndex = dataGridView.CurrentCell.RowIndex;
+            long? readerId = (long)dataGridView.Rows[selectedRowIndex].Tag;
+
+            if (readerId != null && _readerService.RemoveReader((long)readerId))
+            {
+                MessageBox.Show("Читатель удален!", "Успех");
+                dataGridView.Rows.RemoveAt(selectedRowIndex);
+            }
+            else
+            {
+                MessageBox.Show("Ошибка при удалении читателя! Проверьте данные", "Ошибка");
+            }
+        }
+
+        private void editReaderContextStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditReaderInfoForm form = _editReaderInfoFormFactory.Create();
+            DataGridView? dataGridView = (DataGridView)readersContextMenuStrip.SourceControl;
+            if (dataGridView == null)
+            {
+                return;
+            }
+
+            int selectedRowIndex = dataGridView.CurrentCell.RowIndex;
+            long? readerId = (long)dataGridView.Rows[selectedRowIndex].Tag;
+            form.SetReaderId((long)readerId);
             form.ShowDialog();
         }
     }
