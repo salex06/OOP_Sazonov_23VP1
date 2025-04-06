@@ -23,6 +23,9 @@ using OOP_CP_Sazonov_23VP1.tools.form_factories.remove_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.edit_reader;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.lend_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.return_book;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace OOP_CP_Sazonov_23VP1
 {
@@ -37,6 +40,7 @@ namespace OOP_CP_Sazonov_23VP1
             ApplicationConfiguration.Initialize();
             var services = new ServiceCollection();
             ConfigureServices(services);
+
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
                 var mainLibraryForm = serviceProvider.GetRequiredService<MainLibraryForm>();
@@ -84,7 +88,14 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<LoanService>();
             services.AddTransient<ReportService>();
 
-            services.AddDbContext<LibraryDatabaseContext>(options => options.UseSqlite());
+            services.AddDbContext<LibraryDatabaseContext>(options =>
+            {
+                var loggerFactory = services.BuildServiceProvider().GetService<ILoggerFactory>();
+                options.UseLoggerFactory(loggerFactory);
+
+                var dbPath = Path.Combine(AppContext.BaseDirectory, "library.db");
+                options.UseSqlite($"Data Source={dbPath}");
+            });
         }
     }
 }
