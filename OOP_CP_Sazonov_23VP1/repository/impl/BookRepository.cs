@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using OOP_CP_Sazonov_23VP1.context;
 using OOP_CP_Sazonov_23VP1.model.entity;
 using System;

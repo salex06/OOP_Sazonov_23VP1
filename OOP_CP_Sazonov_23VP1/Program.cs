@@ -7,7 +7,6 @@ using System.Windows.Forms.Design;
 using OOP_CP_Sazonov_23VP1.repository;
 using OOP_CP_Sazonov_23VP1.forms;
 using Microsoft.VisualBasic.ApplicationServices;
-using AutoMapper;
 using OOP_CP_Sazonov_23VP1.tools;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_book;
 using OOP_CP_Sazonov_23VP1.tools.form_factories.add_author;
