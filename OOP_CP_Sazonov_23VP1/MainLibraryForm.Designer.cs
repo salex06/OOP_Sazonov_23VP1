@@ -282,12 +282,12 @@
             // booksReviewDataGridView
             // 
             booksReviewDataGridView.AllowUserToAddRows = false;
+            booksReviewDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             booksReviewDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             booksReviewDataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             booksReviewDataGridView.BackgroundColor = Color.PapayaWhip;
             booksReviewDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             booksReviewDataGridView.Columns.AddRange(new DataGridViewColumn[] { bookId, bookName, yearOfPublishing, bookAuthors, bookGenres, publisherName, bookISBN, readerID, returnDate });
-            booksReviewDataGridView.Dock = DockStyle.Top;
             booksReviewDataGridView.Location = new Point(10, 0);
             booksReviewDataGridView.Name = "booksReviewDataGridView";
             booksReviewDataGridView.ReadOnly = true;
@@ -428,8 +428,8 @@
             doSelectQueryPanel.Controls.Add(selectBookNamePanel);
             doSelectQueryPanel.Controls.Add(findAndSortBooksLabel);
             doSelectQueryPanel.Controls.Add(findBookButton);
-            doSelectQueryPanel.Dock = DockStyle.Top;
-            doSelectQueryPanel.Location = new Point(10, 308);
+            doSelectQueryPanel.Dock = DockStyle.Bottom;
+            doSelectQueryPanel.Location = new Point(10, 304);
             doSelectQueryPanel.Name = "doSelectQueryPanel";
             doSelectQueryPanel.Size = new Size(1296, 428);
             doSelectQueryPanel.TabIndex = 2;
@@ -1071,7 +1071,7 @@
             // readersPreviewDataGridView
             // 
             readersPreviewDataGridView.AllowUserToAddRows = false;
-            readersPreviewDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            readersPreviewDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             readersPreviewDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             readersPreviewDataGridView.BackgroundColor = Color.PapayaWhip;
             readersPreviewDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
