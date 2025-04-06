@@ -96,6 +96,7 @@
             booksPage = new TabPage();
             findAndSortClients = new TabPage();
             findAndSortReadersPanel = new Panel();
+            readerQueryResultLabel = new Label();
             buttonsPanel = new Panel();
             findReadersButton = new Button();
             ascDescOrderPanel = new Panel();
@@ -129,7 +130,6 @@
             readersContextMenuStrip = new ContextMenuStrip(components);
             removeReaderContextStripMenuItem = new ToolStripMenuItem();
             editReaderContextStripMenuItem = new ToolStripMenuItem();
-            readerQueryResultLabel = new Label();
             addBookToDataBaseToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)booksReviewDataGridView).BeginInit();
             booksContextMenuStrip.SuspendLayout();
@@ -798,6 +798,16 @@
             findAndSortReadersPanel.Size = new Size(329, 732);
             findAndSortReadersPanel.TabIndex = 3;
             // 
+            // readerQueryResultLabel
+            // 
+            readerQueryResultLabel.Dock = DockStyle.Bottom;
+            readerQueryResultLabel.Location = new Point(10, 616);
+            readerQueryResultLabel.Name = "readerQueryResultLabel";
+            readerQueryResultLabel.Size = new Size(319, 44);
+            readerQueryResultLabel.TabIndex = 7;
+            readerQueryResultLabel.TextAlign = ContentAlignment.MiddleCenter;
+            readerQueryResultLabel.Visible = false;
+            // 
             // buttonsPanel
             // 
             buttonsPanel.Controls.Add(findReadersButton);
@@ -1130,16 +1140,6 @@
             editReaderContextStripMenuItem.Size = new Size(217, 32);
             editReaderContextStripMenuItem.Text = "Редактировать...";
             editReaderContextStripMenuItem.Click += editReaderContextStripMenuItem_Click;
-            // 
-            // readerQueryResultLabel
-            // 
-            readerQueryResultLabel.Dock = DockStyle.Bottom;
-            readerQueryResultLabel.Location = new Point(10, 616);
-            readerQueryResultLabel.Name = "readerQueryResultLabel";
-            readerQueryResultLabel.Size = new Size(319, 44);
-            readerQueryResultLabel.TabIndex = 7;
-            readerQueryResultLabel.TextAlign = ContentAlignment.MiddleCenter;
-            readerQueryResultLabel.Visible = false;
             // 
             // MainLibraryForm
             // 

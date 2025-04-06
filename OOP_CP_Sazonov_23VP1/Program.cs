@@ -82,6 +82,7 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<BookService>();
             services.AddTransient<ReaderService>();
             services.AddTransient<LoanService>();
+            services.AddTransient<ReportService>();
 
             services.AddDbContext<LibraryDatabaseContext>(options => options.UseSqlite());
         }

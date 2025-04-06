@@ -30,13 +30,14 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly ReaderService _readerService;
         private readonly AuthorService _authorService;
         private readonly GenreService _genreService;
+        private readonly ReportService _reportService;
 
         public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory,
             IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
             IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory,
             ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory,
             BookService bookService, ReaderService readerService, AuthorService authorService, GenreService genreService,
-            LoanService loanService)
+            LoanService loanService, ReportService reportService)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -54,6 +55,7 @@ namespace OOP_CP_Sazonov_23VP1
             _authorService = authorService;
             _genreService = genreService;
             _loanService = loanService;
+            _reportService = reportService;
 
             booksReviewDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
@@ -260,20 +262,17 @@ namespace OOP_CP_Sazonov_23VP1
 
         private void bookReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BookReportForm reportForm = new BookReportForm(_bookService);
-            reportForm.ShowDialog();
+            _reportService.CreateBookReport();
         }
 
         private void readerReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReaderReportForm reportForm = new ReaderReportForm(_readerService);
-            reportForm.ShowDialog();
+            _reportService.CreateReaderReport();
         }
 
         private void debtorReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DebtorsReportForm reportForm = new DebtorsReportForm(_readerService);
-            reportForm.ShowDialog();
+            _reportService.CreateDebtorsReport();
         }
 
         private void removeBookContextStripMenuItem_Click(object sender, EventArgs e)
