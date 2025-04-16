@@ -125,10 +125,10 @@ namespace OOP_CP_Sazonov_23VP1.service
         /// Удалить книгу
         /// </summary>
         /// <param name="bookId">Идентификатор книги</param>
-        /// <returns>true - если книга удалена, false - если книга не найдена</returns>
+        /// <returns>true - если книга удалена, false - если книга не найдена или книга выдана</returns>
         public bool RemoveBook(long bookId) { 
             Book? book = _bookRepository.GetBookById(bookId);
-            if(book == null) {
+            if(book == null || book.Loans.Any(loan => loan.ReturnDate == null)) {
                 return false;
             }
 

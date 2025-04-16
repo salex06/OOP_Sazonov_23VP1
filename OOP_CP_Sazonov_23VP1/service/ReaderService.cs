@@ -57,10 +57,10 @@ namespace OOP_CP_Sazonov_23VP1.service
         /// Удалить читателя
         /// </summary>
         /// <param name="readerId">Идентификатор читателя</param>
-        /// <returns>true - если читатель удален, false - если читатель не найден</returns>
+        /// <returns>true - если читатель удален, false - если читатель не найден или имеет на руках книги</returns>
         public bool RemoveReader(long readerId) {
             Reader? reader = _readerRepository.getReaderById(readerId);
-            if (reader == null) {
+            if (reader == null || reader.Loans.Any(loan => loan.ReturnDate == null)) {
                 return false;
             }
             _readerRepository.removeReader(reader);
