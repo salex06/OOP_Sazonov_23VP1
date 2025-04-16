@@ -21,6 +21,12 @@ namespace OOP_CP_Sazonov_23VP1.forms
         public StartForm()
         {
             InitializeComponent();
+            System.Windows.Forms.Timer tmr = new System.Windows.Forms.Timer();
+            tmr.Tick += delegate {
+                this.Close();
+            };
+            tmr.Interval = (int)TimeSpan.FromSeconds(5).TotalMilliseconds;
+            tmr.Start();
         }
 
         private void startButton_Click(object sender, EventArgs e)
