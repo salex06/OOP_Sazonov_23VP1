@@ -15,6 +15,9 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для изменения информации о книге в системе
+    /// </summary>
     public partial class EditBookInfoForm : Form
     {
         private readonly IAddAuthorFormFactory _addAuthorFormFactory;
@@ -23,6 +26,14 @@ namespace OOP_CP_Sazonov_23VP1.forms
         private readonly AuthorService _authorService;
         private readonly GenreService _genreService;
         private readonly BookService _bookService;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="addAuthorFormFactory">фабрика для создания формы добавления автора</param>
+        /// <param name="addGenreFormFactory">фабрика для создания формы добавления жанра</param>
+        /// <param name="authorService">Сервис для обработки сущностей "Автор"</param>
+        /// <param name="genreService">Сервис для обработки сущностей "Жанр"</param>
+        /// <param name="bookService">Сервис для обработки сущностей "Книга"</param>
         public EditBookInfoForm(IAddAuthorFormFactory addAuthorFormFactory, IAddGenreFormFactory addGenreFormFactory,
             IBookRepository bookRepository, AuthorService authorService, GenreService genreService, BookService bookService)
         {
@@ -35,6 +46,11 @@ namespace OOP_CP_Sazonov_23VP1.forms
             _bookService = bookService;
         }
 
+        /// <summary>
+        /// Установить в поле editBookIdNumericUpDown значение
+        /// переданного идентификатора
+        /// </summary>
+        /// <param name="bookId">Идентификатор книги</param>
         public void SetId(long? bookId) {
             if (bookId == null) {
                 return;

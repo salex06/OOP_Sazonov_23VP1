@@ -47,7 +47,6 @@ namespace OOP_CP_Sazonov_23VP1
                 {
                     var dbContext = scope.ServiceProvider.GetRequiredService<LibraryDatabaseContext>();
 
-                    // Проверка и применение миграций
                     if ((dbContext.Database.GetPendingMigrations()).Any())
                     {
                         dbContext.Database.Migrate();

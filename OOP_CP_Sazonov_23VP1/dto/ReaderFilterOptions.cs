@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace OOP_CP_Sazonov_23VP1.dto
 {
+    /// <summary>
+    /// DTO для передачи информации о фильтрах
+    /// для поиска читателей
+    /// </summary>
     public class ReaderFilterOptions
     {
         public string? Name { get; set; }

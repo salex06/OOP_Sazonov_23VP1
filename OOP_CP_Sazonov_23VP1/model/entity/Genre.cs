@@ -19,7 +19,9 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// Название жанра
         /// </summary>
         public string Name { get; set; }
-
+        /// <summary>
+        /// Список книг, относящихся к данному жанру
+        /// </summary>
         public ICollection<Book> Books { get; set; } = new List<Book>();
 
         /// <summary>

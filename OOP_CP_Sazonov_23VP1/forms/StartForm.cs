@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Стартовая форма. Используется для вывода информации о приложении
+    /// </summary>
     public partial class StartForm : Form
     {
         /// <summary>
@@ -20,11 +23,6 @@ namespace OOP_CP_Sazonov_23VP1.forms
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Закрыть окно при нажатии на кнопку "Запуск"
-        /// </summary>
-        /// <param name="sender">Объект-отправитель события</param>
-        /// <param name="e">Параметры события</param>
         private void startButton_Click(object sender, EventArgs e)
         {
             this.Close();

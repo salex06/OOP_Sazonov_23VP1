@@ -11,9 +11,16 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для добавления читателя в систему
+    /// </summary>
     public partial class AddReaderForm : Form
     {
         private readonly ReaderService _service;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="service">Сервис, отвечающий за выполнение бизнес-логики для сущностей "Читатель"</param>
         public AddReaderForm(ReaderService service)
         {
             InitializeComponent();

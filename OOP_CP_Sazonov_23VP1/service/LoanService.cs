@@ -14,6 +14,13 @@ namespace OOP_CP_Sazonov_23VP1.service
         private readonly ILoanRepository _loanRepository;
         private readonly IBookRepository _bookRepository;
         private readonly IReaderRepository _readerRepository;
+
+        /// <summary>
+        /// Конструктор с тремя параметрами
+        /// </summary>
+        /// <param name="loanRepository">Репозиторий для сущностей Loan</param>
+        /// <param name="readerRepository">Репозиторий для сущностей Reader</param>
+        /// <param name="bookRepository">Репозиторий для сущностей Book</param>
         public LoanService(ILoanRepository loanRepository, IReaderRepository readerRepository, IBookRepository bookRepository)
         {
 
@@ -22,6 +29,14 @@ namespace OOP_CP_Sazonov_23VP1.service
             _bookRepository = bookRepository;
         }
 
+        /// <summary>
+        /// Выдать книгу
+        /// </summary>
+        /// <param name="readerId">идентификатор читателя</param>
+        /// <param name="bookId">идентификатор книги</param>
+        /// <param name="dueDate">срок выдачи</param>
+        /// <exception cref="ArgumentException">если читатель или книга не найдены</exception>
+        /// <exception cref="InvalidOperationException">если книга уже выдана</exception>
         public void LendBook(long readerId, long bookId, DateTime dueDate) {
             Reader? reader = _readerRepository.getReaderById(readerId);
             Book? book = _bookRepository.GetBookById(bookId);
@@ -53,6 +68,11 @@ namespace OOP_CP_Sazonov_23VP1.service
             _loanRepository.Add(loan);
         }
 
+        /// <summary>
+        /// Возвратить книгу
+        /// </summary>
+        /// <param name="bookId">идентификатор книги</param>
+        /// <exception cref="InvalidOperationException">если книга уже возвращена или не выдана</exception>
         public void ReturnBook(long bookId) {
             Loan? loan = _loanRepository.FindActiveIssue(bookId);
 

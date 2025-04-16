@@ -16,17 +16,28 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace OOP_CP_Sazonov_23VP1.service
 {
+    /// <summary>
+    /// Сервис для формирования отчётов по читателям, книгам, должникам
+    /// </summary>
     public class ReportService
     {
         private readonly IBookRepository _bookRepository;
         private readonly IReaderRepository _readerRepository;
 
+        /// <summary>
+        /// Конструктор с двумя параметрами
+        /// </summary>
+        /// <param name="bookRepository">Репозиторий для сущности Book</param>
+        /// <param name="readerRepository">Репозиторий для сущности Reader</param>
         public ReportService(IBookRepository bookRepository, IReaderRepository readerRepository)
         {
             _bookRepository = bookRepository;
             _readerRepository = readerRepository;
         }
 
+        /// <summary>
+        /// Сформировать отчёт о книгах в библиотеке
+        /// </summary>
         public void CreateBookReport() {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "PDF files (*.pdf)|*.pdf|All files (*.*)|*.*";
@@ -96,6 +107,9 @@ namespace OOP_CP_Sazonov_23VP1.service
             }
         }
 
+        /// <summary>
+        /// Сформировать отчёт о читателях
+        /// </summary>
         public void CreateReaderReport()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -214,6 +228,9 @@ namespace OOP_CP_Sazonov_23VP1.service
             }
         }
 
+        /// <summary>
+        /// Сформировать отчёт о должниках
+        /// </summary>
         public void CreateDebtorsReport()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();

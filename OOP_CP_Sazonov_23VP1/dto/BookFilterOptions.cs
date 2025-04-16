@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOP_CP_Sazonov_23VP1.dto
 {
+    /// <summary>
+    /// DTO для передачи информации о фильтрах для книги
+    /// </summary>
     public class BookFilterOptions
     {
         public string? Title { get; set; }

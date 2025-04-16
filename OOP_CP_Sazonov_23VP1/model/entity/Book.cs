@@ -39,10 +39,17 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// </summary>
         public bool IsIssued { get; set; } = false;
 
+        /// <summary>
+        /// Список авторов, связанных с книгой
+        /// </summary>
         public ICollection<Author> Authors { get; set; } = new List<Author>();
-
+        /// <summary>
+        /// Список жанров, связанных с книгой
+        /// </summary>
         public ICollection<Genre> Genres { get; set; } = new List<Genre>();
-
+        /// <summary>
+        /// Записи о выдаче книги читателям
+        /// </summary>
         public ICollection<Loan> Loans { get; set; } = new List<Loan>();
 
         private Book() {
@@ -52,6 +59,10 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
             ISBN = "НЕИЗВЕСТНО";
         }
 
+        /// <summary>
+        /// Строитель объекта типа Book. Используется
+        /// для гибкого создания экземпляра класса
+        /// </summary>
         public class Builder
         {
             private Book book = new Book();
