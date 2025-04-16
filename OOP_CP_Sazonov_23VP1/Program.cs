@@ -37,11 +37,23 @@ namespace OOP_CP_Sazonov_23VP1
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+            SQLitePCL.Batteries_V2.Init();
             var services = new ServiceCollection();
             ConfigureServices(services);
 
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
+                using (var scope = serviceProvider.CreateScope())
+                {
+                    var dbContext = scope.ServiceProvider.GetRequiredService<LibraryDatabaseContext>();
+
+                    // Проверка и применение миграций
+                    if ((dbContext.Database.GetPendingMigrations()).Any())
+                    {
+                        dbContext.Database.Migrate();
+                    }
+                }
+
                 var mainLibraryForm = serviceProvider.GetRequiredService<MainLibraryForm>();
                 Application.Run(mainLibraryForm);
             }
@@ -89,10 +101,9 @@ namespace OOP_CP_Sazonov_23VP1
 
             services.AddDbContext<LibraryDatabaseContext>(options =>
             {
-                var loggerFactory = services.BuildServiceProvider().GetService<ILoggerFactory>();
-                options.UseLoggerFactory(loggerFactory);
+                var dbPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LibraryApp", "library.db");
+                Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
 
-                var dbPath = Path.Combine(AppContext.BaseDirectory, "library.db");
                 options.UseSqlite($"Data Source={dbPath}");
             });
         }
