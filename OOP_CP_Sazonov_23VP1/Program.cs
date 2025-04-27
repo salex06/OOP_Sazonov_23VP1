@@ -49,7 +49,7 @@ namespace OOP_CP_Sazonov_23VP1
 
                     if ((dbContext.Database.GetPendingMigrations()).Any())
                     {
-                        dbContext.Database.Migrate();
+                        dbContext.Database.MigrateAsync();
                     }
                 }
 

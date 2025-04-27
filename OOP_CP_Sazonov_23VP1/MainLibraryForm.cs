@@ -64,6 +64,7 @@ namespace OOP_CP_Sazonov_23VP1
         {
             AddBookForm form = _addBookFormFactory.Create();
             form.ShowDialog();
+            ReloadAuthorAndGenreList();
         }
 
         private void removeBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,6 +83,26 @@ namespace OOP_CP_Sazonov_23VP1
         {
             EditBookInfoForm form = _editBookFormFactory.Create();
             form.ShowDialog();
+            ReloadAuthorAndGenreList();
+        }
+
+        private void ReloadAuthorAndGenreList()
+        {
+            authorNameComboBox.Items.Clear();
+            List<string> authors = _authorService.GetAllAuthors().ConvertAll(src => src.Name);
+            authorNameComboBox.Items.Add("");
+            foreach (string authorName in authors)
+            {
+                authorNameComboBox.Items.Add(authorName);
+            }
+
+            genreComboBox.Items.Clear();
+            List<string> genres = _genreService.GetAllGenres().ConvertAll(src => src.Name);
+            genreComboBox.Items.Add("");
+            foreach (string genreName in genres)
+            {
+                genreComboBox.Items.Add(genreName);
+            }
         }
 
         private void addReadersToolStripMenuItem_Click(object sender, EventArgs e)
