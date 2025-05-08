@@ -15,26 +15,40 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для изменения информации о книге в системе
+    /// </summary>
     public partial class EditBookInfoForm : Form
     {
         private readonly IAddAuthorFormFactory _addAuthorFormFactory;
         private readonly IAddGenreFormFactory _addGenreFormFactory;
-        private readonly IBookRepository _bookRepository;
         private readonly AuthorService _authorService;
         private readonly GenreService _genreService;
         private readonly BookService _bookService;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="addAuthorFormFactory">фабрика для создания формы добавления автора</param>
+        /// <param name="addGenreFormFactory">фабрика для создания формы добавления жанра</param>
+        /// <param name="authorService">Сервис для обработки сущностей "Автор"</param>
+        /// <param name="genreService">Сервис для обработки сущностей "Жанр"</param>
+        /// <param name="bookService">Сервис для обработки сущностей "Книга"</param>
         public EditBookInfoForm(IAddAuthorFormFactory addAuthorFormFactory, IAddGenreFormFactory addGenreFormFactory,
-            IBookRepository bookRepository, AuthorService authorService, GenreService genreService, BookService bookService)
+            AuthorService authorService, GenreService genreService, BookService bookService)
         {
             InitializeComponent();
             _addAuthorFormFactory = addAuthorFormFactory;
             _addGenreFormFactory = addGenreFormFactory;
-            _bookRepository = bookRepository;
             _authorService = authorService;
             _genreService = genreService;
             _bookService = bookService;
         }
 
+        /// <summary>
+        /// Установить в поле editBookIdNumericUpDown значение
+        /// переданного идентификатора
+        /// </summary>
+        /// <param name="bookId">Идентификатор книги</param>
         public void SetId(long? bookId) {
             if (bookId == null) {
                 return;
@@ -62,8 +76,8 @@ namespace OOP_CP_Sazonov_23VP1.forms
         private void editBookLoadDataButton_Click(object sender, EventArgs e)
         {
             long id = (long)editBookIdNumericUpDown.Value;
-
-            Book? book = _bookRepository.GetBookById(id);
+            
+            Book? book = _bookService.getBookById(id);
 
             if (book == null)
             {

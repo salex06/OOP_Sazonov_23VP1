@@ -11,9 +11,16 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для удаления читателя из системы
+    /// </summary>
     public partial class RemoveReaderForm : Form
     {
         private readonly ReaderService _service;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="service">Сервис, обрабатывающий сущности "Читатель"</param>
         public RemoveReaderForm(ReaderService service)
         {
             InitializeComponent();

@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using OOP_CP_Sazonov_23VP1.context;
+﻿using OOP_CP_Sazonov_23VP1.context;
 using OOP_CP_Sazonov_23VP1.model.entity;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OOP_CP_Sazonov_23VP1.repository.impl
 {
-    class GenreRepository : IGenreRepository
+    public class GenreRepository : IGenreRepository
     {
         private readonly LibraryDatabaseContext _context;
 
@@ -23,19 +22,19 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             return _context.Genres.Select(src => src).ToList();
         }
 
-        public Genre? GetGenreById(long id)
+        public virtual Genre? GetGenreById(long id)
         {
             return _context.Genres.Find(id);
         }
 
-        public Genre? GetGenreByName(string name)
+        public virtual Genre? GetGenreByName(string name)
         {
             return _context.Genres.Where(src => (src.Name == name))
                 .Select(src => src)
                 .FirstOrDefault(); ;
         }
 
-        public bool SaveGenre(Genre genre)
+        public virtual bool SaveGenre(Genre genre)
         {
             if (GetGenreByName(genre.Name) != null) {
                 return false;

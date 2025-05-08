@@ -1,3 +1,4 @@
+using OOP_CP_Sazonov_23VP1.context;
 using OOP_CP_Sazonov_23VP1.dto;
 using OOP_CP_Sazonov_23VP1.forms;
 using OOP_CP_Sazonov_23VP1.model.entity;
@@ -31,13 +32,14 @@ namespace OOP_CP_Sazonov_23VP1
         private readonly AuthorService _authorService;
         private readonly GenreService _genreService;
         private readonly ReportService _reportService;
+        private readonly ContextService _contextService;
 
         public MainLibraryForm(IAddBookFormFactory addBookFormFactory, IEditBookFormFactory editBookFormFactory,
             IRemoveBookFormFactory removeBookFormFactory, IAddReaderFormFactory addReaderFormFactory,
             IRemoveReaderFormFactory removeReaderFormFactory, IEditReaderInfoFormFactory editReaderInfoFormFactory,
             ILendBookFormFactory lendBookFormFactory, IReturnBookFormFactory returnBookFormFactory,
             BookService bookService, ReaderService readerService, AuthorService authorService, GenreService genreService,
-            LoanService loanService, ReportService reportService)
+            LoanService loanService, ReportService reportService, ContextService contextService)
         {
             InitializeComponent();
             StartForm start = new StartForm();
@@ -56,6 +58,7 @@ namespace OOP_CP_Sazonov_23VP1
             _genreService = genreService;
             _loanService = loanService;
             _reportService = reportService;
+            _contextService = contextService;
 
             booksReviewDataGridView.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         }
@@ -64,6 +67,7 @@ namespace OOP_CP_Sazonov_23VP1
         {
             AddBookForm form = _addBookFormFactory.Create();
             form.ShowDialog();
+            ReloadAuthorAndGenreList();
         }
 
         private void removeBookToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,6 +86,26 @@ namespace OOP_CP_Sazonov_23VP1
         {
             EditBookInfoForm form = _editBookFormFactory.Create();
             form.ShowDialog();
+            ReloadAuthorAndGenreList();
+        }
+
+        private void ReloadAuthorAndGenreList()
+        {
+            authorNameComboBox.Items.Clear();
+            List<string> authors = _authorService.GetAllAuthors().ConvertAll(src => src.Name);
+            authorNameComboBox.Items.Add("");
+            foreach (string authorName in authors)
+            {
+                authorNameComboBox.Items.Add(authorName);
+            }
+
+            genreComboBox.Items.Clear();
+            List<string> genres = _genreService.GetAllGenres().ConvertAll(src => src.Name);
+            genreComboBox.Items.Add("");
+            foreach (string genreName in genres)
+            {
+                genreComboBox.Items.Add(genreName);
+            }
         }
 
         private void addReadersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -388,6 +412,68 @@ namespace OOP_CP_Sazonov_23VP1
             long? readerId = (long)dataGridView.Rows[selectedRowIndex].Tag;
             form.SetReaderId((long)readerId);
             form.ShowDialog();
+        }
+
+        private void clearDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите очистить базу данных?",
+                "Очистка базы данных",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button1);
+
+            if (result == DialogResult.Yes)
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "SQLite Database Files (*.db;*.sqlite;*.s3db)|*.db;*.sqlite;*.s3db|All files (*.*)|*.*";
+                saveFileDialog.Title = "Выберите место для сохранения резервной копии базы данных";
+                saveFileDialog.DefaultExt = "db";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        string destinationPath = saveFileDialog.FileName;
+                        _contextService.SaveDatabase(destinationPath);
+                        MessageBox.Show("Резервная копия базы данных успешно создана.", "Информация");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ошибка при создании резервной копии базы данных: {ex.Message}", "Ошибка");
+                    }
+                }
+                _contextService.ClearDatabase();
+                MessageBox.Show(
+                    "Текущая база данных успешно очищена",
+                    "Очистка базы данных",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information,
+                     MessageBoxDefaultButton.Button1
+                    );
+            }
+        }
+
+        private void saveDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "SQLite Database Files (*.db;*.sqlite;*.s3db)|*.db;*.sqlite;*.s3db|All files (*.*)|*.*";
+            saveFileDialog.Title = "Выберите место для сохранения базы данных";
+            saveFileDialog.DefaultExt = "db";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string destinationPath = saveFileDialog.FileName;
+                    _contextService.SaveDatabase(destinationPath);
+                    MessageBox.Show("База данных успешно сохранена.", "Информация");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка при сохранении базы данных: {ex.Message}", "Ошибка");
+                }
+            }
         }
     }
 }

@@ -11,9 +11,16 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для сохранения нового жанра в систему
+    /// </summary>
     public partial class AddGenreForm : Form
     {
         private readonly GenreService _genreService;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="genreService">Сервис, отвечающий за выполнение бизнес-логики для сущности "Жанр"</param>
         public AddGenreForm(GenreService genreService)
         {
             InitializeComponent();

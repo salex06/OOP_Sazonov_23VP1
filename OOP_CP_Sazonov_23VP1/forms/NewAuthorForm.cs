@@ -14,9 +14,16 @@ using System.Linq.Expressions;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для добавления новых авторов в систему
+    /// </summary>
     public partial class NewAuthorForm : Form
     {
         private readonly AuthorService _authorService;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="service">Сервис, обрабатывающий сущности "Автор"</param>
         public NewAuthorForm(AuthorService service)
         {
             InitializeComponent();

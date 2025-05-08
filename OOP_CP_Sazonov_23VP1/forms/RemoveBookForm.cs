@@ -11,9 +11,16 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для удаления книги из системы
+    /// </summary>
     public partial class RemoveBookForm : Form
     {
         private readonly BookService _bookService;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="bookService">Сервис, обрабатывающий сущности "Книга"</param>
         public RemoveBookForm(BookService bookService)
         {
             InitializeComponent();

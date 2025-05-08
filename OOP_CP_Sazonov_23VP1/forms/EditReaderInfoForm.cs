@@ -12,15 +12,27 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для изменения данных о читателе в системе
+    /// </summary>
     public partial class EditReaderInfoForm : Form
     {
         private readonly ReaderService _service;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="service">Сервис, обрабатывающий сущности "Читатель"</param>
         public EditReaderInfoForm(ReaderService service)
         {
             InitializeComponent();
             _service = service;
         }
 
+        /// <summary>
+        /// Установить в поле editReaderIdNumericUpDown значение
+        /// переданного идентификатора
+        /// </summary>
+        /// <param name="readerId">Идентификатор читателя</param>
         public void SetReaderId(long readerId) {
             editReaderIdNumericUpDown.Value = readerId;
         }

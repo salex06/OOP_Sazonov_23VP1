@@ -12,10 +12,18 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для выдачи книги читателю
+    /// </summary>
     public partial class GiveOutABookForm : Form
     {
         private readonly LoanService _loanService;
         private readonly ReaderService _readerService;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="loanService">Сервис, обрабатывающий сущности "Выдача книги"</param>
+        /// <param name="readerService">Сервис, обрабатывающий сущности "Читатель"</param>
         public GiveOutABookForm(LoanService loanService, ReaderService readerService)
         {
             InitializeComponent();
@@ -24,6 +32,11 @@ namespace OOP_CP_Sazonov_23VP1.forms
             _readerService = readerService;
         }
 
+        /// <summary>
+        /// Установить в поле giveBookIdNumericUpDown значение
+        /// переданного идентификатора
+        /// </summary>
+        /// <param name="bookId">Идентификатор книги</param>
         public void setBookId(long bookId) {
             giveBookIdNumericUpDown.Value = bookId;
         }

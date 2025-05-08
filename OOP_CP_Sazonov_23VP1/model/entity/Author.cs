@@ -23,7 +23,9 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// Дата рождения автора
         /// </summary>
         public DateOnly Birthday { get; set; }
-
+        /// <summary>
+        /// Набор книг, которые выданы читателю
+        /// </summary>
         public ICollection<Book> Books { get; set; } = new List<Book>();
     }
 }

@@ -27,7 +27,9 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         /// Адрес проживания читателя
         /// </summary>
         public string Address { get; set; }
-
+        /// <summary>
+        /// Набор записей о выдаче книг
+        /// </summary>
         public ICollection<Loan> Loans { get; set; } = new List<Loan>(); 
 
         /// <summary>
@@ -38,7 +40,10 @@ namespace OOP_CP_Sazonov_23VP1.model.entity
         {
             return $"Читатель {Name}. Телефон: {PhoneNumber}. Адрес: {Address}";
         }
-
+        /// <summary>
+        /// Строитель объекта типа Reader. Используется
+        /// для гибкого создания экземпляра класса
+        /// </summary>
         public class Builder
         {
             private string _name;

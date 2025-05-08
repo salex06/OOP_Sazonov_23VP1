@@ -20,6 +20,9 @@ using ListView = System.Windows.Forms.ListView;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для добавления книги в систему
+    /// </summary>
     public partial class AddBookForm : Form
     {
         private readonly IAddAuthorFormFactory _addAuthorFormFactory;
@@ -27,6 +30,14 @@ namespace OOP_CP_Sazonov_23VP1.forms
         private readonly AuthorService _authorService;
         private readonly GenreService _genreService;
         private readonly BookService _bookService;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="authorFactory">фабрика для создания формы добавления автора</param>
+        /// <param name="genreFactory">фабрика для создания формы добавления жанра</param>
+        /// <param name="service">Сервис, отвечающий за выполнение бизнес-логики для сущностей типа "Автор"</param>
+        /// <param name="genreService">Сервис, обрабатывающий сущности типа "Жанр"</param>
+        /// <param name="bookService">Сервис, обрабатывающий сущности типа "Книга"</param>
         public AddBookForm(IAddAuthorFormFactory authorFactory, IAddGenreFormFactory genreFactory, AuthorService service, GenreService genreService, BookService bookService)
         {
             InitializeComponent();

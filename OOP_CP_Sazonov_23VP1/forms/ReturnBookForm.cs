@@ -11,9 +11,16 @@ using System.Windows.Forms;
 
 namespace OOP_CP_Sazonov_23VP1.forms
 {
+    /// <summary>
+    /// Форма для возврата книги читателем
+    /// </summary>
     public partial class ReturnBookForm : Form
     {
         private readonly LoanService _service;
+        /// <summary>
+        /// Конструктор формы
+        /// </summary>
+        /// <param name="service">Сервис, обрабатывающий сущности "Выдача книги"</param>
         public ReturnBookForm(LoanService service)
         {
             InitializeComponent();
