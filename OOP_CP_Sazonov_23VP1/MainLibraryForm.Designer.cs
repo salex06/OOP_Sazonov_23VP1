@@ -31,6 +31,9 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainLibraryForm));
             addBookToDataBaseToolStrip = new ToolStrip();
+            toolsToolStripDropDownButton = new ToolStripDropDownButton();
+            clearDatabaseToolStripMenuItem = new ToolStripMenuItem();
+            saveDatabaseToolStripMenuItem = new ToolStripMenuItem();
             booksDropBoxToolStrip = new ToolStripDropDownButton();
             addBookToolStripMenuItem = new ToolStripMenuItem();
             removeBookToolStripMenuItem = new ToolStripMenuItem();
@@ -163,12 +166,35 @@
             // addBookToDataBaseToolStrip
             // 
             addBookToDataBaseToolStrip.ImageScalingSize = new Size(24, 24);
-            addBookToDataBaseToolStrip.Items.AddRange(new ToolStripItem[] { booksDropBoxToolStrip, clientsToolStripDropDownButton, reportToolStripDropDownButton });
+            addBookToDataBaseToolStrip.Items.AddRange(new ToolStripItem[] { toolsToolStripDropDownButton, booksDropBoxToolStrip, clientsToolStripDropDownButton, reportToolStripDropDownButton });
             addBookToDataBaseToolStrip.Location = new Point(0, 0);
             addBookToDataBaseToolStrip.Name = "addBookToDataBaseToolStrip";
             addBookToDataBaseToolStrip.Size = new Size(1320, 34);
             addBookToDataBaseToolStrip.TabIndex = 0;
             addBookToDataBaseToolStrip.Text = "Добавить книгу";
+            // 
+            // toolsToolStripDropDownButton
+            // 
+            toolsToolStripDropDownButton.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            toolsToolStripDropDownButton.DropDownItems.AddRange(new ToolStripItem[] { clearDatabaseToolStripMenuItem, saveDatabaseToolStripMenuItem });
+            toolsToolStripDropDownButton.ImageTransparentColor = Color.Magenta;
+            toolsToolStripDropDownButton.Name = "toolsToolStripDropDownButton";
+            toolsToolStripDropDownButton.Size = new Size(140, 29);
+            toolsToolStripDropDownButton.Text = "Инструменты";
+            // 
+            // clearDatabaseToolStripMenuItem
+            // 
+            clearDatabaseToolStripMenuItem.Name = "clearDatabaseToolStripMenuItem";
+            clearDatabaseToolStripMenuItem.Size = new Size(317, 34);
+            clearDatabaseToolStripMenuItem.Text = "Очистить текущую БД...";
+            clearDatabaseToolStripMenuItem.Click += clearDatabaseToolStripMenuItem_Click;
+            // 
+            // saveDatabaseToolStripMenuItem
+            // 
+            saveDatabaseToolStripMenuItem.Name = "saveDatabaseToolStripMenuItem";
+            saveDatabaseToolStripMenuItem.Size = new Size(317, 34);
+            saveDatabaseToolStripMenuItem.Text = "Сохранить текущую БД...";
+            saveDatabaseToolStripMenuItem.Click += saveDatabaseToolStripMenuItem_Click;
             // 
             // booksDropBoxToolStrip
             // 
@@ -1297,5 +1323,8 @@
         private ToolStripMenuItem editReaderContextStripMenuItem;
         private Label queryResultLabel;
         private Label readerQueryResultLabel;
+        private ToolStripDropDownButton toolsToolStripDropDownButton;
+        private ToolStripMenuItem clearDatabaseToolStripMenuItem;
+        private ToolStripMenuItem saveDatabaseToolStripMenuItem;
     }
 }

@@ -39,7 +39,8 @@ namespace OOP_CP_Sazonov_23VP1
             ApplicationConfiguration.Initialize();
             SQLitePCL.Batteries_V2.Init();
             var services = new ServiceCollection();
-            ConfigureServices(services);
+
+            ConfigureServices(services, GetDatabaseFilePath());
 
             using (ServiceProvider serviceProvider = services.BuildServiceProvider())
             {
@@ -59,7 +60,7 @@ namespace OOP_CP_Sazonov_23VP1
         }
 
 
-        private static void ConfigureServices(IServiceCollection services)
+        private static void ConfigureServices(IServiceCollection services, string? sourcePath)
         {
             services.AddTransient<IAddBookFormFactory, AddBookFormFactory>();
             services.AddTransient<IAddAuthorFormFactory, AddAuthorFormFactory>();
@@ -97,14 +98,37 @@ namespace OOP_CP_Sazonov_23VP1
             services.AddTransient<ReaderService>();
             services.AddTransient<LoanService>();
             services.AddTransient<ReportService>();
+            services.AddTransient<ContextService>();
 
             services.AddDbContext<LibraryDatabaseContext>(options =>
             {
-                var dbPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LibraryApp", "library.db");
+                var dbPath = sourcePath;
+                if (dbPath == null) {
+                    dbPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LibraryApp", "library.db");
+                }
                 Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
 
                 options.UseSqlite($"Data Source={dbPath}");
             });
+        }
+
+        private static string? GetDatabaseFilePath() {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "SQLite Database Files (*.db;*.sqlite;*.s3db)|*.db;*.sqlite;*.s3db|All files (*.*)|*.*";
+            openFileDialog.Title = "Выберите файл базы данных SQLite";
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                return openFileDialog.FileName;
+            }
+            MessageBox.Show("Файл не выбран. Будет открыта база данных по умолчанию",
+                "Подключение базы данных...",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.DefaultDesktopOnly);
+            return null;
         }
     }
 }

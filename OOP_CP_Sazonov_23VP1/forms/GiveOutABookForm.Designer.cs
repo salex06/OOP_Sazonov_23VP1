@@ -166,7 +166,7 @@
             // availableReadersDataGridView
             // 
             availableReadersDataGridView.AllowUserToAddRows = false;
-            availableReadersDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            availableReadersDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             availableReadersDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             availableReadersDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             availableReadersDataGridView.Columns.AddRange(new DataGridViewColumn[] { readerId, readerName, phoneNumber, address });
@@ -204,7 +204,7 @@
             // 
             // availableReadersPanel
             // 
-            availableReadersPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            availableReadersPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             availableReadersPanel.Controls.Add(availableReadersDataGridView);
             availableReadersPanel.Controls.Add(availableReadersLabel);
             availableReadersPanel.Location = new Point(0, 195);

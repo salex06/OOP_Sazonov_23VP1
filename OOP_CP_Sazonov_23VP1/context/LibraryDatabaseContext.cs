@@ -13,7 +13,7 @@ namespace OOP_CP_Sazonov_23VP1.context
     /// Контекст базы данных, предоставляющий
     /// API для получения, изменения и сохранения информации
     /// </summary>
-    class LibraryDatabaseContext : DbContext
+    public class LibraryDatabaseContext : DbContext
     {
         /// <summary>
         /// Конструктор контекста
@@ -48,13 +48,36 @@ namespace OOP_CP_Sazonov_23VP1.context
         /// </summary>
         public DbSet<Loan> Loans { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /// <summary>
+        /// Очистить текущую базу данных
+        /// </summary>
+        public void ClearDatabase()
         {
-            var dbPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LibraryApp", "library.db");
-            Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+            ChangeTracker.AutoDetectChangesEnabled = false; 
 
-            optionsBuilder.UseSqlite($"Data Source={dbPath}");
+            try
+            {
+                Database.ExecuteSqlRaw("DELETE FROM Loans");
+                Database.ExecuteSqlRaw("DELETE FROM Books");
+                Database.ExecuteSqlRaw("DELETE FROM Authors");
+                Database.ExecuteSqlRaw("DELETE FROM Genres");
+                Database.ExecuteSqlRaw("DELETE FROM Readers");
+
+                SaveChanges();
+            }
+            finally
+            {
+                ChangeTracker.AutoDetectChangesEnabled = true;
+            }
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    var dbPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "LibraryApp", "library.db");
+        //    Directory.CreateDirectory(Path.GetDirectoryName(dbPath));
+
+        //    optionsBuilder.UseSqlite($"Data Source={dbPath}");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
