@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OOP_CP_Sazonov_23VP1.repository.impl
 {
-    class AuthorRepository : IAuthorRepository
+    public class AuthorRepository : IAuthorRepository
     {
         private readonly LibraryDatabaseContext _context;
 
@@ -17,17 +17,17 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             _context = context;
         }
 
-        public List<Author> GetAllAuthors()
+        public virtual List<Author> GetAllAuthors()
         {
             return _context.Authors.ToList();
         }
 
-        public Author? GetAuthorById(long id)
+        public virtual Author? GetAuthorById(long id)
         {
             return _context.Authors.Find(id);
         }
 
-        public List<Author> GetAuthorByName(string name)
+        public virtual List<Author> GetAuthorByName(string name)
         {
             var authors = _context.Authors.Select(author => author)
                 .Where<Author>(author => (author.Name == name)).ToList();
@@ -35,7 +35,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             return (authors ?? []);
         }
 
-        public void SaveAuthor(Author author)
+        public virtual void SaveAuthor(Author author)
         {
             _context.Authors.Add(author);
             _context.SaveChanges();

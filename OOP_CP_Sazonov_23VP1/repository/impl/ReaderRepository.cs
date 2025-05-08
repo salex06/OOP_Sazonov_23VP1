@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OOP_CP_Sazonov_23VP1.repository.impl
 {
-    class ReaderRepository : IReaderRepository
+    public class ReaderRepository : IReaderRepository
     {
         private readonly LibraryDatabaseContext _context;
 
@@ -54,7 +54,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             return new KeyValuePair<List<Reader>, int>(readers, _context.Readers.Count());
         }
 
-        public Reader? getReaderById(long readerId)
+        public virtual Reader? getReaderById(long readerId)
         {
             return _context.Readers.Find(readerId);
         }

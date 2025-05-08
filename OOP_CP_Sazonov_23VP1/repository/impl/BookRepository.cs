@@ -10,7 +10,7 @@ using System.Windows.Forms.VisualStyles;
 
 namespace OOP_CP_Sazonov_23VP1.repository.impl
 {
-    class BookRepository : IBookRepository
+    public class BookRepository : IBookRepository
     {
         private readonly LibraryDatabaseContext _context;
 
@@ -42,7 +42,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
                 .ToList(), _context.Books.Count());
         }
 
-        public Book? GetBookById(long id)
+        public virtual Book? GetBookById(long id)
         {
             return _context.Books
                 .Include(b => b.Authors)  
@@ -50,7 +50,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
                 .FirstOrDefault(b => b.Id == id);
         }
 
-        public Book? SaveBook(Book book, List<long> authorIds, List<long> genreIds)
+        public virtual Book? SaveBook(Book book, List<long> authorIds, List<long> genreIds)
         {
             if (GetBookById(book.Id) != null)
             {

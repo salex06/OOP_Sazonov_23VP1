@@ -37,7 +37,7 @@ namespace OOP_CP_Sazonov_23VP1.service
         /// <param name="dueDate">срок выдачи</param>
         /// <exception cref="ArgumentException">если читатель или книга не найдены</exception>
         /// <exception cref="InvalidOperationException">если книга уже выдана</exception>
-        public void LendBook(long readerId, long bookId, DateTime dueDate) {
+        public  void LendBook(long readerId, long bookId, DateTime dueDate) {
             Reader? reader = _readerRepository.getReaderById(readerId);
             Book? book = _bookRepository.GetBookById(bookId);
 

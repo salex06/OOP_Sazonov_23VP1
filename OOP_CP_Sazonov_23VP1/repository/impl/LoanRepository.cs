@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OOP_CP_Sazonov_23VP1.repository.impl
 {
-    class LoanRepository : ILoanRepository
+    public class LoanRepository : ILoanRepository
     {
         private readonly LibraryDatabaseContext _context;
 
@@ -24,7 +24,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             _context.SaveChanges();
         }
 
-        public bool CheckForIssue(long bookId)
+        public virtual bool CheckForIssue(long bookId)
         {
             return _context.Loans.Any(l => l.BookId == bookId && l.ReturnDate == null);
         }
@@ -39,7 +39,7 @@ namespace OOP_CP_Sazonov_23VP1.repository.impl
             }
         }
 
-        public Loan? FindActiveIssue(long bookId)
+        public virtual Loan? FindActiveIssue(long bookId)
         {
             return _context.Loans.FirstOrDefault(l => l.BookId == bookId && l.ReturnDate == null);
         }

@@ -30,23 +30,23 @@ namespace OOP_CP_Sazonov_23VP1.context
         /// <summary>
         /// Таблица с сущностями типа "Книга"
         /// </summary>
-        public DbSet<Book> Books { get; set; } = null!;
+        public virtual DbSet<Book> Books { get; set; } = null!;
         /// <summary>
         /// Таблица с сущностями типа "Автор"
         /// </summary>
-        public DbSet<Author> Authors { get; set; } = null!;
+        public virtual DbSet<Author> Authors { get; set; } = null!;
         /// <summary>
         /// Таблица с сущностями типа "Жанр"
         /// </summary>
-        public DbSet<Genre> Genres { get; set; } = null!;
+        public virtual DbSet<Genre> Genres { get; set; } = null!;
         /// <summary>
         /// Таблица с сущностями типа "Читатель"
         /// </summary>
-        public DbSet<Reader> Readers { get; set; } = null!;
+        public virtual DbSet<Reader> Readers { get; set; } = null!;
         /// <summary>
         /// Таблица с сущностями типа "Выдача книги"
         /// </summary>
-        public DbSet<Loan> Loans { get; set; } = null!;
+        public virtual DbSet<Loan> Loans { get; set; } = null!;
 
         /// <summary>
         /// Очистить текущую базу данных
